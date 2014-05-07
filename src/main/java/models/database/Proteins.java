@@ -32,10 +32,10 @@ these to follow
  */
     /*@OneToMany
     public List<GeneralSites> proteinGeneralSites;
-
+*/
     @OneToMany
     public List<DefinedSites> proteinDefinedSites;
-
+/*
     @OneToMany
     public List<Proteinstaxonomy> proteinsTax;
 

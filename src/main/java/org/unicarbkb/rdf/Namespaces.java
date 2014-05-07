@@ -31,5 +31,6 @@ public class Namespaces {
         this.model.setNsPrefix( "dc", "http://purl.org/dc/elements/1.1/");
         this.model.setNsPrefix( "xsd", "http://www.w3.org/2001/XMLSchema#");
         this.model.setNsPrefix( "rdfs", "http://www.w3.org/2000/01/rdf-schema#");
+        this.model.setNsPrefix( "faldo", "http://biohackathon.org/resource/faldo#");
     }
 }

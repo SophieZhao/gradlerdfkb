@@ -51,6 +51,7 @@ public class ReferenceRDF {
         Resource r = null;
         try {
             //r = model.createResource(journalURI);
+
             r = ResourceFactory.createResource(journalURI);
             if(!model.containsResource(r)) {
                 r.addProperty(DC.title, journal.name);

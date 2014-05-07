@@ -74,6 +74,9 @@ public class GLYCOVOCAB extends Object {
     static final String naminoAcid = "amino_acid";
     public static Property aminoAcid = null;
 
+    static final String nglycosylatedAA = "glycosylated_AA";
+    public static Property glycosylatedAA = null;
+
 
     // Instantiate the properties and the resource
     static {
@@ -94,6 +97,7 @@ public class GLYCOVOCAB extends Object {
             hasAttachedGlycan = new PropertyImpl(uri, nhasAttachedGlycan);
 
             aminoAcid = new PropertyImpl(uri, naminoAcid);
+            glycosylatedAA = new PropertyImpl(uri, nglycosylatedAA);
 
 
             //status = new PropertyImpl
