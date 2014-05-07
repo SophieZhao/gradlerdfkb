@@ -1,0 +1,32 @@
+txn[1003], 14:54:19.775, select count(*) as count from journal 
+txn[1003], 14:54:20.218, SqlQuery  rows[1] time[446] bind[] finished[true] 
+txn[1003], 14:54:50.314, select count(*) as count from journal 
+txn[1003], 14:54:50.340, SqlQuery  rows[1] time[29] bind[] finished[true] 
+txn[1003], 15:11:09.259, select count(*) as count from journal 
+txn[1003], 15:11:09.308, SqlQuery  rows[1] time[51] bind[] finished[true] 
+txn[1004], 15:11:09.442, select t0.id as c0, t0.shortname as c1, t0.name as c2  from public.journal t0 where t0.id = ?   
+txn[1004], 15:11:09.503, FindBean type[Journal] origin[CeMJgi.CXYvxY.BvQztX] exeMicros[60943] rows[0] bind[1] 
+txn[1003], 15:11:51.677, select count(*) as count from journal 
+txn[1003], 15:11:51.711, SqlQuery  rows[1] time[34] bind[] finished[true] 
+txn[1004], 15:11:51.774, select t0.id as c0, t0.shortname as c1, t0.name as c2  from public.journal t0 where t0.id = ?   
+txn[1004], 15:11:51.778, FindBean type[Journal] origin[CeMJgi.CXYvxY.BvQztX] exeMicros[4303] rows[0] bind[11] 
+txn[1003], 15:24:05.483, select count(*) as count from journal 
+txn[1003], 15:24:05.508, SqlQuery  rows[1] time[26] bind[] finished[true] 
+txn[1004], 15:24:05.577, select t0.id as c0, t0.shortname as c1, t0.name as c2  from public.journal t0 where t0.id = ?   
+txn[1004], 15:24:05.582, FindBean type[Journal] origin[CeMJgi.CXYvxY.BvQztX] exeMicros[5072] rows[0] bind[11] 
+txn[1002], 17:06:44.949, Rollback 
+txn[1001], 17:08:43.106, select t0.id as c0, t0.first as c1, t0.year as c2, t0.volume as c3, t0.pages as c4, t0.medline as c5, t0.pmid as c6, t0.title as c7, t0.authors as c8, t0.journal_id as c9  from public.reference t0 where t0.id = ?   
+txn[1001], 17:08:43.120, ERROR executing query:   bindLog[1000] error[ERROR: relation "public.reference" does not exist\n   Position: 178] 
+txn[1001], 17:08:43.143, Rollback 
+txn[1001], 17:15:17.455, select t0.id as c0, t0.first as c1, t0.year as c2, t0.volume as c3, t0.pages as c4, t0.medline as c5, t0.pmid as c6, t0.title as c7, t0.authors as c8, t0.journal_id as c9  from public.reference t0 
+txn[1001], 17:15:17.468, ERROR executing query:   bindLog[] error[ERROR: relation "public.reference" does not exist\n   Position: 178] 
+txn[1001], 17:15:17.487, Rollback 
+txn[1001], 18:12:37.855, select t0.id as c0, t0.first as c1, t0.year as c2, t0.volume as c3, t0.pages as c4, t0.medline as c5, t0.pmid as c6, t0.title as c7, t0.authors as c8, t0.journal_id as c9  from public.reference t0 
+txn[1001], 18:12:37.866, ERROR executing query:   bindLog[] error[ERROR: relation "public.reference" does not exist\n   Position: 178] 
+txn[1001], 18:12:37.886, Rollback 
+txn[1001], 18:13:32.903, select t0.id as c0, t0.first as c1, t0.year as c2, t0.volume as c3, t0.pages as c4, t0.medline as c5, t0.pmid as c6, t0.title as c7, t0.authors as c8, t0.journal_id as c9  from public.reference t0 
+txn[1001], 18:13:32.921, ERROR executing query:   bindLog[] error[ERROR: relation "public.reference" does not exist\n   Position: 178] 
+txn[1001], 18:13:32.945, Rollback 
+txn[1001], 18:13:50.119, select t0.id as c0, t0.first as c1, t0.year as c2, t0.volume as c3, t0.pages as c4, t0.medline as c5, t0.pmid as c6, t0.title as c7, t0.authors as c8, t0.journal_id as c9  from public.reference t0 
+txn[1001], 18:13:50.132, ERROR executing query:   bindLog[] error[ERROR: relation "public.reference" does not exist\n   Position: 178] 
+txn[1001], 18:13:50.156, Rollback 
