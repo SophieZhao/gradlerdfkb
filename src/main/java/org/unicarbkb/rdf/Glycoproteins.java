@@ -17,34 +17,18 @@ import java.util.List;
  */
 public class Glycoproteins {
 
-    /*
-    Create <asp/ser/thr/>
-     */
-    public static void createGlycoSites(Model model) {
-        Resource asp = model.createResource("asparagine");
-        asp.addProperty(RDF.type, GLYCOVOCAB.aminoAcid);
-        Resource thr = model.createResource("threonine");
-        thr.addProperty(RDF.type, GLYCOVOCAB.aminoAcid);
-        Resource ser = model.createResource("serine");
-        ser.addProperty(RDF.type, GLYCOVOCAB.aminoAcid);
 
-        model.write(System.out, "TTL");
-
-    }
 
     public static Resource createProteins(Model model, Proteins protein) {
 
         String proteinURI = "http://www.unicarbkb.org/proteinsummary/" + protein.swissProt; //+ accession;
-        Resource site = null;
         Resource p = null;
         try {
             p = model.createResource(proteinURI);
-            p.addProperty(GLYCOVOCAB.hasUniprotAccession, protein.swissProt); //need to add uniprot:accession TODO
+            p.addProperty(GLYCOVOCAB.hasUniprotAccession, UNIPROT.uniprotAccession); //TODO check out
             //for each know site need to get object from ebean
             List<DefinedSites> defined = protein.proteinDefinedSites;
             for (DefinedSites d : defined) {
-                //d.amino_acid_position
-                //p.addProperty(GLYCOVOCAB.hasGlycosylatedAA, "23").addProperty(GLYCOVOCAB.hasGlycosylatedAA, JenaUUID.generate().asString().toString());
                 p.addProperty(GLYCOVOCAB.hasGlycosylatedAA, createGlycoAA(d, model));
             }
         } catch (Exception e) {
@@ -54,7 +38,11 @@ public class Glycoproteins {
         return p;
     }
 
-
+    /*
+    create has_glycosylated_aa using uuid
+    might not be the best approach
+    connected to a FALDO.Location ExactPosition
+     */
     public static Resource createGlycoAA(DefinedSites d, Model model) {
         // System.out.println("starting to create journal");
         String glycoAAURI = "glycoAASite_" + JenaUUID.generate().asString();
@@ -65,9 +53,21 @@ public class Glycoproteins {
 
             r = ResourceFactory.createResource(glycoAAURI);
             if(!model.containsResource(r)) {
-                r.addProperty(GLYCOVOCAB.aminoAcidType, "add");
-                r.addProperty(GLYCOVOCAB.modificationType, "add");
-                r.addProperty(FALDO.Location, "resource create"); //TODO
+
+                if(d.amino_acid_position.contains("ASN")) {
+                    r.addProperty(GLYCOVOCAB.aminoAcidType, model.getResource("asparagine")); //TODO CHECK
+                    r.addLiteral(GLYCOVOCAB.modificationType, "N-glycosylation");
+                }
+                if(d.amino_acid_position.contains("THR")) {
+                    r.addProperty(GLYCOVOCAB.aminoAcid, model.getResource("threonine") ); //TODO CHECK
+                    r.addLiteral(GLYCOVOCAB.modificationType, "O-glycosylation");
+                }
+                if(d.amino_acid_position.contains("SER")){
+                    r.addProperty(GLYCOVOCAB.aminoAcid, model.getResource("serine")); //TODO CHECK
+                    r.addLiteral(GLYCOVOCAB.modificationType, "O-glycosylation");
+                }
+
+                r.addProperty(FALDO.Location, createFaldoLocation(d.amino_acid_position, model));
                 r.addProperty(RDF.type, GLYCOVOCAB.glycosylatedAA);
             }
 
@@ -77,6 +77,21 @@ public class Glycoproteins {
 
         //model.write(System.out, "TTL");
         return r;
+    }
+
+    /*
+    Pass glycoprotein glycosylation site position
+     */
+    public static Resource createFaldoLocation(String position, Model model){
+        String faldoURI = "_position" + JenaUUID.generate().asURI();
+        Resource r = null;
+        try{
+            r = ResourceFactory.createResource(faldoURI);
+            r.addLiteral(FALDO.position, position.replaceAll("ASN-", "").replaceAll("SER-", "").replaceAll("THR-", ""));
+        } catch (Exception e) {
+            System.out.println("Failed: " + e);
+        }
+    return r;
     }
 
 

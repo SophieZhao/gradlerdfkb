@@ -2,6 +2,8 @@ package org.unicarbkb.rdf;
 
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
+import com.hp.hpl.jena.rdf.model.Resource;
+import com.hp.hpl.jena.vocabulary.RDF;
 
 /**
  * Created by matthew on 07/05/2014.
@@ -14,6 +16,7 @@ public class Namespaces {
         Model model = ModelFactory.createDefaultModel();
         this.model = model;
         this.addNameSpaces();
+        this.addGlycoSites();
 
         //model.write(System.out, "TTL");
         return model;
@@ -32,5 +35,22 @@ public class Namespaces {
         this.model.setNsPrefix( "xsd", "http://www.w3.org/2001/XMLSchema#");
         this.model.setNsPrefix( "rdfs", "http://www.w3.org/2000/01/rdf-schema#");
         this.model.setNsPrefix( "faldo", "http://biohackathon.org/resource/faldo#");
+        this.model.setNsPrefix( "uniprot",  "http://purl.uniprot.org/core/Protein/");
+    }
+
+    /*
+    Create <asp/ser/thr/>
+    */
+    public void addGlycoSites() {
+        Resource asp = model.createResource("asparagine");
+        asp.addProperty(RDF.type, GLYCOVOCAB.aminoAcid);
+        Resource thr = model.createResource("threonine");
+        thr.addProperty(RDF.type, GLYCOVOCAB.aminoAcid);
+        Resource ser = model.createResource("serine");
+        ser.addProperty(RDF.type, GLYCOVOCAB.aminoAcid);
+
+        //model.write(System.out, "TTL");
+
+
     }
 }
