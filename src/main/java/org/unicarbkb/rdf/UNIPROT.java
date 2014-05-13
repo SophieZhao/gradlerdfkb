@@ -17,4 +17,6 @@ public class UNIPROT {
     public static String getURI() {
         return uri;
     }
+
+
 }

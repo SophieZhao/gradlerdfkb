@@ -15,4 +15,27 @@ public class Stproteins {
     @ManyToOne
     public Proteins proteins;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Structure getStructure() {
+        return structure;
+    }
+
+    public void setStructure(Structure structure) {
+        this.structure = structure;
+    }
+
+    public Proteins getProteins() {
+        return proteins;
+    }
+
+    public void setProteins(Proteins proteins) {
+        this.proteins = proteins;
+    }
 }

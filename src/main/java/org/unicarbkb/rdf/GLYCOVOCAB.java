@@ -45,8 +45,10 @@ public class GLYCOVOCAB extends Object {
 
     static final String nabstract = "abstract";
     public static Property nnabstract = null;
-    static final String nglycoSequence = "glycosequence";
-    public static Property glycosequence = null;
+
+    //static final String nglycoSequence = "glycosequence";
+    //public static Property hasGlycosequence = null;
+
     static final String nhasSequence = "has_sequence";
     public static Property hasSequence = null;
 
@@ -77,6 +79,22 @@ public class GLYCOVOCAB extends Object {
     static final String nglycosylatedAA = "glycosylated_AA";
     public static Property glycosylatedAA = null;
 
+    static final String ninCarbohydrateFormat = "in_carbohydrate_format";
+    public static Property inCarbohydrateFormat = null;
+    static final String ncarbohydrateFormatGlycoct  = "carbohydrate_format_glycoct";
+    public static Property carbohydrateFormatGlycoct = null;
+    static final String ncarbohydrateFormatIupac  = "carbohydrate_format_condensediupac"; //TODO CHECK DEFINITION
+    public static Property carbohydrateFormatIupac = null;
+
+    static final String nglycosequence = "glycosequence";
+    public static Property glycosequence = null;
+
+    static final String nsaccharide = "saccharide";
+    public static Property saccharide = null;
+
+    static final String nproteinName = "has_protein_name"; //TODO ADD TO ONTOLOGY
+    public static Property hasProteinName = null;
+
 
     // Instantiate the properties and the resource
     static {
@@ -86,7 +104,7 @@ public class GLYCOVOCAB extends Object {
             hasPmid = new PropertyImpl(uri, nhasPmid);
             nnabstract = new PropertyImpl(uri, nabstract);
 
-            glycosequence = new PropertyImpl(uri, nglycoSequence);
+            //hasGlycosequence = new PropertyImpl(uri, nglycoSequence);
             hasSequence = new PropertyImpl(uri, nhasSequence);
 
             hasGlycosylatedAA = new PropertyImpl(uri, nhasGlycosylatedAa);
@@ -98,6 +116,15 @@ public class GLYCOVOCAB extends Object {
 
             aminoAcid = new PropertyImpl(uri, naminoAcid);
             glycosylatedAA = new PropertyImpl(uri, nglycosylatedAA);
+            inCarbohydrateFormat = new PropertyImpl(uri, ninCarbohydrateFormat);
+
+            carbohydrateFormatGlycoct = new PropertyImpl(uri, ncarbohydrateFormatGlycoct);
+            carbohydrateFormatIupac = new PropertyImpl(uri, ncarbohydrateFormatIupac);
+
+            glycosequence = new PropertyImpl(uri, nglycosequence);
+            saccharide = new PropertyImpl(uri, nsaccharide);
+
+            hasProteinName = new PropertyImpl(uri, nproteinName); //TODO ABOVE
 
 
             //status = new PropertyImpl

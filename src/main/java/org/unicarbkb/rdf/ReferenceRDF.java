@@ -31,7 +31,7 @@ public class ReferenceRDF {
                 r.addProperty(BIBOVOCAB.authorList, a.trim());
             }
 
-            String[] pages = reference.pages.split(",");
+            String[] pages = reference.pages.split("-");
             r.addProperty(BIBOVOCAB.pageEnd, String.valueOf(pages[0]));
             r.addProperty(BIBOVOCAB.pageStart, String.valueOf(pages[1]));
             r.addProperty(BIBOVOCAB.volume, reference.volume);
@@ -52,7 +52,7 @@ public class ReferenceRDF {
         try {
             //r = model.createResource(journalURI);
 
-            r = ResourceFactory.createResource(journalURI);
+            r = model.createResource(journalURI);
             if(!model.containsResource(r)) {
                 r.addProperty(DC.title, journal.name);
                 r.addProperty(BIBOVOCAB.shortTitle, journal.shortname);
