@@ -10,6 +10,7 @@ import com.hp.hpl.jena.vocabulary.RDF;
 import models.database.Journal;
 import models.database.Reference;
 import org.unicarbkb.rdf.Namespaces;
+import com.hp.hpl.jena.sparql.vocabulary.FOAF;
 
 /**
  * Created by matthew on 07/05/2014.
@@ -28,7 +29,7 @@ public class ReferenceRDF {
 
             String[] authors = reference.authors.split(",");
             for (String a : authors) {
-                r.addProperty(BIBOVOCAB.authorList, a.trim());
+                r.addProperty(BIBOVOCAB.authorList, createAuthor(model,a.trim())); //  a.trim());
             }
 
             String[] pages = reference.pages.split("-");
@@ -67,4 +68,25 @@ public class ReferenceRDF {
         //model.write(System.out, "TTL");
         return r;
     }
+
+
+    public static Resource createAuthor(Model model, String author) {
+        String authorURI= "author_" + author.replaceAll("\\s","_").trim();
+        Resource r = null;
+        try {
+            r= model.createResource(authorURI);
+            r.addProperty(RDF.type, DC.contributor).addLiteral(FOAF.name, author.replaceAll("\\s","_").trim() );
+        } catch (Exception e) {
+            System.out.println("Failed: " + e);
+        }
+        return r;
+    }
+    /*
+    <_:author_St_Michael_F>
+        a dc:contributor ;
+        foaf:name "St Michael F" .
+     */
+
+
+
 }

@@ -12,4 +12,7 @@ dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.11'
     compile group: 'org.hibernate', name: 'hibernate-core', version: '3.6.7.Final'
     compile 'org.avaje:ebean:2.8.1', 'com.hp.hpl.jena:jena:2.6.4', 'postgresql:postgresql:9.1-901.jdbc4'
+    compile 'org.apache.jena:jena:2.11.1'
+    compile 'org.apache.jena:jena-arq:2.11.1'
+
 }

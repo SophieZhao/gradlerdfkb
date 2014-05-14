@@ -1,0 +1,8 @@
+txn[1001], 18:12:56.612, select t0.id as c0, t0.first as c1, t0.year as c2, t0.volume as c3, t0.pages as c4, t0.medline as c5, t0.pmid as c6, t0.title as c7, t0.authors as c8, t0.journal_id as c9  from public.reference t0 
+txn[1001], 18:12:56.876, FindMany type[Reference] origin[DNDgzo.BjX_8F.BvQztc] exeMicros[264366] rows[894] name[] predicates[] bind[] 
+txn[1001], 18:18:32.363, select t0.id as c0, t0.first as c1, t0.year as c2, t0.volume as c3, t0.pages as c4, t0.medline as c5, t0.pmid as c6, t0.title as c7, t0.authors as c8, t0.journal_id as c9  from public.reference t0 
+txn[1001], 18:18:32.433, FindMany type[Reference] origin[DNDgzo.BjX_8F.BvQztc] exeMicros[69303] rows[894] name[] predicates[] bind[] 
+txn[1001], 18:20:00.796, select t0.id as c0, t0.first as c1, t0.year as c2, t0.volume as c3, t0.pages as c4, t0.medline as c5, t0.pmid as c6, t0.title as c7, t0.authors as c8, t0.journal_id as c9  from public.reference t0 
+txn[1001], 18:20:00.865, FindMany type[Reference] origin[DNDgzo.BjX_8F.BvQztc] exeMicros[68978] rows[894] name[] predicates[] bind[] 
+txn[1001], 18:20:31.710, select t0.id as c0, t0.first as c1, t0.year as c2, t0.volume as c3, t0.pages as c4, t0.medline as c5, t0.pmid as c6, t0.title as c7, t0.authors as c8, t0.journal_id as c9  from public.reference t0 
+txn[1001], 18:20:31.782, FindMany type[Reference] origin[DNDgzo.BjX_8F.BvQztc] exeMicros[71911] rows[894] name[] predicates[] bind[] 

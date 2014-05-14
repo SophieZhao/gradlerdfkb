@@ -25,13 +25,13 @@ public class main {
         /*
         create structures from structure table
          */
-        createStructureResource(m);
+        //createStructureResource(m);
 
 
-        /*List<Reference> reference = Ebean.find(Reference.class).findList();
+        List<Reference> reference = Ebean.find(Reference.class).findList();
         for(Reference r : reference) {
             createPublication(r,m);
-        } */
+        }
 
         /*List<Proteins> proteins = Ebean.find(Proteins.class).findList();
         for(Proteins p : proteins){

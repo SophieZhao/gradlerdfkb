@@ -13,7 +13,6 @@ public class Namespaces {
 
     public Model model;
 
-    private static final String BASE = "http://purl.jp/bio/12/glyco/glycan/";
     private static final String BASE1 = "http://www.w3.org/1999/02/22-rdf-syntax-ns#";
     private static final String BASE2 = "http://purl.org/ontology/bibo/";
     private static final String BASE3 = "http://xmlns.com/foaf/0.1/";
@@ -29,8 +28,6 @@ public class Namespaces {
     public Model createModel() {
         Model model = ModelFactory.createDefaultModel();
         this.model = model;
-
-
 
         model.setNsPrefix("rdf", BASE1);
         model.setNsPrefix("bibo", BASE2);
