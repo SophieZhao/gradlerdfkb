@@ -9,6 +9,7 @@ import com.hp.hpl.jena.shared.uuid.JenaUUID;
 import com.hp.hpl.jena.vocabulary.OWL2;
 import com.hp.hpl.jena.vocabulary.XSD;
 import models.database.DefinedSites;
+import models.database.Stproteins;
 import models.database.Structure;
 import models.database.Translation;
 
@@ -20,7 +21,9 @@ import java.util.List;
 public class StructureRDF {
 
 
-
+    /*
+    Create all stored structures
+     */
     public static Model createStructureResource(Model model){
         List<Structure> structures = Ebean.find(Structure.class).findList();
         for(Structure s : structures) {

@@ -1,5 +1,6 @@
 package org.unicarbkb.rdf;
 
+import com.avaje.ebean.Ebean;
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.rdf.model.ResourceFactory;
@@ -8,9 +9,12 @@ import com.hp.hpl.jena.vocabulary.DCTerms;
 import com.hp.hpl.jena.vocabulary.OWL;
 import com.hp.hpl.jena.vocabulary.RDF;
 import models.database.Journal;
+import models.database.Method;
 import models.database.Reference;
-import org.unicarbkb.rdf.Namespaces;
+import models.database.Refmethod;
 import com.hp.hpl.jena.sparql.vocabulary.FOAF;
+
+import java.util.List;
 
 /**
  * Created by matthew on 07/05/2014.
@@ -18,7 +22,7 @@ import com.hp.hpl.jena.sparql.vocabulary.FOAF;
 public class ReferenceRDF {
 
 
-    public static void createPublication(Reference reference, Model model) {
+    public void createPublication(Reference reference, Model model) {
 
         try {
             Resource r = model.createResource("http://www.unicarbkb.org/reference/" + reference.id);
@@ -29,7 +33,7 @@ public class ReferenceRDF {
 
             String[] authors = reference.authors.split(",");
             for (String a : authors) {
-                r.addProperty(BIBOVOCAB.authorList, createAuthor(model,a.trim())); //  a.trim());
+                r.addProperty(BIBOVOCAB.authorList, createAuthor(model, a.trim())); //  a.trim());
             }
 
             String[] pages = reference.pages.split("-");
@@ -39,6 +43,12 @@ public class ReferenceRDF {
             r.addProperty(DCTerms.isPartOf, createJournals(reference.journal, model));
 
             r.addProperty(OWL.sameAs, model.createResource("http://www.ncbi.nlm.nih.gov/pubmed/" + reference.pmid)); //may need to check this
+
+            List<Refmethod> refMethod = reference.refmethod;
+            for (Refmethod m : refMethod) {
+                Method method = Ebean.find(Method.class, m.method.getId());
+                r.addProperty(GLYCOVOCAB.hasMethod, addMethod(model, method));
+            }
 
         } catch (Exception e) {
             System.out.println("Failed where: " + e);
@@ -69,7 +79,11 @@ public class ReferenceRDF {
         return r;
     }
 
-
+    /*
+      <_:author_St_Michael_F>
+          a dc:contributor ;
+          foaf:name "St Michael F" .
+       */
     public static Resource createAuthor(Model model, String author) {
         String authorURI= "author_" + author.replaceAll("\\s","_").trim();
         Resource r = null;
@@ -81,12 +95,17 @@ public class ReferenceRDF {
         }
         return r;
     }
-    /*
-    <_:author_St_Michael_F>
-        a dc:contributor ;
-        foaf:name "St Michael F" .
-     */
 
+    public static Resource addMethod(Model model, Method method){
+        String methodURI = "method_" + method.description.toLowerCase().trim();
+        Resource r = null;
 
-
+        try {
+            r = model.createResource(methodURI);
+            r.addProperty(FOAF.name, method.description.toLowerCase().trim());
+        } catch (Exception e) {
+            System.out.println("Failed hasMethod: " + e);
+        }
+        return r;
+    }
 }

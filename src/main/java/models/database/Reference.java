@@ -33,6 +33,9 @@ public class Reference {
     @ManyToOne
     public Journal journal;
 
+    @OneToMany
+    public List<Refmethod> refmethod;
+
     public Long getId() {
         return id;
     }

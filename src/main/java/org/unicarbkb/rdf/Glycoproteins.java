@@ -10,10 +10,12 @@ import models.database.DefinedSites;
 import models.database.Journal;
 import models.database.Proteins;
 import models.database.StructureToSiteDefined;
+import models.database.Stproteins;
+import org.unicarbkb.rdf.StructureRDF;
 
 import java.util.List;
 
-import static org.unicarbkb.rdf.StructureRDF.createStructureFromDefinedSite;
+import static org.unicarbkb.rdf.StructureRDF.*;
 
 //import static org.unicarbkb.rdf.StructureRDF.createStructureFromDefinedSite;
 
@@ -22,32 +24,19 @@ import static org.unicarbkb.rdf.StructureRDF.createStructureFromDefinedSite;
  */
 public class Glycoproteins {
 
-    //private static final String BASE = "http://purl.jp/bio/12/glyco/glycan/";
-
-
     public static void createProteins(Model model, Proteins protein) {
-
-
         try {
-
-
-            //System.out.println("test " + protein);
-
-
             if(protein.swissProt != null ) {
                 Resource p = model.createResource("http://www.unicarbkb.org/proteinsummary/" + protein.swissProt);
-                p.addProperty(GLYCOVOCAB.hasUniprotAccession, "uniprot:" + protein.swissProt); //UNIPROT.uniprotAccession); //TODO check out
+                p.addProperty(GLYCOVOCAB.hasUniprotAccession, "uniprot:" + protein.swissProt); //UNIPROT.uniprotAccession);
                 List<DefinedSites> defined = protein.proteinDefinedSites;
                 for (DefinedSites d : defined) {
                     p.addProperty(GLYCOVOCAB.hasGlycosylatedAA, createGlycoAA(d, model));
                 }
-
-
+                p.addProperty(GLYCOVOCAB.hasAttachedGlycan, createStructureEntryProtein(model, protein)); //TODO check output
             }
 
-
-
-           if (protein.swissProt == null) {
+           if (protein.swissProt == null && protein.name != null) {
                 Resource p = model.createResource("http://www.unicarbkb.org/proteinsummary/" + protein.name);
                 p.addProperty(GLYCOVOCAB.hasProteinName, protein.name);
 
@@ -56,11 +45,8 @@ public class Glycoproteins {
 
                    p.addProperty(GLYCOVOCAB.hasGlycosylatedAA, createGlycoAA(d, model));
                }
+               p.addProperty(GLYCOVOCAB.hasAttachedGlycan, createStructureEntryProtein(model, protein)); //TODO check output
             }
-
-
-            //for each know site need to get object from ebean
-
 
 
         } catch (Exception e) {
@@ -135,6 +121,19 @@ public class Glycoproteins {
     return r;
     }
 
-
-
+    /*
+  Need to handle glycans known to be attached to a glycoprotein
+  But site not confirmed
+  <glycoprotein> .... glycan:has_attached_glycan
+   */
+    public static Resource createStructureEntryProtein(Model model, Proteins protein){
+        Resource r = null;
+        for(Stproteins p : protein.stproteins) {
+            String structureURI = "http://www.unicarbkb.org/structure/" + p.structure.id;;
+            r = model.createResource(structureURI, GLYCOVOCAB.saccharide);
+            r.addProperty(GLYCOVOCAB.glycosequence, createhasSequenceCt(model, p.structure))
+                    .addProperty(GLYCOVOCAB.glycosequence, createhasSequenceIupac(model, p.structure));
+        }
+        return r;
+    }
 }
