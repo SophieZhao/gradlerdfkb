@@ -41,6 +41,7 @@ public class ReferenceRDF {
             r.addProperty(BIBOVOCAB.pageStart, String.valueOf(pages[1]));
             r.addProperty(BIBOVOCAB.volume, reference.volume);
             r.addProperty(DCTerms.isPartOf, createJournals(reference.journal, model));
+            r.addProperty(GLYCOVOCAB.hasPmid, reference.pmid);
 
             r.addProperty(OWL.sameAs, model.createResource("http://www.ncbi.nlm.nih.gov/pubmed/" + reference.pmid)); //may need to check this
 

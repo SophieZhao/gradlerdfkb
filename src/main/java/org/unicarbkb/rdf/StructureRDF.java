@@ -6,8 +6,11 @@ import com.hp.hpl.jena.rdf.model.Property;
 import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.rdf.model.ResourceFactory;
 import com.hp.hpl.jena.shared.uuid.JenaUUID;
+import com.hp.hpl.jena.vocabulary.DCTerms;
 import com.hp.hpl.jena.vocabulary.OWL2;
+import com.hp.hpl.jena.vocabulary.RDF;
 import com.hp.hpl.jena.vocabulary.XSD;
+import com.sun.xml.internal.bind.v2.TODO;
 import models.database.DefinedSites;
 import models.database.Stproteins;
 import models.database.Structure;
@@ -32,11 +35,13 @@ public class StructureRDF {
             r = model.createResource(structureURI, GLYCOVOCAB.saccharide);
             r.addProperty(GLYCOVOCAB.glycosequence, createhasSequenceCt(model, s)).addProperty(GLYCOVOCAB.glycosequence, createhasSequenceIupac(model, s) );
 
+            createResourceEntry(model, s);
+
         }
     return model;
     }
 
-    public static Resource createStructureFromDefinedSite(Model model, int id){
+    public static Resource createStructureFromDefinedSite(Model model, Long id){
 
         Structure structure = Ebean.find(Structure.class, id);
         String structureURI = "http://www.unicarbkb.org/structure/" + structure.id;
@@ -51,8 +56,6 @@ public class StructureRDF {
 
         return r;
     }
-
-
 
     public static Resource createhasSequenceCt(Model model, Structure structure) {
         Resource r = null;
@@ -87,4 +90,23 @@ public class StructureRDF {
         return r;
     }
 
+    public static Resource createResourceEntry(Model model, Structure structure) {
+        Resource r = null;
+        String resourceEntryURI = "resource_entry _" + JenaUUID.generate();
+        r = model.createResource(resourceEntryURI);
+        try {
+            r.addProperty(RDF.type, GLYCOVOCAB.resourceEntry).addProperty(GLYCOVOCAB.inGlycanDatabase, GLYCOVOCAB.inKB).addLiteral(DCTerms.identifier, structure.id);
+        } catch (Exception e){ System.out.println("Failed here createResourceEntry: " + e + e.getCause()); }
+
+        return r;
+    }
+
 }
+
+
+/*
+<http://csdb.glycoscience.ru/integration/make_rdf.php?&mode=record&id_list=7466>
+        a glyco:resource_entry ;
+        glyco:in_glycan_database glyco:database_bcsdb ;
+        dcterms:identifier "7466"^^xsd:integer .
+ */

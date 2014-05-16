@@ -73,6 +73,9 @@ public class GLYCOVOCAB extends Object {
     static final String nhasAttachedGlycan = "has_attached_glycan";
     public static Property hasAttachedGlycan = null;
 
+    static final String nhasGlycan = "has_glycan";
+    public static Property hasGlycan = null;
+
     static final String naminoAcid = "amino_acid";
     public static Property aminoAcid = null;
 
@@ -95,6 +98,32 @@ public class GLYCOVOCAB extends Object {
     static final String nproteinName = "has_protein_name"; //TODO ADD TO ONTOLOGY
     public static Property hasProteinName = null;
 
+    static final String nhasSourceNatural = "source_natural";
+    public static Property hasSourceNatural = null;
+
+    static final String nhasTaxon = "has_taxon";
+    public static Property hasTaxon = null;
+
+    static final String nhasReference = "has_reference";
+    public static Property hasReference = null;
+
+    static final String nreferencedCompound = "referenced_compound";
+    public static Property referencedCompound = null;
+
+    static final String nfromSource = "is_from_source";
+    public static Property fromSource = null;
+
+    static final String nresourceEntry = "resource_entry";
+    public static Property resourceEntry = null;
+    static final String nhasResourceEntry = "has_resource_entry";
+    public static Property hasresourceEntry = null;
+
+    static final String ninGlycanDatabase = "in_glycan_database";
+    public static Property inGlycanDatabase = null;
+
+    static final String ninKB = "database_unicarbkb";
+    public static Property inKB = null;
+
 
     // Instantiate the properties and the resource
     static {
@@ -113,6 +142,7 @@ public class GLYCOVOCAB extends Object {
             aminoAcidType = new PropertyImpl(uri, naminoAcidType);
             modificationType = new PropertyImpl(uri, nmodificationType);
             hasAttachedGlycan = new PropertyImpl(uri, nhasAttachedGlycan);
+            hasGlycan = new PropertyImpl(uri, nhasGlycan);
 
             aminoAcid = new PropertyImpl(uri, naminoAcid);
             glycosylatedAA = new PropertyImpl(uri, nglycosylatedAA);
@@ -125,7 +155,15 @@ public class GLYCOVOCAB extends Object {
             saccharide = new PropertyImpl(uri, nsaccharide);
 
             hasProteinName = new PropertyImpl(uri, nproteinName); //TODO ABOVE
-
+            hasSourceNatural = new PropertyImpl(uri, nhasSourceNatural);
+            hasTaxon = new PropertyImpl(uri, nhasTaxon);
+            hasReference = new PropertyImpl(uri, nhasReference);
+            referencedCompound = new PropertyImpl(uri, nreferencedCompound);
+            fromSource = new PropertyImpl(uri, nfromSource);
+            resourceEntry = new PropertyImpl(uri, nresourceEntry);
+            hasresourceEntry = new PropertyImpl(uri, nhasResourceEntry);
+            inGlycanDatabase = new PropertyImpl(uri, ninGlycanDatabase);
+            inKB = new PropertyImpl(uri, ninKB);
 
             //status = new PropertyImpl
         } catch (ReasonerException e) {

@@ -14,7 +14,7 @@ public class StructureToSiteDefined {
     public String swiss_prot;
     public String amino_acid_position;
     //public String note;
-    public int structure_id;
+    public Long structure_id;
     //public String glycan_type;
     //public int source_id; //make this a relationship
 
