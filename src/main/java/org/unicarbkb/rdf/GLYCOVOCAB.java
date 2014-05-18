@@ -118,11 +118,20 @@ public class GLYCOVOCAB extends Object {
     static final String nhasResourceEntry = "has_resource_entry";
     public static Property hasresourceEntry = null;
 
+    static final String nisFromSource = "is_from_source";
+    public static Property isFromSource = null;
+
+
+
     static final String ninGlycanDatabase = "in_glycan_database";
     public static Property inGlycanDatabase = null;
 
     static final String ninKB = "database_unicarbkb";
     public static Property inKB = null;
+
+    static final String nhasEvidence = "has_evidence";
+    public static Property hasEvidence = null;
+
 
 
     // Instantiate the properties and the resource
@@ -161,9 +170,13 @@ public class GLYCOVOCAB extends Object {
             referencedCompound = new PropertyImpl(uri, nreferencedCompound);
             fromSource = new PropertyImpl(uri, nfromSource);
             resourceEntry = new PropertyImpl(uri, nresourceEntry);
+
+            isFromSource = new PropertyImpl(uri, nisFromSource);
+
             hasresourceEntry = new PropertyImpl(uri, nhasResourceEntry);
             inGlycanDatabase = new PropertyImpl(uri, ninGlycanDatabase);
             inKB = new PropertyImpl(uri, ninKB);
+            hasEvidence = new PropertyImpl(uri, nhasEvidence);
 
             //status = new PropertyImpl
         } catch (ReasonerException e) {

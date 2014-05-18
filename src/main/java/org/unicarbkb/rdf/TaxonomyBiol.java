@@ -8,6 +8,7 @@ import com.hp.hpl.jena.vocabulary.OWL2;
 import com.hp.hpl.jena.vocabulary.RDF;
 import com.hp.hpl.jena.vocabulary.RDFS;
 import com.hp.hpl.jena.vocabulary.XSD;
+import com.sun.xml.internal.bind.v2.TODO;
 import models.database.DefinedSites;
 import models.database.Strtaxonomy;
 import models.database.Structure;
@@ -47,31 +48,38 @@ public class TaxonomyBiol {
      */
 
     public static void createSource(Model model, Taxonomy taxonomy){
-        String resourceURI = "source_" + JenaUUID.generate(); //TODO replace with NCBI needs db update first ***
+        String sourceURI = "source_" + JenaUUID.generate(); //TODO replace with NCBI needs db update first ***
         Resource r = null;
         try{
-            r = model.createResource(resourceURI);
+            r = model.createResource(sourceURI);
             r.addProperty(RDF.type, GLYCOVOCAB.hasSourceNatural);
             r.addProperty(GLYCOVOCAB.hasTaxon, "http://www.uniprot.org/taxonomy/" + "1"); //TODO replace with NCBI needs db update first ***
-            r.addProperty(GLYCOVOCAB.hasReference, createSourceReferenceCompound(model, taxonomy));
+
+            List<Strtaxonomy> strtax = taxonomy.strtaxonomy;
+            for (Strtaxonomy s : strtax) {
+                r.addProperty(GLYCOVOCAB.hasReference, createSourceReferenceCompound(model, sourceURI, taxonomy, s)); //wrong reference?
+            }
         } catch (Exception e) {
             System.out.println("Failed: " + e);
         }
 
     }
 
-    public static Resource createSourceReferenceCompound(Model model, Taxonomy taxonomy){
-        String referenceURI = "referencecompound_";
+    /*
+    this should have one glycan for given taxonomy
+     */
+    public static Resource createSourceReferenceCompound(Model model, String sourceURI, Taxonomy taxonomy, Strtaxonomy strtaxonomy){
+        String referenceURI = "referencecompound_" + JenaUUID.generate();
         Resource r = null;
         try {
             r = model.createResource(referenceURI);
             r.addProperty(RDF.type, GLYCOVOCAB.referencedCompound);
-            List<Strtaxonomy> strtax = taxonomy.strtaxonomy;
-            for (Strtaxonomy s : strtax){
-                r.addProperty(GLYCOVOCAB.hasGlycan, createStructureFromDefinedSite(model, s.structure.id) );
-            }
+            r.addProperty(GLYCOVOCAB.isFromSource, sourceURI);
+            r.addProperty(GLYCOVOCAB.hasresourceEntry, sourceURI);
+            r.addProperty(GLYCOVOCAB.hasGlycan, createStructureFromDefinedSite(model, strtaxonomy.structure.id) );
             r.addLiteral(GLYCOVOCAB.fromSource, "source_" + "1"); //TODO replace with NCBI needs db update first ***
-            r.addProperty((GLYCOVOCAB.hasresourceEntry, createResourceEntry(model, )))
+
+            //TODO ADD HAS_EVIDENCE
         } catch (Exception e) {
             System.out.println("Failed: " + e);
         }
