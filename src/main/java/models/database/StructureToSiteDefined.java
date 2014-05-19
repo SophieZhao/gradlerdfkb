@@ -53,11 +53,11 @@ public class StructureToSiteDefined {
         this.amino_acid_position = amino_acid_position;
     }
 
-    public int getStructure_id() {
+    public Long getStructure_id() {
         return structure_id;
     }
 
-    public void setStructure_id(int structure_id) {
+    public void setStructure_id(Long structure_id) {
         this.structure_id = structure_id;
     }
 

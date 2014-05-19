@@ -5,9 +5,6 @@ import com.hp.hpl.jena.rdf.model.RDFNode;
 import com.hp.hpl.jena.rdf.model.impl.PropertyImpl;
 import com.hp.hpl.jena.reasoner.ReasonerException;
 
-/**
- * Created by matthew on 8/05/2014.
- */
 public class UNIPROT {
 
     protected static final String uri = "http://purl.uniprot.org/core/";
@@ -29,4 +26,5 @@ public class UNIPROT {
             //ErrorManager.("POSTCON", 1, e);
         }
 
+    }
 }

@@ -14,10 +14,8 @@ public class Biolcontext {
 
         try {
             List<Biolsource> bc = Ebean.find(Biolsource.class).findList();
-            for(Biolsource b : bc){
+            for (Biolsource b : bc) {
                 Resource p = model.createResource("biolsource_" + b.protein.trim() + "_" + b.swiss_prot.trim());
-
-
 
 
             }
@@ -25,4 +23,5 @@ public class Biolcontext {
             System.out.println("Failed createBiolcontext: " + e);
         }
 
+    }
 }

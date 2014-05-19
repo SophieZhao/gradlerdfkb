@@ -4,20 +4,19 @@ import com.avaje.ebean.Ebean;
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.shared.uuid.JenaUUID;
-import com.hp.hpl.jena.vocabulary.OWL2;
 import com.hp.hpl.jena.vocabulary.RDF;
 import com.hp.hpl.jena.vocabulary.RDFS;
-import com.hp.hpl.jena.vocabulary.XSD;
-import com.sun.xml.internal.bind.v2.TODO;
-import models.database.DefinedSites;
-import models.database.Strtaxonomy;
-import models.database.Structure;
+import models.database.Reference;
+import models.database.Sourceref;
+import models.database.Strproteintaxbiolsource;
 import models.database.Taxonomy;
 
 import java.util.List;
 
-import static com.hp.hpl.jena.vocabulary.OWL2.NamedIndividual;
+import static org.unicarbkb.rdf.ReferenceRDF.createPublication;
+import static org.unicarbkb.rdf.StructureRDF.createResourceEntry;
 import static org.unicarbkb.rdf.StructureRDF.createStructureFromDefinedSite;
+
 
 public class TaxonomyBiol {
 
@@ -34,55 +33,56 @@ public class TaxonomyBiol {
                 r.addProperty(RDF.type, "uniprot:taxon"); //trim some \n in db
                 r.addProperty(UNIPROT.scientificName, t.species.toLowerCase().trim());
                 r.addProperty(RDFS.subClassOf, "<http://purl.uniprot.org/taxonomy/xyz"); //todo need tax id for this!?
-
-                createSource(model, t);
-
             }
         } catch (Exception e) {
-            System.out.println("Failed createBiolcontext: " + e);
+            System.out.println("Failed createTaxonomy: " + e);
         }
     }
 
-    /*
-    Source tells us the taxon and 'has_reference' referencecompound e.g.source linked to glycan structure
-     */
 
-    public static void createSource(Model model, Taxonomy taxonomy){
-        String sourceURI = "source_" + JenaUUID.generate(); //TODO replace with NCBI needs db update first ***
-        Resource r = null;
-        try{
-            r = model.createResource(sourceURI);
-            r.addProperty(RDF.type, GLYCOVOCAB.hasSourceNatural);
-            r.addProperty(GLYCOVOCAB.hasTaxon, "http://www.uniprot.org/taxonomy/" + "1"); //TODO replace with NCBI needs db update first ***
-
-            List<Strtaxonomy> strtax = taxonomy.strtaxonomy;
-            for (Strtaxonomy s : strtax) {
-                r.addProperty(GLYCOVOCAB.hasReference, createSourceReferenceCompound(model, sourceURI, taxonomy, s)); //wrong reference?
-            }
-        } catch (Exception e) {
-            System.out.println("Failed: " + e);
-        }
-
-    }
 
     /*
     this should have one glycan for given taxonomy
      */
-    public static Resource createSourceReferenceCompound(Model model, String sourceURI, Taxonomy taxonomy, Strtaxonomy strtaxonomy){
-        String referenceURI = "referencecompound_" + JenaUUID.generate();
-        Resource r = null;
-        try {
-            r = model.createResource(referenceURI);
-            r.addProperty(RDF.type, GLYCOVOCAB.referencedCompound);
-            r.addProperty(GLYCOVOCAB.isFromSource, sourceURI);
-            r.addProperty(GLYCOVOCAB.hasresourceEntry, sourceURI);
-            r.addProperty(GLYCOVOCAB.hasGlycan, createStructureFromDefinedSite(model, strtaxonomy.structure.id) );
-            r.addLiteral(GLYCOVOCAB.fromSource, "source_" + "1"); //TODO replace with NCBI needs db update first ***
-
-            //TODO ADD HAS_EVIDENCE
-        } catch (Exception e) {
-            System.out.println("Failed: " + e);
+    public static void createSourceReferenceCompound(Model model) {
+        List<Strproteintaxbiolsource> strproteintaxbiolsource = Ebean.find(Strproteintaxbiolsource.class).findList();
+        for (Strproteintaxbiolsource s : strproteintaxbiolsource) {
+            String referenceURI = "referencecompound_" + JenaUUID.generate();
+            Resource r = null;
+            try {
+                r = model.createResource(referenceURI);
+                r.addProperty(RDF.type, GLYCOVOCAB.referencedCompound);
+                r.addProperty(GLYCOVOCAB.hasGlycan, createStructureFromDefinedSite(model,  s.structure.id)); //TODO check output
+                //Reference ref = Ebean.find(Reference.class, s.reference.id);
+                //r.addProperty(GLYCOVOCAB.publishedIn, createPublication(s.reference, model));
+                //r.addProperty(GLYCOVOCAB.hasresourceEntry, createResourceEntry(model, s.structure));
+                //r.addProperty(GLYCOVOCAB.fromSource, createSource(model, s));
+                //TODO ADD HAS_EVIDENCE
+            } catch (Exception e) {
+                System.out.println("Failed: " + e);
+            }
         }
-    return r;
+        createTaxonomy(model);
     }
+
+    /*
+  Source tells us the taxon and 'has_reference' referencecompound e.g.source linked to glycan structure
+   */
+    public static Resource createSource(Model model, Strproteintaxbiolsource strproteintaxbiolsource) {
+        //List<Sourceref> sourceRef = Ebean.find(Sourceref.class).findList();
+        Resource r = null;
+        //for (Sourceref sref : sourceRef) {
+            String sourceURI = "source_" + JenaUUID.generate(); //TODO replace with NCBI needs db update first ***
+            try {
+                r = model.createResource(sourceURI);
+                r.addProperty(RDF.type, GLYCOVOCAB.hasSourceNatural);
+                r.addProperty(GLYCOVOCAB.hasTaxon, "http://purl.uniprot.org/taxonomy/" + "1"); //TODO replace with NCBI needs db update first ***
+            } catch (Exception e) {
+                System.out.println("Failed: " + e);
+            }
+        //}
+        return r;
+    }
+
+
 }

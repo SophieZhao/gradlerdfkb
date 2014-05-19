@@ -44,7 +44,7 @@ public class StructureRDF {
     public static Resource createStructureFromDefinedSite(Model model, Long id){
 
         Structure structure = Ebean.find(Structure.class, id);
-        String structureURI = "http://www.unicarbkb.org/structure/" + structure.id;
+        String structureURI = "http://www.unicarbkb.org/structure/" + structure.getId();
         Resource r = null;
         r = model.createResource(structureURI, GLYCOVOCAB.saccharide);
         r.addProperty(GLYCOVOCAB.glycosequence, createhasSequenceCt(model, structure));
@@ -59,15 +59,18 @@ public class StructureRDF {
 
     public static Resource createhasSequenceCt(Model model, Structure structure) {
         Resource r = null;
-        String sequenceURI = "http://www.unicarbkb.org/structure/" + structure.id + "/ct";
+        String sequenceURI = "http://www.unicarbkb.org/structure/" + structure.getId() + "/ct";
         r = model.createResource(sequenceURI);
             try {
                 Translation t = Ebean.find(Translation.class, structure.id);
                 //List<Translation> translation = structure.translation;
                 //for(Translation t : translation) {
-                    r.addProperty(GLYCOVOCAB.hasSequence, t.ct); //, (com.hp.hpl.jena.datatypes.RDFDatatype) XSD.xstring)
+                if(!(t ==null)){
+                    r.addProperty(GLYCOVOCAB.hasSequence, t.getCt()); //, (com.hp.hpl.jena.datatypes.RDFDatatype) XSD.xstring)
                     r.addProperty(GLYCOVOCAB.inCarbohydrateFormat, GLYCOVOCAB.carbohydrateFormatGlycoct);
-                //}
+                } else {
+                    System.out.println("bad structure no ct etc");
+                }
 
             } catch (Exception e){ System.out.println("Failed here: " + e + e.getCause()); }
 
@@ -76,12 +79,12 @@ public class StructureRDF {
 
     public static Resource createhasSequenceIupac(Model model, Structure structure) {
         Resource r = null;
-        String sequenceURI = "http://www.unicarbkb.org/structure/" + structure.id + "/iupac";
+        String sequenceURI = "http://www.unicarbkb.org/structure/" + structure.getId() + "/iupac";
         r = model.createResource(sequenceURI);
         try {
             List<Translation> translation = structure.translation;
             for(Translation t : translation) {
-                r.addProperty(GLYCOVOCAB.hasSequence, t.iupac); //, (com.hp.hpl.jena.datatypes.RDFDatatype) XSD.xstring)
+                r.addProperty(GLYCOVOCAB.hasSequence, t.getIupac()); //, (com.hp.hpl.jena.datatypes.RDFDatatype) XSD.xstring)
                 r.addProperty(GLYCOVOCAB.inCarbohydrateFormat, GLYCOVOCAB.carbohydrateFormatIupac);
             }
 
@@ -95,7 +98,7 @@ public class StructureRDF {
         String resourceEntryURI = "resource_entry _" + JenaUUID.generate();
         r = model.createResource(resourceEntryURI);
         try {
-            r.addProperty(RDF.type, GLYCOVOCAB.resourceEntry).addProperty(GLYCOVOCAB.inGlycanDatabase, GLYCOVOCAB.inKB).addLiteral(DCTerms.identifier, structure.id);
+            r.addProperty(RDF.type, GLYCOVOCAB.resourceEntry).addProperty(GLYCOVOCAB.inGlycanDatabase, GLYCOVOCAB.inKB).addLiteral(DCTerms.identifier, structure.getId());
         } catch (Exception e){ System.out.println("Failed here createResourceEntry: " + e + e.getCause()); }
 
         return r;

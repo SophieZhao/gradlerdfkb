@@ -27,8 +27,8 @@ public class Glycoproteins {
     public static void createProteins(Model model, Proteins protein) {
         try {
             if(protein.swissProt != null ) {
-                Resource p = model.createResource("http://www.unicarbkb.org/proteinsummary/" + protein.swissProt);
-                p.addProperty(GLYCOVOCAB.hasUniprotAccession, "uniprot:" + protein.swissProt); //UNIPROT.uniprotAccession);
+                Resource p = model.createResource("http://www.unicarbkb.org/proteinsummary/" + protein.getSwissProt());
+                p.addProperty(GLYCOVOCAB.hasUniprotAccession, "uniprot:" + protein.getSwissProt()); //UNIPROT.uniprotAccession);
                 List<DefinedSites> defined = protein.proteinDefinedSites;
                 for (DefinedSites d : defined) {
                     p.addProperty(GLYCOVOCAB.hasGlycosylatedAA, createGlycoAA(d, model));
@@ -37,8 +37,8 @@ public class Glycoproteins {
             }
 
            if (protein.swissProt == null && protein.name != null) {
-                Resource p = model.createResource("http://www.unicarbkb.org/proteinsummary/" + protein.name);
-                p.addProperty(GLYCOVOCAB.hasProteinName, protein.name);
+                Resource p = model.createResource("http://www.unicarbkb.org/proteinsummary/" + protein.getName());
+                p.addProperty(GLYCOVOCAB.hasProteinName, protein.getName());
 
                List<DefinedSites> defined = protein.proteinDefinedSites;
                for (DefinedSites d : defined) {
@@ -50,7 +50,7 @@ public class Glycoproteins {
 
 
         } catch (Exception e) {
-            System.out.println("Failed createProteins: " + e.getCause() + " more info " + protein.swissProt);
+            System.out.println("Failed createProteins: " + e.getCause() + " more info " + protein.getSwissProt());
         }
         //model.write(System.out, "TTL");
         //return p;
@@ -98,7 +98,7 @@ public class Glycoproteins {
            // }
 
         } catch (Exception e) {
-            System.out.println("Failed: " + e);
+            System.out.println("Failed creating glycoAA: " + e);
         }
 
         //model.write(System.out, "TTL");
@@ -116,7 +116,7 @@ public class Glycoproteins {
             r = model.createResource(faldoURI);
             r.addLiteral(FALDO.position, position.replaceAll("ASN-", "").replaceAll("SER-", "").replaceAll("THR-", ""));
         } catch (Exception e) {
-            System.out.println("Failed: " + e);
+            System.out.println("Failed on Faldo: " + e);
         }
     return r;
     }

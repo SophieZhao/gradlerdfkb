@@ -36,6 +36,14 @@ public class Reference {
     @OneToMany
     public List<Refmethod> refmethod;
 
+    public List<Refmethod> getRefmethod() {
+        return refmethod;
+    }
+
+    public void setRefmethod(List<Refmethod> refmethod) {
+        this.refmethod = refmethod;
+    }
+
     public Long getId() {
         return id;
     }

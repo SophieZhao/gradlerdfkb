@@ -15,21 +15,26 @@ import models.database.Refmethod;
 import com.hp.hpl.jena.sparql.vocabulary.FOAF;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 /**
  * Created by matthew on 07/05/2014.
  */
-public class ReferenceRDF {
+    public class ReferenceRDF {
 
 
-    public void createPublication(Reference reference, Model model) {
+    public static Resource createPublication(Reference reference, Model model) {
 
+        //reference = Ebean.find(Reference.class, reference.id);
+        Resource r = null;
         try {
-            Resource r = model.createResource("http://www.unicarbkb.org/reference/" + reference.id);
+            r = model.createResource("http://www.unicarbkb.org/reference/" + reference.id);
             r.addProperty(RDF.type, bibo.Article);
-            r.addProperty(DCTerms.issued, String.valueOf(reference.year));
-            r.addProperty(DC.title, reference.title);
-            r.addProperty(DC.creator, reference.authors);  //list of authors
+  //          System.out.println("checking publication build " );
+//System.out.print("hmm");
+            r.addProperty(DCTerms.issued, String.valueOf(reference.getYear()));
+            r.addProperty(DC.title, reference.getTitle());
+            r.addProperty(DC.creator, reference.getAuthors());  //list of authors
 
             String[] authors = reference.authors.split(",");
             for (String a : authors) {
@@ -39,9 +44,9 @@ public class ReferenceRDF {
             String[] pages = reference.pages.split("-");
             r.addProperty(BIBOVOCAB.pageEnd, String.valueOf(pages[0]));
             r.addProperty(BIBOVOCAB.pageStart, String.valueOf(pages[1]));
-            r.addProperty(BIBOVOCAB.volume, reference.volume);
+            r.addProperty(BIBOVOCAB.volume, reference.getVolume());
             r.addProperty(DCTerms.isPartOf, createJournals(reference.journal, model));
-            r.addProperty(GLYCOVOCAB.hasPmid, reference.pmid);
+            r.addProperty(GLYCOVOCAB.hasPmid, reference.getPmid());
 
             r.addProperty(OWL.sameAs, model.createResource("http://www.ncbi.nlm.nih.gov/pubmed/" + reference.pmid)); //may need to check this
 
@@ -54,23 +59,24 @@ public class ReferenceRDF {
         } catch (Exception e) {
             System.out.println("Failed where: " + e);
         }
+        return r;
     }
 
     public static Resource createJournals(Journal journal, Model model) {
         // System.out.println("starting to create journal");
-        String journalURI = "journal_" + journal.id;
+        String journalURI = "journal_" + journal.getId();
 
         Resource r = null;
         try {
             //r = model.createResource(journalURI);
 
             r = model.createResource(journalURI);
-            if(!model.containsResource(r)) {
-                r.addProperty(DC.title, journal.name);
-                r.addProperty(BIBOVOCAB.shortTitle, journal.shortname);
+            //if(!model.containsResource(r)) {
+                r.addProperty(DC.title, journal.getName());
+                r.addProperty(BIBOVOCAB.shortTitle, journal.getShortname());
                 //journal.addProperty(DC.publisher, "publisher");
                 r.addProperty(RDF.type, bibo.Journal);
-            }
+            //}
 
         } catch (Exception e) {
             System.out.println("Failed: " + e);

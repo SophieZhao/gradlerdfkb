@@ -132,6 +132,9 @@ public class GLYCOVOCAB extends Object {
     static final String nhasEvidence = "has_evidence";
     public static Property hasEvidence = null;
 
+    static final String npublishedIn = "published_in";
+    public static Property publishedIn = null;
+
 
 
     // Instantiate the properties and the resource
@@ -177,6 +180,7 @@ public class GLYCOVOCAB extends Object {
             inGlycanDatabase = new PropertyImpl(uri, ninGlycanDatabase);
             inKB = new PropertyImpl(uri, ninKB);
             hasEvidence = new PropertyImpl(uri, nhasEvidence);
+            publishedIn = new PropertyImpl(uri, npublishedIn);
 
             //status = new PropertyImpl
         } catch (ReasonerException e) {

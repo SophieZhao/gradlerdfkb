@@ -19,4 +19,28 @@ public class Sourceref {
     //@OneToMany
     //public List<Strproteintaxbiolsource> strproteintaxbiolsource;
 
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Reference getReference() {
+        return reference;
+    }
+
+    public void setReference(Reference reference) {
+        this.reference = reference;
+    }
+
+    public Biolsource getBiolsource() {
+        return biolsource;
+    }
+
+    public void setBiolsource(Biolsource biolsource) {
+        this.biolsource = biolsource;
+    }
 }

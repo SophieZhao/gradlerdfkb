@@ -5,7 +5,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(schema="public", name="strtaxonomy")
-public class Strtaxonomy extends Model {
+public class Strtaxonomy {
 
     @Id
     public Long id;
