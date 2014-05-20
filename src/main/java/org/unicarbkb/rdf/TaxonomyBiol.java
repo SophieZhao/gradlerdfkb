@@ -54,9 +54,9 @@ public class TaxonomyBiol {
                 r.addProperty(RDF.type, GLYCOVOCAB.referencedCompound);
                 r.addProperty(GLYCOVOCAB.hasGlycan, createStructureFromDefinedSite(model,  s.structure.id)); //TODO check output
                 //Reference ref = Ebean.find(Reference.class, s.reference.id);
-                //r.addProperty(GLYCOVOCAB.publishedIn, createPublication(s.reference, model));
-                //r.addProperty(GLYCOVOCAB.hasresourceEntry, createResourceEntry(model, s.structure));
-                //r.addProperty(GLYCOVOCAB.fromSource, createSource(model, s));
+                r.addProperty(GLYCOVOCAB.publishedIn, createPublication(s.reference, model));
+                r.addProperty(GLYCOVOCAB.hasresourceEntry, createResourceEntry(model, s.structure));
+                r.addProperty(GLYCOVOCAB.fromSource, createSource(model, s));
                 //TODO ADD HAS_EVIDENCE
             } catch (Exception e) {
                 System.out.println("Failed: " + e);

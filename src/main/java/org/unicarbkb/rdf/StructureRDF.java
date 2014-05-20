@@ -11,10 +11,7 @@ import com.hp.hpl.jena.vocabulary.OWL2;
 import com.hp.hpl.jena.vocabulary.RDF;
 import com.hp.hpl.jena.vocabulary.XSD;
 import com.sun.xml.internal.bind.v2.TODO;
-import models.database.DefinedSites;
-import models.database.Stproteins;
-import models.database.Structure;
-import models.database.Translation;
+import models.database.*;
 
 import java.util.List;
 
@@ -33,9 +30,11 @@ public class StructureRDF {
             String structureURI = "http://www.unicarbkb.org/structure/" + s.id;
             Resource r = null;
             r = model.createResource(structureURI, GLYCOVOCAB.saccharide);
-            r.addProperty(GLYCOVOCAB.glycosequence, createhasSequenceCt(model, s)).addProperty(GLYCOVOCAB.glycosequence, createhasSequenceIupac(model, s) );
+            r.addProperty(GLYCOVOCAB.glycosequence, createhasSequenceCt(model, s)).addProperty(GLYCOVOCAB.glycosequence, createhasSequenceIupac(model, s)); //.addProperty(GLYCOVOCAB.glycosequence, createhasSequenceGlyde(model, s));
 
             createResourceEntry(model, s);
+
+            //CTParser.readCT(model, s, r);
 
         }
     return model;
@@ -51,9 +50,7 @@ public class StructureRDF {
         try {
             r.addProperty(GLYCOVOCAB.glycosequence, createhasSequenceIupac(model, structure) );
         } catch (Exception e) {
-
         }
-
         return r;
     }
 
@@ -65,7 +62,7 @@ public class StructureRDF {
                 Translation t = Ebean.find(Translation.class, structure.id);
                 //List<Translation> translation = structure.translation;
                 //for(Translation t : translation) {
-                if(!(t ==null)){
+                if(!(t.getCt() ==null)){
                     r.addProperty(GLYCOVOCAB.hasSequence, t.getCt()); //, (com.hp.hpl.jena.datatypes.RDFDatatype) XSD.xstring)
                     r.addProperty(GLYCOVOCAB.inCarbohydrateFormat, GLYCOVOCAB.carbohydrateFormatGlycoct);
                 } else {
@@ -82,10 +79,15 @@ public class StructureRDF {
         String sequenceURI = "http://www.unicarbkb.org/structure/" + structure.getId() + "/iupac";
         r = model.createResource(sequenceURI);
         try {
-            List<Translation> translation = structure.translation;
-            for(Translation t : translation) {
+            Translation t = Ebean.find(Translation.class, structure.id);
+
+            //List<Translation> translation = structure.translation;
+            //for(Translation t : translation) {
+            if(!(t.getIupac() ==null)){
                 r.addProperty(GLYCOVOCAB.hasSequence, t.getIupac()); //, (com.hp.hpl.jena.datatypes.RDFDatatype) XSD.xstring)
                 r.addProperty(GLYCOVOCAB.inCarbohydrateFormat, GLYCOVOCAB.carbohydrateFormatIupac);
+            } else {
+                System.out.println("bad structure no iupac ");
             }
 
         } catch (Exception e){ System.out.println("Failed or maybe here: " + e); }
@@ -93,9 +95,35 @@ public class StructureRDF {
         return r;
     }
 
+    //
+    public static Resource createhasSequenceGlyde(Model model, Structure structure) {
+        Resource r = null;
+        String sequenceURI = "http://www.unicarbkb.org/structure/" + structure.getId() + "/glyde";
+        r = model.createResource(sequenceURI);
+        try {
+            Translation t = Ebean.find(Translation.class, structure.id);
+
+            //List<Translation> translation = structure.translation;
+            //for(Translation t : translation) {
+            if(!(t.getCt() ==null)){
+                String glycoctXML = CTParser.createGlyde(t);
+                System.out.println(glycoctXML);
+                r.addProperty(GLYCOVOCAB.hasSequence, glycoctXML); //, (com.hp.hpl.jena.datatypes.RDFDatatype) XSD.xstring)
+                r.addProperty(GLYCOVOCAB.inCarbohydrateFormat, GLYCOVOCAB.carbohydrateFormatGlyde);
+            } else {
+                System.out.println("bad structure no glyde2 ");
+            }
+
+        } catch (Exception e){ System.out.println("Failed or maybe here: " + e); }
+
+        return r;
+    }
+
+    //
+
     public static Resource createResourceEntry(Model model, Structure structure) {
         Resource r = null;
-        String resourceEntryURI = "resource_entry _" + JenaUUID.generate();
+        String resourceEntryURI = "resource_entry_" + JenaUUID.generate();
         r = model.createResource(resourceEntryURI);
         try {
             r.addProperty(RDF.type, GLYCOVOCAB.resourceEntry).addProperty(GLYCOVOCAB.inGlycanDatabase, GLYCOVOCAB.inKB).addLiteral(DCTerms.identifier, structure.getId());

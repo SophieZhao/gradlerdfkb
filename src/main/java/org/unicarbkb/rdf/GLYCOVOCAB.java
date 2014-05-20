@@ -84,8 +84,13 @@ public class GLYCOVOCAB extends Object {
 
     static final String ninCarbohydrateFormat = "in_carbohydrate_format";
     public static Property inCarbohydrateFormat = null;
+
     static final String ncarbohydrateFormatGlycoct  = "carbohydrate_format_glycoct";
     public static Property carbohydrateFormatGlycoct = null;
+
+    static final String nCarbohydrateFormatGlyde = "carbohydrate_format_glyde2";
+    public static Property carbohydrateFormatGlyde = null;
+
     static final String ncarbohydrateFormatIupac  = "carbohydrate_format_condensediupac"; //TODO CHECK DEFINITION
     public static Property carbohydrateFormatIupac = null;
 
@@ -135,6 +140,16 @@ public class GLYCOVOCAB extends Object {
     static final String npublishedIn = "published_in";
     public static Property publishedIn = null;
 
+    static final String ncomponent = "component";
+    public static Property component = null;
+    static final String nhasComponent = "has_component";
+    public static Property hasComponent = null;
+
+    static final String nhasCardinality = "has_cardinality";
+    public static Property hasCardinality = null;
+    static final String nhasMonosaccharide = "has_monosaccharide";
+    public static Property hasMonosaccharide = null;
+
 
 
     // Instantiate the properties and the resource
@@ -162,6 +177,7 @@ public class GLYCOVOCAB extends Object {
 
             carbohydrateFormatGlycoct = new PropertyImpl(uri, ncarbohydrateFormatGlycoct);
             carbohydrateFormatIupac = new PropertyImpl(uri, ncarbohydrateFormatIupac);
+            carbohydrateFormatGlyde = new PropertyImpl(uri, nCarbohydrateFormatGlyde);
 
             glycosequence = new PropertyImpl(uri, nglycosequence);
             saccharide = new PropertyImpl(uri, nsaccharide);
@@ -181,6 +197,10 @@ public class GLYCOVOCAB extends Object {
             inKB = new PropertyImpl(uri, ninKB);
             hasEvidence = new PropertyImpl(uri, nhasEvidence);
             publishedIn = new PropertyImpl(uri, npublishedIn);
+            component = new PropertyImpl(uri, ncomponent);
+            hasCardinality = new PropertyImpl(uri, nhasCardinality);
+            hasMonosaccharide = new PropertyImpl(uri, nhasMonosaccharide);
+            hasComponent = new PropertyImpl(uri, nhasComponent);
 
             //status = new PropertyImpl
         } catch (ReasonerException e) {

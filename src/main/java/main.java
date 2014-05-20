@@ -1,5 +1,8 @@
 import com.avaje.ebean.Ebean;
 import com.hp.hpl.jena.rdf.model.Model;
+import com.hp.hpl.jena.rdf.model.ResIterator;
+import com.hp.hpl.jena.rdf.model.Resource;
+import com.hp.hpl.jena.rdf.model.StmtIterator;
 import models.database.Proteins;
 import models.database.Reference;
 import models.database.Structure;
@@ -11,6 +14,7 @@ import java.util.List;
 
 import static org.unicarbkb.rdf.Glycoproteins.createProteins;
 import static org.unicarbkb.rdf.ReferenceRDF.createPublication;
+import static org.unicarbkb.rdf.StructureRDF.createStructureResource;
 import static org.unicarbkb.rdf.TaxonomyBiol.*;
 import models.database.CTParser;
 
@@ -26,24 +30,28 @@ public class main {
         /*
         create structures from structure table
          */
-        //createStructureResource(m);
+        createStructureResource(m);
+
+
 
         //createTaxonomy(m);
 
-        /*
-       List<Reference> reference = Ebean.find(Reference.class).findList();
+
+       /*List<Reference> reference = Ebean.find(Reference.class).findList();
         for(Reference r : reference) {
             createPublication(r,m);
-        } */
-
-        //createSourceReferenceCompound(m);
-
-        /*List<Proteins> proteins = Ebean.find(Proteins.class).findList();
-        for(Proteins p : proteins){
-            createProteins(m,p);
         }
 
-        m.write(System.out, "TTL");
+        createSourceReferenceCompound(m);
+
+        List<Proteins> proteins = Ebean.find(Proteins.class).findList();
+        for(Proteins p : proteins){
+            createProteins(m,p);
+        }*/
+
+
+
+        //m.write(System.out, "TTL");
 
         String fileName = "/tmp/out";
         FileWriter out = null;
@@ -62,9 +70,9 @@ public class main {
             catch (IOException closeException) {
                 // ignore
             }
-        }*/
+        }
 
-        CTParser.readCT();
+        //CTParser.readCT();
 
 
     }
