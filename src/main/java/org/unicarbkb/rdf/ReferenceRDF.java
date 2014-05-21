@@ -14,13 +14,14 @@ import models.database.Reference;
 import models.database.Refmethod;
 import com.hp.hpl.jena.sparql.vocabulary.FOAF;
 
+import java.net.URLEncoder;
 import java.util.List;
 import java.util.logging.Logger;
 
 /**
  * Created by matthew on 07/05/2014.
  */
-    public class ReferenceRDF {
+public class ReferenceRDF {
 
 
     public static Resource createPublication(Reference reference, Model model) {
@@ -28,9 +29,9 @@ import java.util.logging.Logger;
         //reference = Ebean.find(Reference.class, reference.id);
         Resource r = null;
         try {
-            r = model.createResource("http://www.unicarbkb.org/reference/" + reference.id);
+            r = model.createResource("http://rdf.unicarbkb.org/reference/" + reference.id);
             r.addProperty(RDF.type, bibo.Article);
-  //          System.out.println("checking publication build " );
+            //          System.out.println("checking publication build " );
 //System.out.print("hmm");
             r.addProperty(DCTerms.issued, String.valueOf(reference.getYear()));
             r.addProperty(DC.title, reference.getTitle());
@@ -64,7 +65,7 @@ import java.util.logging.Logger;
 
     public static Resource createJournals(Journal journal, Model model) {
         // System.out.println("starting to create journal");
-        String journalURI = "journal_" + journal.getId();
+        String journalURI = "http://rdf.unicarbkb.org/journal/" + journal.getId();
 
         Resource r = null;
         try {
@@ -72,10 +73,10 @@ import java.util.logging.Logger;
 
             r = model.createResource(journalURI);
             //if(!model.containsResource(r)) {
-                r.addProperty(DC.title, journal.getName());
-                r.addProperty(BIBOVOCAB.shortTitle, journal.getShortname());
-                //journal.addProperty(DC.publisher, "publisher");
-                r.addProperty(RDF.type, bibo.Journal);
+            r.addProperty(DC.title, journal.getName());
+            r.addProperty(BIBOVOCAB.shortTitle, journal.getShortname());
+            //journal.addProperty(DC.publisher, "publisher");
+            r.addProperty(RDF.type, bibo.Journal);
             //}
 
         } catch (Exception e) {
@@ -92,19 +93,19 @@ import java.util.logging.Logger;
           foaf:name "St Michael F" .
        */
     public static Resource createAuthor(Model model, String author) {
-        String authorURI= "author_" + author.replaceAll("\\s","_").trim();
+        String authorURI = "http://rdf.unicarbkb.org/author/" + author.replaceAll("\\s", "_").trim();
         Resource r = null;
         try {
-            r= model.createResource(authorURI);
-            r.addProperty(RDF.type, DC.contributor).addLiteral(FOAF.name, author.replaceAll("\\s","_").trim() );
+            r = model.createResource(authorURI);
+            r.addProperty(RDF.type, DC.contributor).addLiteral(FOAF.name, author.replaceAll("\\s", "_").trim());
         } catch (Exception e) {
             System.out.println("Failed: " + e);
         }
         return r;
     }
 
-    public static Resource addMethod(Model model, Method method){
-        String methodURI = "method_" + method.description.toLowerCase().trim();
+    public static Resource addMethod(Model model, Method method) {
+        String methodURI = "http://rdf.unicarbkb.org/method/" + URLEncoder.encode(method.description.toLowerCase().trim());
         Resource r = null;
 
         try {

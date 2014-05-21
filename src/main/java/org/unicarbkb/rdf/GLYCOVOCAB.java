@@ -23,7 +23,7 @@ public class GLYCOVOCAB extends Object {
 
     // URI for vocabulary elements
     /* protected static final String uri = "http://purl.jp/bio/12/glyco/glycan/";
-	// Return URI for vocabulary elements public static String getURI()
+    // Return URI for vocabulary elements public static String getURI()
 	public static String getURI()
 	{
 		return uri; }  */
@@ -85,13 +85,13 @@ public class GLYCOVOCAB extends Object {
     static final String ninCarbohydrateFormat = "in_carbohydrate_format";
     public static Property inCarbohydrateFormat = null;
 
-    static final String ncarbohydrateFormatGlycoct  = "carbohydrate_format_glycoct";
+    static final String ncarbohydrateFormatGlycoct = "carbohydrate_format_glycoct";
     public static Property carbohydrateFormatGlycoct = null;
 
     static final String nCarbohydrateFormatGlyde = "carbohydrate_format_glyde2";
     public static Property carbohydrateFormatGlyde = null;
 
-    static final String ncarbohydrateFormatIupac  = "carbohydrate_format_condensediupac"; //TODO CHECK DEFINITION
+    static final String ncarbohydrateFormatIupac = "carbohydrate_format_condensediupac"; //TODO CHECK DEFINITION
     public static Property carbohydrateFormatIupac = null;
 
     static final String nglycosequence = "glycosequence";
@@ -127,7 +127,6 @@ public class GLYCOVOCAB extends Object {
     public static Property isFromSource = null;
 
 
-
     static final String ninGlycanDatabase = "in_glycan_database";
     public static Property inGlycanDatabase = null;
 
@@ -149,7 +148,6 @@ public class GLYCOVOCAB extends Object {
     public static Property hasCardinality = null;
     static final String nhasMonosaccharide = "has_monosaccharide";
     public static Property hasMonosaccharide = null;
-
 
 
     // Instantiate the properties and the resource

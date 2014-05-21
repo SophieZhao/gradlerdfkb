@@ -24,7 +24,7 @@ public class Namespaces {
     private static final String BASE9 = "http://www.w3.org/2000/01/rdf-schema#";
     private static final String BASE10 = "http://www.biohackathon.org/resource/faldo/";
     //private static final String BASE11 ="http://purl.uniprot.org/core/Protein/";
-    private static final String BASE11 ="http://purl.uniprot.org/core/";
+    private static final String BASE11 = "http://purl.uniprot.org/core/";
 
     public Model createModel() {
         Model model = ModelFactory.createDefaultModel();
@@ -43,7 +43,7 @@ public class Namespaces {
         model.setNsPrefix("uniprot", BASE11);
 
         //this.addNameSpaces();
-         this.addGlycoSites();
+        this.addGlycoSites();
         //model.read("test.ttl");
 
 

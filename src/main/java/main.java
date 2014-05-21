@@ -30,24 +30,26 @@ public class main {
         /*
         create structures from structure table
          */
+        List<Proteins> proteins = Ebean.find(Proteins.class).findList();
+        for(Proteins p : proteins){
+            createProteins(m,p);
+        }
+
         createStructureResource(m);
 
 
 
-        //createTaxonomy(m);
+       createTaxonomy(m);
 
 
-       /*List<Reference> reference = Ebean.find(Reference.class).findList();
+       List<Reference> reference = Ebean.find(Reference.class).findList();
         for(Reference r : reference) {
             createPublication(r,m);
         }
 
         createSourceReferenceCompound(m);
 
-        List<Proteins> proteins = Ebean.find(Proteins.class).findList();
-        for(Proteins p : proteins){
-            createProteins(m,p);
-        }*/
+
 
 
 
