@@ -27,14 +27,24 @@ public class StructureRDF {
     public static Model createStructureResource(Model model) {
         List<Structure> structures = Ebean.find(Structure.class).findList();
         for (Structure s : structures) {
-            String structureURI = "http://rdf.unicarbkb.org/structure/" + s.id;
-            Resource r = null;
-            r = model.createResource(structureURI, GLYCOVOCAB.saccharide);
-            r.addProperty(GLYCOVOCAB.glycosequence, createhasSequenceCt(model, s)).addProperty(GLYCOVOCAB.glycosequence, createhasSequenceIupac(model, s)); //.addProperty(GLYCOVOCAB.glycosequence, createhasSequenceGlyde(model, s));
 
-            createResourceEntry(model, s);
+            //TODO just for testing
+            if(s.id < 7420) {
+                String structureURI = "http://rdf.unicarbkb.org/structure/" + s.id;
+                Resource r = null;
+                r = model.createResource(structureURI, GLYCOVOCAB.saccharide);
 
-            //CTParser.readCT(model, s, r);
+            /*
+            changes to use ct parser instead of translation table
+             */
+                //r.addProperty(GLYCOVOCAB.glycosequence, createhasSequenceCt(model, s)).addProperty(GLYCOVOCAB.glycosequence, createhasSequenceIupac(model, s)); //.addProperty(GLYCOVOCAB.glycosequence, createhasSequenceGlyde(model, s));
+
+                r.addProperty(GLYCOVOCAB.glycosequence, createhasSeqeuceCTIupacParser(model, s)).addProperty(GLYCOVOCAB.glycosequence, createhasSequenceIupac(model, s));
+
+                createResourceEntry(model, s);
+
+                //CTParser.readCT(model, s, r);
+            }
 
         }
         return model;
@@ -75,6 +85,31 @@ public class StructureRDF {
 
         return r;
     }
+
+
+    public static Resource createhasSeqeuceCTIupacParser(Model model, Structure structure) {
+        Resource r = null;
+        String sequenceURI = "http://rdf.unicarbkb.org/structure/" + structure.getId() + "/ct";
+        r = model.createResource(sequenceURI);
+        if (structure.id < 7420) { //TODO this is for testing only
+            try {
+                Structure structure1 = Ebean.find(Structure.class, structure.id);
+                String glycoct = IupacReader.readIupacToCT(structure1.getGlycanst());
+
+                if (!glycoct.isEmpty()) {
+                    r.addProperty(GLYCOVOCAB.hasSequence, glycoct);
+                    r.addProperty(GLYCOVOCAB.inCarbohydrateFormat, GLYCOVOCAB.carbohydrateFormatGlycoct);
+                } else {
+                    System.out.println("bad structure no ct etc");
+                }
+
+            } catch (Exception e) {
+                System.out.println("Failed here: " + e.getCause());
+            }
+        }
+        return r;
+    }
+
 
     public static Resource createhasSequenceIupac(Model model, Structure structure) {
         Resource r = null;

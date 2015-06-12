@@ -6,6 +6,9 @@ version = '1.0'
 
 repositories {
     mavenCentral()
+    flatDir {
+        dirs 'libs'
+    }
 }
 
 dependencies {
@@ -14,5 +17,13 @@ dependencies {
     compile 'org.avaje:ebean:2.8.1', 'com.hp.hpl.jena:jena:2.6.4', 'postgresql:postgresql:9.1-901.jdbc4'
     compile 'org.apache.jena:jena:2.11.1'
     compile 'org.apache.jena:jena-arq:2.11.1'
+    compile 'xml-apis:xml-apis:1.4.01', 'xerces:xercesImpl:2.11.0', 'com.ibm.icu:icu4j:53.1', 'org.jdom:jdom:1.1.3'
+    compile name: 'sugar-converter'
+    compile name: 'eurocarb-resourcesdb-1.0rc'
+    compile name: 'eurocarb-glycanbuilder-1.0rc'
+    compile name: 'glycome_molecular_framework-0.1-b26'
+}
 
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.10'
 }

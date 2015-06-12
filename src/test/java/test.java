@@ -16,7 +16,7 @@ import java.util.List;
 public class test  {
 
     @Test
-    public void test(){
+    public void testConnection(){
 
         String sql = "select count(*) as count from journal";
         SqlRow row =

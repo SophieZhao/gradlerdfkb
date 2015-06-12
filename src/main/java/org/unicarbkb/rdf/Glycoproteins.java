@@ -152,7 +152,8 @@ public class Glycoproteins {
         ;
         r = model.createResource(structureURI, GLYCOVOCAB.saccharide);
         r.addProperty(GLYCOVOCAB.glycosequence, createhasSequenceCt(model, p))
-                .addProperty(GLYCOVOCAB.glycosequence, createhasSequenceIupac(model, p));
+                //.addProperty(GLYCOVOCAB.glycosequence, createhasSequenceIupac(model, p)); //todo change ct parser testing only
+                .addProperty(GLYCOVOCAB.glycosequence, createhasSeqeuceCTIupacParser(model, p));
         // }
         return r;
     }

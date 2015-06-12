@@ -91,7 +91,7 @@ public class GLYCOVOCAB extends Object {
     static final String nCarbohydrateFormatGlyde = "carbohydrate_format_glyde2";
     public static Property carbohydrateFormatGlyde = null;
 
-    static final String ncarbohydrateFormatIupac = "carbohydrate_format_condensediupac"; //TODO CHECK DEFINITION
+    static final String ncarbohydrateFormatIupac = "carbohydrate_format_iupac_condensed";
     public static Property carbohydrateFormatIupac = null;
 
     static final String nglycosequence = "glycosequence";
