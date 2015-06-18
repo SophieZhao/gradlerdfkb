@@ -56,7 +56,8 @@ public class StructureRDF {
         String structureURI = "http://rdf.unicarbkb.org/structure/" + structure.getId();
         Resource r = null;
         r = model.createResource(structureURI, GLYCOVOCAB.saccharide);
-        r.addProperty(GLYCOVOCAB.glycosequence, createhasSequenceCt(model, structure));
+        //r.addProperty(GLYCOVOCAB.glycosequence, createhasSequenceCt(model, structure));//todo change ct parser testing only added below
+        r.addProperty(GLYCOVOCAB.glycosequence, createhasSeqeuceCTIupacParser(model, structure));
         try {
             r.addProperty(GLYCOVOCAB.glycosequence, createhasSequenceIupac(model, structure));
         } catch (Exception e) {

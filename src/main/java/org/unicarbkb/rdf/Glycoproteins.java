@@ -151,9 +151,9 @@ public class Glycoproteins {
         String structureURI = "http://rdf.unicarbkb.org/structure/" + p.id;
         ;
         r = model.createResource(structureURI, GLYCOVOCAB.saccharide);
-        r.addProperty(GLYCOVOCAB.glycosequence, createhasSequenceCt(model, p))
+        //r.addProperty(GLYCOVOCAB.glycosequence, createhasSequenceCt(model, p))  //todo change ct parser testing only
                 //.addProperty(GLYCOVOCAB.glycosequence, createhasSequenceIupac(model, p)); //todo change ct parser testing only
-                .addProperty(GLYCOVOCAB.glycosequence, createhasSeqeuceCTIupacParser(model, p));
+                r.addProperty(GLYCOVOCAB.glycosequence, createhasSeqeuceCTIupacParser(model, p));
         // }
         return r;
     }
