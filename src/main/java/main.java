@@ -6,6 +6,7 @@ import com.hp.hpl.jena.rdf.model.StmtIterator;
 import models.database.Proteins;
 import models.database.Reference;
 import models.database.Structure;
+import models.unicarbdb.hplc.Lcmucin;
 import org.unicarbkb.rdf.Namespaces;
 
 import java.io.FileWriter;
@@ -26,6 +27,8 @@ public class main {
     public static void main(String[] args) {
         Namespaces n = new Namespaces();
         Model m = n.createModel();
+
+
 
         /*
         create structures from structure table

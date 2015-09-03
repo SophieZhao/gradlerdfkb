@@ -14,6 +14,7 @@ import models.ms.*;
 import models.unicarbdb.core.Evidence;
 import models.unicarbdb.core.GlycanSequence;
 import models.unicarbdb.core.JournalReference;
+import models.unicarbdb.ms.Scan;
 import org.apache.commons.lang.StringUtils;
 import org.eurocarbdb.application.glycanbuilder.Glycan;
 import org.eurocarbdb.application.glycanbuilder.GlycoCTCondensedParser;
@@ -57,7 +58,7 @@ public class Lcmucin  {
 
     @ManyToOne
     @JoinColumn(name="scan_id")
-    public models.ms.Scan scan;
+    public Scan scan;
     
     public Integer scanparent;
     public Integer acquisitionId;

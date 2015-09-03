@@ -173,6 +173,9 @@ public class GLYCOVOCAB extends Object {
     static final String nhasMsAnnotation = "has_ms_annotation";
     public static Property hasMsAnnotation = null;
 
+    static final String nMassSpectrum = "mass_spectrum";
+    public static Property massSpectrum = null;
+
 
 
     // Instantiate the properties and the resource
@@ -237,6 +240,7 @@ public class GLYCOVOCAB extends Object {
             hasCardinality = new PropertyImpl(uri, nhasCardinality);
             hasMonosaccharide = new PropertyImpl(uri, nhasMonosaccharide);
             hasComponent = new PropertyImpl(uri, nhasComponent);
+            massSpectrum = new PropertyImpl(uri, nMassSpectrum);
 
             //status = new PropertyImpl
         } catch (ReasonerException e) {
