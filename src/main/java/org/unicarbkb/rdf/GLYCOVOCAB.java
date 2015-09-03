@@ -94,7 +94,7 @@ public class GLYCOVOCAB extends Object {
     static final String ncarbohydrateFormatIupac = "carbohydrate_format_iupac_condensed";
     public static Property carbohydrateFormatIupac = null;
 
-    static final String nglycosequence = "glycosequence";
+    static final String nglycosequence = "has_glycosequence"; //changed from glycosequence
     public static Property glycosequence = null;
 
     static final String nsaccharide = "saccharide";
@@ -149,11 +149,49 @@ public class GLYCOVOCAB extends Object {
     static final String nhasMonosaccharide = "has_monosaccharide";
     public static Property hasMonosaccharide = null;
 
+    static final String nhasMassSpectrum = "has_mass_spectrum";
+    public static Property hasMassSpectrum = null;
+
+    static final String nhasRetentionTime = "has_retention_time";
+    public static Property hasRetentionTime = null;
+
+    static final String nhasMsnLevel = "has_msn_level";
+    public static Property hasMsnLevel = null;
+
+    static final String nhasMsPeak = "has_ms_peak";
+    public static Property hasMsPeak = null;
+
+    static final String nhasIntensity = "has_intensity";
+    public static Property hasIntensity = null;
+
+    static final String nhasCharge = "has_charge";
+    public static Property hasCharge = null;
+
+    static final String nhasMz = "has_mz";
+    public static Property hasMz = null;
+
+    static final String nhasMsAnnotation = "has_ms_annotation";
+    public static Property hasMsAnnotation = null;
+
+
 
     // Instantiate the properties and the resource
     static {
         try {
             // Instantiate the properties
+            /*
+            ms related
+             */
+            hasMassSpectrum = new PropertyImpl(uri, nhasMassSpectrum);
+            hasRetentionTime = new PropertyImpl(uri, nhasRetentionTime);
+            hasMsnLevel = new PropertyImpl(uri, nhasMsnLevel);
+            hasMsPeak = new PropertyImpl(uri, nhasMsPeak);
+            hasIntensity = new PropertyImpl(uri, nhasIntensity);
+            hasCharge = new PropertyImpl(uri, nhasCharge);
+            hasMz = new PropertyImpl(uri, nhasMz);
+            hasMsAnnotation = new PropertyImpl(uri, nhasMsAnnotation);
+
+
             hasMethod = new PropertyImpl(uri, nhasMethod);
             hasPmid = new PropertyImpl(uri, nhasPmid);
             nnabstract = new PropertyImpl(uri, nabstract);

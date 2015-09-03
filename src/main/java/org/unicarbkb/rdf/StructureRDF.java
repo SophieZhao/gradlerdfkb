@@ -108,6 +108,17 @@ public class StructureRDF {
                 System.out.println("Failed here: " + e.getCause());
             }
         }
+
+        if(structure.id >= 7420){
+            try{
+                if(!structure.glycanst.isEmpty()){
+                    r.addProperty(GLYCOVOCAB.hasSequence, structure.glycanst);
+                    r.addProperty(GLYCOVOCAB.inCarbohydrateFormat, GLYCOVOCAB.carbohydrateFormatGlycoct);
+                }
+            } catch (Exception e) {
+                System.out.println("Failed here: " + e.getCause());
+            }
+        }
         return r;
     }
 
