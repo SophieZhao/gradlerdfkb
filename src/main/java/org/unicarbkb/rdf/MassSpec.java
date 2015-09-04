@@ -1,6 +1,7 @@
 package org.unicarbkb.rdf;
 
 import com.avaje.ebean.Ebean;
+import com.avaje.ebean.EbeanServer;
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.vocabulary.RDF;
@@ -21,8 +22,12 @@ import java.util.UUID;
 public class MassSpec {
 
     public static Model createLcStructureResource(Model model) {
-        List<Lcmucin> lcmucin = Ebean.find(Lcmucin.class).findList();
+        //Ebean.
+        EbeanServer defserver = Ebean.getServer("db");
+        System.out.println("ebean check: " + defserver.getName() );
+        List<Lcmucin> lcmucin = defserver.find(Lcmucin.class).findList();
         for(Lcmucin l : lcmucin) {
+            System.out.println("lcm: " + l.getLcmucinId());
             Resource r = null;
             String sequenceURI = "http://rdf.unicarbdb.org/structure/" + l.glycanSequence.glycanSequenceId;
             r = model.createResource(sequenceURI, GLYCOVOCAB.saccharide);
@@ -38,8 +43,7 @@ public class MassSpec {
         String sequenceURI = "http://rdf.unicarbdb.org/structure/" + structure.glycanSequenceId + "/ct";
         r = model.createResource(sequenceURI);
             try {
-                String glycoct = structure.sequenceCt;
-
+                String glycoct = structure.getSequenceCt();
                 if (!glycoct.isEmpty()) {
                     r.addProperty(GLYCOVOCAB.hasSequence, glycoct);
                     r.addProperty(GLYCOVOCAB.inCarbohydrateFormat, GLYCOVOCAB.carbohydrateFormatGlycoct);
@@ -48,7 +52,7 @@ public class MassSpec {
                 }
 
             } catch (Exception e) {
-                System.out.println("Failed here: " + e.getCause());
+                System.out.println("Failed here for ct: " + e.getCause());
             }
         return r;
     }
@@ -60,19 +64,20 @@ public class MassSpec {
             String uri = "http://rdf.unicarbkb.org/massSpectrum/" + lcmucin.lcmucinId; //might change to scan
             r = model.createResource(uri, GLYCOVOCAB.massSpectrum);
             r.addLiteral(GLYCOVOCAB.hasRetentionTime, lcmucin.retentionTime);
-            r.addLiteral(GLYCOVOCAB.hasMsnLevel, "2");
+            r.addLiteral(GLYCOVOCAB.hasMsnLevel, 2);
             //add scan number number?
             models.unicarbdb.ms.Scan scan = lcmucin.scan;
-
+            System.out.println("scan: " + scan.scanId);
             for(PeakList peakList : scan.peakLists) {
-                    for(PeakLabeled peakLabeled : peakList.peakLabeled) {
-                        r.addProperty(GLYCOVOCAB.hasMsPeak, createMsPeak(model, peakLabeled));
-                    }
+
+                   // for(PeakLabeled peakLabeled : peakList.peakLabeled) {
+                     //   r.addProperty(GLYCOVOCAB.hasMsPeak, createMsPeak(model, peakLabeled));
+                    //}
             }
 
 
         } catch (Exception e) {
-            System.out.println("Failed here: " + e.getCause());
+            System.out.println("Failed here peaks: " + e.getCause());
         }
         return r;
     }

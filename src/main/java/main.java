@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.util.List;
 
 import static org.unicarbkb.rdf.Glycoproteins.createProteins;
+import static org.unicarbkb.rdf.MassSpec.createLcStructureResource;
 import static org.unicarbkb.rdf.ReferenceRDF.createPublication;
 import static org.unicarbkb.rdf.StructureRDF.createStructureResource;
 import static org.unicarbkb.rdf.TaxonomyBiol.*;
@@ -28,11 +29,15 @@ public class main {
         Namespaces n = new Namespaces();
         Model m = n.createModel();
 
-
-
         /*
-        create structures from structure table
+        build unicarbdb
+        see use of to ebeans for db access
          */
+        createLcStructureResource(m);
+
+
+
+    /*
         List<Proteins> proteins = Ebean.find(Proteins.class).findList();
         for(Proteins p : proteins){
             createProteins(m,p);
@@ -58,6 +63,8 @@ public class main {
 
         //m.write(System.out, "TTL");
 
+      */
+
         String fileName = "/tmp/out";
         FileWriter out = null;
         try {
@@ -78,7 +85,6 @@ public class main {
         }
 
         //CTParser.readCT();
-
 
     }
 
