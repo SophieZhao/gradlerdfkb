@@ -6,7 +6,7 @@
 
 package models.unicarbdb.ms;
 
-import play.db.ebean.Model;
+
 
 import javax.persistence.*;
 
@@ -32,5 +32,43 @@ public class PeakAnnotatedToIon  {
     public Integer number;
     public Boolean gain;
 
+    public Long getPeakAnnotatedToIonId() {
+        return peakAnnotatedToIonId;
+    }
 
+    public void setPeakAnnotatedToIonId(Long peakAnnotatedToIonId) {
+        this.peakAnnotatedToIonId = peakAnnotatedToIonId;
+    }
+
+    public Ion getIon() {
+        return ion;
+    }
+
+    public void setIon(Ion ion) {
+        this.ion = ion;
+    }
+
+    public PeakAnnotated getPeakAnnotated() {
+        return peakAnnotated;
+    }
+
+    public void setPeakAnnotated(PeakAnnotated peakAnnotated) {
+        this.peakAnnotated = peakAnnotated;
+    }
+
+    public Integer getNumber() {
+        return number;
+    }
+
+    public void setNumber(Integer number) {
+        this.number = number;
+    }
+
+    public Boolean getGain() {
+        return gain;
+    }
+
+    public void setGain(Boolean gain) {
+        this.gain = gain;
+    }
 }

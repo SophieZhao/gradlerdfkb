@@ -11,10 +11,10 @@ import java.math.BigDecimal;
 
 import javax.persistence.*;
 
-import models.hplc.Lcmucin;
-import play.db.ebean.*;
-import play.data.format.*;
-import play.data.validation.*;
+import models.unicarbdb.hplc.Lcmucin;
+
+
+
 
 import com.avaje.ebean.*;
 
@@ -38,5 +38,51 @@ public class EvidenceToBiologicalContext  {
    //public Set<EvidenceToGlycoprotein> evidenceToGlycoproteinContext = new HashSet<EvidenceToGlycoprotein>(0);^M  
    public EvidenceToGlycoprotein evidenceToBcs;
 
+    public Long getEvidenceContextId() {
+        return evidenceContextId;
+    }
 
+    public void setEvidenceContextId(Long evidenceContextId) {
+        this.evidenceContextId = evidenceContextId;
+    }
+
+    public BiologicalContext getBiologicalContext() {
+        return biologicalContext;
+    }
+
+    public void setBiologicalContext(BiologicalContext biologicalContext) {
+        this.biologicalContext = biologicalContext;
+    }
+
+    public Evidence getEvidence() {
+        return evidence;
+    }
+
+    public void setEvidence(Evidence evidence) {
+        this.evidence = evidence;
+    }
+
+    public Contributor getContributor() {
+        return contributor;
+    }
+
+    public void setContributor(Contributor contributor) {
+        this.contributor = contributor;
+    }
+
+    public Date getDateEntered() {
+        return dateEntered;
+    }
+
+    public void setDateEntered(Date dateEntered) {
+        this.dateEntered = dateEntered;
+    }
+
+    public EvidenceToGlycoprotein getEvidenceToBcs() {
+        return evidenceToBcs;
+    }
+
+    public void setEvidenceToBcs(EvidenceToGlycoprotein evidenceToBcs) {
+        this.evidenceToBcs = evidenceToBcs;
+    }
 }

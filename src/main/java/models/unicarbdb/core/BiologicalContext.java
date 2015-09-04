@@ -6,6 +6,8 @@
 
 package models.unicarbdb.core;
 
+import models.unicarbdb.hplc.Lcmucin;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -50,9 +52,51 @@ public class BiologicalContext  {
     @OneToMany(mappedBy = "biologicalContext")
     public List<models.unicarbdb.hplc.Lcmucin> lcmucin; // = new HashSet<Lcmucin>(0);
 
+    public Long getBiological_context_id() {
+        return biological_context_id;
+    }
 
+    public void setBiological_context_id(Long biological_context_id) {
+        this.biological_context_id = biological_context_id;
+    }
 
+    public Date getDateEntered() {
+        return dateEntered;
+    }
 
+    public void setDateEntered(Date dateEntered) {
+        this.dateEntered = dateEntered;
+    }
 
+    public Taxonomy getTaxonomy() {
+        return taxonomy;
+    }
 
+    public void setTaxonomy(Taxonomy taxonomy) {
+        this.taxonomy = taxonomy;
+    }
+
+    public TissueTaxonomy getTissueTaxonomy() {
+        return tissueTaxonomy;
+    }
+
+    public void setTissueTaxonomy(TissueTaxonomy tissueTaxonomy) {
+        this.tissueTaxonomy = tissueTaxonomy;
+    }
+
+    public Contributor getContributor() {
+        return contributor;
+    }
+
+    public void setContributor(Contributor contributor) {
+        this.contributor = contributor;
+    }
+
+    public List<Lcmucin> getLcmucin() {
+        return lcmucin;
+    }
+
+    public void setLcmucin(List<Lcmucin> lcmucin) {
+        this.lcmucin = lcmucin;
+    }
 }

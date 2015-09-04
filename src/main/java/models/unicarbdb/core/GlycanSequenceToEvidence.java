@@ -11,9 +11,9 @@ import java.math.BigDecimal;
 
 import javax.persistence.*;
 
-import play.db.ebean.*;
-import play.data.format.*;
-import play.data.validation.*;
+
+
+
 
 import com.avaje.ebean.*;
 
@@ -39,5 +39,51 @@ public class GlycanSequenceToEvidence  {
    /** The date this objects was created/entered into the data store. */
    private Date dateEntered = new Date();
 
+    public Long getGlycanSequenceEvidenceId() {
+        return glycanSequenceEvidenceId;
+    }
 
+    public void setGlycanSequenceEvidenceId(Long glycanSequenceEvidenceId) {
+        this.glycanSequenceEvidenceId = glycanSequenceEvidenceId;
+    }
+
+    public GlycanSequence getGlycanSequence() {
+        return glycanSequence;
+    }
+
+    public void setGlycanSequence(GlycanSequence glycanSequence) {
+        this.glycanSequence = glycanSequence;
+    }
+
+    public Evidence getEvidence() {
+        return evidence;
+    }
+
+    public void setEvidence(Evidence evidence) {
+        this.evidence = evidence;
+    }
+
+    public Double getQuantitationByPercent() {
+        return quantitationByPercent;
+    }
+
+    public void setQuantitationByPercent(Double quantitationByPercent) {
+        this.quantitationByPercent = quantitationByPercent;
+    }
+
+    public Contributor getContributor() {
+        return contributor;
+    }
+
+    public void setContributor(Contributor contributor) {
+        this.contributor = contributor;
+    }
+
+    public Date getDateEntered() {
+        return dateEntered;
+    }
+
+    public void setDateEntered(Date dateEntered) {
+        this.dateEntered = dateEntered;
+    }
 }

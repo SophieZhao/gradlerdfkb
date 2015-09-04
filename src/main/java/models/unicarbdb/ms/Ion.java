@@ -27,4 +27,43 @@ public class Ion {
     //public Set<org.eurocarbdb.dataaccess.ms.PeakAnnotatedToIon> peakAnnotatedToIons = new HashSet<org.eurocarbdb.dataaccess.ms.PeakAnnotatedToIon>();
 
 
+    public Long getIonId() {
+        return ionId;
+    }
+
+    public void setIonId(Long ionId) {
+        this.ionId = ionId;
+    }
+
+    public String getIonType() {
+        return ionType;
+    }
+
+    public void setIonType(String ionType) {
+        this.ionType = ionType;
+    }
+
+    public Integer getCharge() {
+        return charge;
+    }
+
+    public void setCharge(Integer charge) {
+        this.charge = charge;
+    }
+
+    public Boolean getPositive() {
+        return positive;
+    }
+
+    public void setPositive(Boolean positive) {
+        this.positive = positive;
+    }
+
+    public Boolean getAtomer() {
+        return atomer;
+    }
+
+    public void setAtomer(Boolean atomer) {
+        this.atomer = atomer;
+    }
 }

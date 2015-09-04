@@ -20,6 +20,27 @@ public class PeakAnnotatedAnnotation {
 	 private String description;
 	    private List<PeakAnnotated> peakAnnotateds; // = new HashSet<org.eurocarbdb.dataaccess.ms.PeakAnnotated>();
 
+	public Long getPeakAnnotatedAnnotationId() {
+		return peakAnnotatedAnnotationId;
+	}
 
+	public void setPeakAnnotatedAnnotationId(Long peakAnnotatedAnnotationId) {
+		this.peakAnnotatedAnnotationId = peakAnnotatedAnnotationId;
+	}
 
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public List<PeakAnnotated> getPeakAnnotateds() {
+		return peakAnnotateds;
+	}
+
+	public void setPeakAnnotateds(List<PeakAnnotated> peakAnnotateds) {
+		this.peakAnnotateds = peakAnnotateds;
+	}
 }

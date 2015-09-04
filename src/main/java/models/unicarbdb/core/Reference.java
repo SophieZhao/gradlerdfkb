@@ -10,10 +10,10 @@ import java.util.*;
 
 import javax.persistence.*;
 
-import models.hplc.Lcmucin;
-import play.db.ebean.*;
-import play.data.format.*;
-import play.data.validation.*;
+import models.unicarbdb.hplc.Lcmucin;
+
+
+
 
 import com.avaje.ebean.*;
 
@@ -68,6 +68,75 @@ public class Reference  {
         public final String toString() {  return id;  }
     }
 
+    public Long getReferenceId() {
+        return referenceId;
+    }
 
+    public void setReferenceId(Long referenceId) {
+        this.referenceId = referenceId;
+    }
 
+    public Contributor getContributor() {
+        return contributor;
+    }
+
+    public void setContributor(Contributor contributor) {
+        this.contributor = contributor;
+    }
+
+    public Date getDateEntered() {
+        return dateEntered;
+    }
+
+    public void setDateEntered(Date dateEntered) {
+        this.dateEntered = dateEntered;
+    }
+
+    public String getReferenceType() {
+        return referenceType;
+    }
+
+    public void setReferenceType(String referenceType) {
+        this.referenceType = referenceType;
+    }
+
+    public Type getRefType() {
+        return refType;
+    }
+
+    public void setRefType(Type refType) {
+        this.refType = refType;
+    }
+
+    public String getExternalReferenceId() {
+        return externalReferenceId;
+    }
+
+    public void setExternalReferenceId(String externalReferenceId) {
+        this.externalReferenceId = externalReferenceId;
+    }
+
+    public String getExternalReferenceName() {
+        return externalReferenceName;
+    }
+
+    public void setExternalReferenceName(String externalReferenceName) {
+        this.externalReferenceName = externalReferenceName;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public String getReferenceComments() {
+        return referenceComments;
+    }
+
+    public void setReferenceComments(String referenceComments) {
+        this.referenceComments = referenceComments;
+    }
 }

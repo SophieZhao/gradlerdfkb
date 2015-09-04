@@ -6,21 +6,10 @@
 
 package models.unicarbdb.core;
 
-import com.avaje.ebean.Ebean;
-import models.hplc.Lcmucin;
-import org.eurocarbdb.MolecularFramework.io.GlycoCT.SugarImporterGlycoCTCondensed;
-import org.eurocarbdb.MolecularFramework.io.SugarImporterException;
-import org.eurocarbdb.MolecularFramework.io.namespace.GlycoVisitorToGlycoCT;
-import org.eurocarbdb.MolecularFramework.sugar.Sugar;
-import org.eurocarbdb.MolecularFramework.util.visitor.GlycoVisitorException;
-import org.eurocarbdb.application.glycanbuilder.*;
-import org.eurocarbdb.resourcesdb.Config;
-import org.eurocarbdb.resourcesdb.GlycanNamescheme;
-import org.eurocarbdb.resourcesdb.io.MonosaccharideConversion;
-import org.eurocarbdb.resourcesdb.io.MonosaccharideConverter;
-import org.glycomedb.residuetranslator.ResidueTranslator;
-import play.data.format.Formats;
-import play.db.ebean.Model;
+
+
+
+import models.unicarbdb.hplc.Lcmucin;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -131,70 +120,120 @@ public class GlycanSequence  {
     public List<GlycanComposition> glycanCompositions;
 
 
-    //private Set<Structures> structures = new HashSet<Structures>(0);
+    public Long getGlycanSequenceId() {
+        return glycanSequenceId;
+    }
 
-    //private Set<GlycosuiteStructure> glycosuiteStructures = new HashSet<GlycosuiteStructure>(0);
+    public void setGlycanSequenceId(Long glycanSequenceId) {
+        this.glycanSequenceId = glycanSequenceId;
+    }
 
-    // private Set<GlycanSeqToCoresEpitopes> glycanCores = new HashSet<GlycanSeqToCoresEpitopes>(0);
-
-    public static Finder<Long, GlycanSequence> find = new Finder<Long, GlycanSequence>(Long.class, GlycanSequence.class);
-
-    /*
-    To be used for updating glycan composition table only, TODO needs  cleaning up
-     */
-
-
+    public Contributor getContributor() {
+        return contributor;
+    }
 
     public void setContributor(Contributor contributor) {
         this.contributor = contributor;
+    }
+
+    public int getResidueCount() {
+        return residueCount;
     }
 
     public void setResidueCount(int residueCount) {
         this.residueCount = residueCount;
     }
 
+    public BigDecimal getMassMonoisotopic() {
+        return massMonoisotopic;
+    }
+
     public void setMassMonoisotopic(BigDecimal massMonoisotopic) {
         this.massMonoisotopic = massMonoisotopic;
+    }
+
+    public BigDecimal getMassAverage() {
+        return massAverage;
     }
 
     public void setMassAverage(BigDecimal massAverage) {
         this.massAverage = massAverage;
     }
 
+    public Date getDateEntered() {
+        return dateEntered;
+    }
+
     public void setDateEntered(Date dateEntered) {
         this.dateEntered = dateEntered;
+    }
+
+    public Date getDateContributed() {
+        return dateContributed;
     }
 
     public void setDateContributed(Date dateContributed) {
         this.dateContributed = dateContributed;
     }
 
+    public List<GlycanSequenceToBiologicalContext> getGlycanContexts() {
+        return glycanContexts;
+    }
+
     public void setGlycanContexts(List<GlycanSequenceToBiologicalContext> glycanContexts) {
         this.glycanContexts = glycanContexts;
+    }
+
+    public List<GlycanSequenceToEvidence> getGlycanEvidence() {
+        return glycanEvidence;
     }
 
     public void setGlycanEvidence(List<GlycanSequenceToEvidence> glycanEvidence) {
         this.glycanEvidence = glycanEvidence;
     }
 
+    public String getSequenceIupac() {
+        return sequenceIupac;
+    }
+
     public void setSequenceIupac(String sequenceIupac) {
         this.sequenceIupac = sequenceIupac;
+    }
+
+    public String getSequenceCt() {
+        return sequenceCt;
     }
 
     public void setSequenceCt(String sequenceCt) {
         this.sequenceCt = sequenceCt;
     }
 
+    public String getSequenceGWS() {
+        return sequenceGWS;
+    }
+
     public void setSequenceGWS(String sequenceGWS) {
         this.sequenceGWS = sequenceGWS;
+    }
+
+    public String getSequenceGlycam() {
+        return sequenceGlycam;
     }
 
     public void setSequenceGlycam(String sequenceGlycam) {
         this.sequenceGlycam = sequenceGlycam;
     }
 
-    public void setLcmucin(List<models.unicarbdb.hplc.Lcmucin> lcmucin) {
+    public List<Lcmucin> getLcmucin() {
+        return lcmucin;
+    }
+
+    public void setLcmucin(List<Lcmucin> lcmucin) {
         this.lcmucin = lcmucin;
+    }
+
+    public List<GlycanComposition> getGlycanCompositions() {
+        return glycanCompositions;
     }
 
     public void setGlycanCompositions(List<GlycanComposition> glycanCompositions) {

@@ -67,12 +67,13 @@ public class MassSpec {
             r.addLiteral(GLYCOVOCAB.hasMsnLevel, 2);
             //add scan number number?
             models.unicarbdb.ms.Scan scan = lcmucin.scan;
-            System.out.println("scan: " + scan.scanId);
-            for(PeakList peakList : scan.peakLists) {
+            List<PeakList> peakList = scan.getPeakLists();
 
-                   // for(PeakLabeled peakLabeled : peakList.peakLabeled) {
-                     //   r.addProperty(GLYCOVOCAB.hasMsPeak, createMsPeak(model, peakLabeled));
-                    //}
+            for(PeakList peak :peakList) {
+                //System.out.println("scan: " + peak.getPeakLabeled());
+                for(PeakLabeled peakLabeled : peak.getPeakLabeled()) {
+                    r.addProperty(GLYCOVOCAB.hasMsPeak, createMsPeak(model, peakLabeled));
+                }
             }
 
 

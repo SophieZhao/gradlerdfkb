@@ -6,7 +6,7 @@
 
 package models.unicarbdb.ms;
 
-import play.db.ebean.Model;
+
 
 import javax.persistence.*;
 import java.util.List;
@@ -33,16 +33,43 @@ public class Device  {
 
     public String ionisationType;
 
-    //public Set<Source> sources = new HashSet<Source>(0);
+    public Long getDeviceId() {
+        return deviceId;
+    }
 
-    //public Set<FragmentationType> fragmentationTypes = new HashSet<FragmentationType>(0);
+    public void setDeviceId(Long deviceId) {
+        this.deviceId = deviceId;
+    }
 
-    //public Set<Analyser> analysers = new HashSet<Analyser>(0);
+    public Manufacturer getManufacturer() {
+        return manufacturer;
+    }
 
-    //public Set<Laser> lasers = new HashSet<Laser>(0);
+    public void setManufacturer(Manufacturer manufacturer) {
+        this.manufacturer = manufacturer;
+    }
 
-    //public Set<Acquisition> acquisitions = new HashSet<Acquisition>(0);
+    public List<Acquisition> getAcquisition() {
+        return acquisition;
+    }
 
-    //public Set<MassDetector> massDetectors = new HashSet<MassDetector>(0);
+    public void setAcquisition(List<Acquisition> acquisition) {
+        this.acquisition = acquisition;
+    }
 
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public String getIonisationType() {
+        return ionisationType;
+    }
+
+    public void setIonisationType(String ionisationType) {
+        this.ionisationType = ionisationType;
+    }
 }

@@ -11,10 +11,10 @@ import java.math.BigDecimal;
 
 import javax.persistence.*;
 
-import models.hplc.Lcmucin;
-import play.db.ebean.*;
-import play.data.format.*;
-import play.data.validation.*;
+import models.unicarbdb.hplc.Lcmucin;
+
+
+
 
 import com.avaje.ebean.*;
 
@@ -42,5 +42,59 @@ public class GlycanSequenceToBiologicalContext {
     /** The date this objects was created/entered into the data store. */
     public Date dateEntered = new Date();
 
+    public Long getGlycanSequenceContextId() {
+        return glycanSequenceContextId;
+    }
 
+    public void setGlycanSequenceContextId(Long glycanSequenceContextId) {
+        this.glycanSequenceContextId = glycanSequenceContextId;
+    }
+
+    public BiologicalContext getBiologicalContext() {
+        return biologicalContext;
+    }
+
+    public void setBiologicalContext(BiologicalContext biologicalContext) {
+        this.biologicalContext = biologicalContext;
+    }
+
+    public GlycanSequence getGlycanSequence() {
+        return glycanSequence;
+    }
+
+    public void setGlycanSequence(GlycanSequence glycanSequence) {
+        this.glycanSequence = glycanSequence;
+    }
+
+    public int getGlycanSequenceId() {
+        return glycanSequenceId;
+    }
+
+    public void setGlycanSequenceId(int glycanSequenceId) {
+        this.glycanSequenceId = glycanSequenceId;
+    }
+
+    public int getBiologicalContextId() {
+        return biologicalContextId;
+    }
+
+    public void setBiologicalContextId(int biologicalContextId) {
+        this.biologicalContextId = biologicalContextId;
+    }
+
+    public Contributor getContributor() {
+        return contributor;
+    }
+
+    public void setContributor(Contributor contributor) {
+        this.contributor = contributor;
+    }
+
+    public Date getDateEntered() {
+        return dateEntered;
+    }
+
+    public void setDateEntered(Date dateEntered) {
+        this.dateEntered = dateEntered;
+    }
 }

@@ -10,9 +10,9 @@ import java.util.*;
 
 import javax.persistence.*;
 
-import play.db.ebean.*;
-import play.data.format.*;
-import play.data.validation.*;
+
+
+
 import models.*;
 
 import com.avaje.ebean.*;
@@ -48,4 +48,92 @@ public class MethodRun  {
 	@OneToMany
 	 public List<Lcmucin> lcmucins;
 
+
+	public Long getMethodRunId() {
+		return methodRunId;
+	}
+
+	public void setMethodRunId(Long methodRunId) {
+		this.methodRunId = methodRunId;
+	}
+
+	public Double getTemperature() {
+		return temperature;
+	}
+
+	public void setTemperature(Double temperature) {
+		this.temperature = temperature;
+	}
+
+	public String getSolventA() {
+		return solventA;
+	}
+
+	public void setSolventA(String solventA) {
+		this.solventA = solventA;
+	}
+
+	public String getSolventB() {
+		return solventB;
+	}
+
+	public void setSolventB(String solventB) {
+		this.solventB = solventB;
+	}
+
+	public String getSolventC() {
+		return solventC;
+	}
+
+	public void setSolventC(String solventC) {
+		this.solventC = solventC;
+	}
+
+	public String getSolventD() {
+		return solventD;
+	}
+
+	public void setSolventD(String solventD) {
+		this.solventD = solventD;
+	}
+
+	public Double getFlowRate() {
+		return flowRate;
+	}
+
+	public void setFlowRate(Double flowRate) {
+		this.flowRate = flowRate;
+	}
+
+	public Double getRunTime() {
+		return runTime;
+	}
+
+	public void setRunTime(Double runTime) {
+		this.runTime = runTime;
+	}
+
+	public String getPhase() {
+		return phase;
+	}
+
+	public void setPhase(String phase) {
+		this.phase = phase;
+	}
+
+	public String getFlowGradient() {
+		return flowGradient;
+	}
+
+	public void setFlowGradient(String flowGradient) {
+		this.flowGradient = flowGradient;
+	}
+
+	public List<Lcmucin> getLcmucins() {
+		return lcmucins;
+	}
+
+	public void setLcmucins(List<Lcmucin> lcmucins) {
+		this.lcmucins = lcmucins;
+	}
 }

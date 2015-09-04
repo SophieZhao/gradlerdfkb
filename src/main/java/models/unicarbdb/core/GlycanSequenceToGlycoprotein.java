@@ -11,10 +11,10 @@ import java.math.BigDecimal;
 
 import javax.persistence.*;
 
-import models.hplc.Lcmucin;
-import play.db.ebean.*;
-import play.data.format.*;
-import play.data.validation.*;
+import models.unicarbdb.hplc.Lcmucin;
+
+
+
 
 import com.avaje.ebean.*;
 
@@ -30,5 +30,27 @@ public class GlycanSequenceToGlycoprotein  {
 
     public GlycanSequence glycanSequence;
 
+    public Long getGlycanSequenceGlycoproteinId() {
+        return glycanSequenceGlycoproteinId;
+    }
 
+    public void setGlycanSequenceGlycoproteinId(Long glycanSequenceGlycoproteinId) {
+        this.glycanSequenceGlycoproteinId = glycanSequenceGlycoproteinId;
+    }
+
+    public Glycoprotein getGlycoprotein() {
+        return glycoprotein;
+    }
+
+    public void setGlycoprotein(Glycoprotein glycoprotein) {
+        this.glycoprotein = glycoprotein;
+    }
+
+    public GlycanSequence getGlycanSequence() {
+        return glycanSequence;
+    }
+
+    public void setGlycanSequence(GlycanSequence glycanSequence) {
+        this.glycanSequence = glycanSequence;
+    }
 }

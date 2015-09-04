@@ -6,7 +6,7 @@
 
 package models.unicarbdb.ms;
 
-import play.db.ebean.Model;
+
 
 import javax.persistence.*;
 import java.util.List;
@@ -29,4 +29,35 @@ public class Manufacturer  {
    @OneToMany(mappedBy = "manufacturer")
    public List<Device> devices; // = new HashSet<Device>(0);
 
+    public Long getManufacturerId() {
+        return manufacturerId;
+    }
+
+    public void setManufacturerId(Long manufacturerId) {
+        this.manufacturerId = manufacturerId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public List<Device> getDevices() {
+        return devices;
+    }
+
+    public void setDevices(List<Device> devices) {
+        this.devices = devices;
+    }
 }

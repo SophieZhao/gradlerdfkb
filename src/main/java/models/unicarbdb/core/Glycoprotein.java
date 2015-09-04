@@ -6,7 +6,7 @@
 
 package models.unicarbdb.core;
 
-import play.db.ebean.Model;
+
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -38,5 +38,91 @@ public class Glycoprotein  {
     public String description;
     public List<GlycanSequenceToGlycoprotein> glycanSequenceGlycoproteins; // = new HashSet<GlycanSequenceGlycoprotein>(0);
 
+    public Long getGlycoproteinId() {
+        return glycoproteinId;
+    }
 
+    public void setGlycoproteinId(Long glycoproteinId) {
+        this.glycoproteinId = glycoproteinId;
+    }
+
+    public Taxonomy getTaxonomyByNativeSpecies() {
+        return taxonomyByNativeSpecies;
+    }
+
+    public void setTaxonomyByNativeSpecies(Taxonomy taxonomyByNativeSpecies) {
+        this.taxonomyByNativeSpecies = taxonomyByNativeSpecies;
+    }
+
+    public Taxonomy getTaxonomyByExpressedSpecies() {
+        return taxonomyByExpressedSpecies;
+    }
+
+    public void setTaxonomyByExpressedSpecies(Taxonomy taxonomyByExpressedSpecies) {
+        this.taxonomyByExpressedSpecies = taxonomyByExpressedSpecies;
+    }
+
+    public String getUniprotId() {
+        return uniprotId;
+    }
+
+    public void setUniprotId(String uniprotId) {
+        this.uniprotId = uniprotId;
+    }
+
+    public String getVariant() {
+        return variant;
+    }
+
+    public void setVariant(String variant) {
+        this.variant = variant;
+    }
+
+    public String getGlycoproteinName() {
+        return glycoproteinName;
+    }
+
+    public void setGlycoproteinName(String glycoproteinName) {
+        this.glycoproteinName = glycoproteinName;
+    }
+
+    public String getGlycoproteinSequence() {
+        return glycoproteinSequence;
+    }
+
+    public void setGlycoproteinSequence(String glycoproteinSequence) {
+        this.glycoproteinSequence = glycoproteinSequence;
+    }
+
+    public Integer getSequenceOffset() {
+        return sequenceOffset;
+    }
+
+    public void setSequenceOffset(Integer sequenceOffset) {
+        this.sequenceOffset = sequenceOffset;
+    }
+
+    public List<EvidenceToGlycoprotein> getEvidenceToGlycoproteins() {
+        return evidenceToGlycoproteins;
+    }
+
+    public void setEvidenceToGlycoproteins(List<EvidenceToGlycoprotein> evidenceToGlycoproteins) {
+        this.evidenceToGlycoproteins = evidenceToGlycoproteins;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public List<GlycanSequenceToGlycoprotein> getGlycanSequenceGlycoproteins() {
+        return glycanSequenceGlycoproteins;
+    }
+
+    public void setGlycanSequenceGlycoproteins(List<GlycanSequenceToGlycoprotein> glycanSequenceGlycoproteins) {
+        this.glycanSequenceGlycoproteins = glycanSequenceGlycoproteins;
+    }
 }

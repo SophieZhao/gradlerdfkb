@@ -7,7 +7,7 @@
 package models.unicarbdb.core;
 
 import com.avaje.ebean.Ebean;
-import play.db.ebean.Model;
+
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -45,4 +45,67 @@ public class TissueTaxonomy {
 	    public List<BiologicalContext> biologicalContexts; // = new HashSet<BiologicalContext>(0);
 
 
+	public Long getTissueTaxonomyId() {
+		return tissueTaxonomyId;
+	}
+
+	public void setTissueTaxonomyId(Long tissueTaxonomyId) {
+		this.tissueTaxonomyId = tissueTaxonomyId;
+	}
+
+	public TissueTaxonomy getParentTissueTaxonomy() {
+		return parentTissueTaxonomy;
+	}
+
+	public void setParentTissueTaxonomy(TissueTaxonomy parentTissueTaxonomy) {
+		this.parentTissueTaxonomy = parentTissueTaxonomy;
+	}
+
+	public String getTissueTaxon() {
+		return tissueTaxon;
+	}
+
+	public void setTissueTaxon(String tissueTaxon) {
+		this.tissueTaxon = tissueTaxon;
+	}
+
+	public String getMeshId() {
+		return meshId;
+	}
+
+	public void setMeshId(String meshId) {
+		this.meshId = meshId;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public Date getDateLastModified() {
+		return dateLastModified;
+	}
+
+	public void setDateLastModified(Date dateLastModified) {
+		this.dateLastModified = dateLastModified;
+	}
+
+	public List<TissueTaxonomySynonym> getTissueTaxonomySynonyms() {
+		return tissueTaxonomySynonyms;
+	}
+
+	public void setTissueTaxonomySynonyms(List<TissueTaxonomySynonym> tissueTaxonomySynonyms) {
+		this.tissueTaxonomySynonyms = tissueTaxonomySynonyms;
+	}
+
+	public List<BiologicalContext> getBiologicalContexts() {
+		return biologicalContexts;
+	}
+
+	public void setBiologicalContexts(List<BiologicalContext> biologicalContexts) {
+		this.biologicalContexts = biologicalContexts;
+	}
 }
