@@ -2,6 +2,7 @@ package org.unicarbkb.rdf;
 
 import com.avaje.ebean.Ebean;
 import com.avaje.ebean.EbeanServer;
+import com.avaje.ebean.Query;
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.vocabulary.RDF;
@@ -9,9 +10,7 @@ import models.database.Reference;
 import models.database.Structure;
 import models.unicarbdb.core.GlycanSequence;
 import models.unicarbdb.hplc.Lcmucin;
-import models.unicarbdb.ms.PeakLabeled;
-import models.unicarbdb.ms.PeakList;
-import models.unicarbdb.ms.Scan;
+import models.unicarbdb.ms.*;
 
 import java.util.List;
 import java.util.UUID;
@@ -34,8 +33,26 @@ public class MassSpec {
 
             r.addProperty(GLYCOVOCAB.glycosequence, createhasSequenceCTLcmucin(model, l.glycanSequence));
             createMSResource(model, l);
+            createAcquisition(model, l);
         }
         return model;
+    }
+
+    /*
+    we have limited data all ion trap but different manufactures so can be lesss strict for now
+     */
+    public static Resource createAcquisition(Model model, Lcmucin lcmucin){
+        Resource r = null;
+        String acquisitionURI= "http://rdf.unicarbdb.org/instrumentDetails/";
+        r = model.createResource(acquisitionURI);
+        Acquisition acquisition = Ebean.find(Acquisition.class, lcmucin.getAcquisitionId());
+        try{
+            Device device = acquisition.device;
+
+        } catch (Exception e) {
+
+        }
+        return r;
     }
 
     public static Resource createhasSequenceCTLcmucin(Model model, GlycanSequence structure) {
@@ -61,7 +78,7 @@ public class MassSpec {
 
         Resource r = null;
         try {
-            String uri = "http://rdf.unicarbkb.org/massSpectrum/" + lcmucin.lcmucinId; //might change to scan
+            String uri = "http://rdf.unicarbdb.org/massSpectrum/" + lcmucin.lcmucinId; //might change to scan
             r = model.createResource(uri, GLYCOVOCAB.massSpectrum);
             r.addLiteral(GLYCOVOCAB.hasRetentionTime, lcmucin.retentionTime);
             r.addLiteral(GLYCOVOCAB.hasMsnLevel, 2);
@@ -86,7 +103,7 @@ public class MassSpec {
     public static Resource createMsPeak(Model model, PeakLabeled peakLabeled) {
         Resource r = null;
         try{
-            String uri = "http://rdf.unicarbkb.org/massSpectrum/peakList/" + UUID.randomUUID();
+            String uri = "http://rdf.unicarbdb.org/massSpectrum/peakList/" + UUID.randomUUID();
             r = model.createResource(uri, GLYCOVOCAB.hasMsPeak);
             r.addLiteral(GLYCOVOCAB.hasIntensity, peakLabeled.intensityValue);
             r.addLiteral(GLYCOVOCAB.hasMz, peakLabeled.mzValue);
