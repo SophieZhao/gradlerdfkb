@@ -25,6 +25,8 @@ public class Namespaces {
     private static final String BASE10 = "http://www.biohackathon.org/resource/faldo/";
     //private static final String BASE11 ="http://purl.uniprot.org/core/Protein/";
     private static final String BASE11 = "http://purl.uniprot.org/core/";
+    private static final String BASE12 = "http://www.berkeleybop.org/ontologies/ms.owl";
+    private static final String BASE13 = "http://purl.obolibrary.org/obo/uo.owl";
 
     public Model createModel() {
         Model model = ModelFactory.createDefaultModel();
@@ -41,6 +43,8 @@ public class Namespaces {
         model.setNsPrefix("rdfs", BASE9);
         model.setNsPrefix("faldo", BASE10);
         model.setNsPrefix("uniprot", BASE11);
+        model.setNsPrefix("ms", BASE12);
+        model.setNsPrefix("pato", BASE13);
 
         //this.addNameSpaces();
         this.addGlycoSites();

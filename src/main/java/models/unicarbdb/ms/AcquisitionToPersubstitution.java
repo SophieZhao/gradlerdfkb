@@ -6,7 +6,7 @@
 
 package models.unicarbdb.ms;
 
-import play.db.ebean.Model;
+
 
 import javax.persistence.*;
 
@@ -23,5 +23,27 @@ public class AcquisitionToPersubstitution  {
 	 public Acquisition acquisition;
 	 public Persubstitution persubstitution;
 
+	public Long getAcquisitiontoPersubstitutionId() {
+		return AcquisitiontoPersubstitutionId;
+	}
 
+	public void setAcquisitiontoPersubstitutionId(Long acquisitiontoPersubstitutionId) {
+		AcquisitiontoPersubstitutionId = acquisitiontoPersubstitutionId;
+	}
+
+	public Acquisition getAcquisition() {
+		return acquisition;
+	}
+
+	public void setAcquisition(Acquisition acquisition) {
+		this.acquisition = acquisition;
+	}
+
+	public Persubstitution getPersubstitution() {
+		return persubstitution;
+	}
+
+	public void setPersubstitution(Persubstitution persubstitution) {
+		this.persubstitution = persubstitution;
+	}
 }

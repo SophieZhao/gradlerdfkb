@@ -6,7 +6,7 @@
 
 package models.unicarbdb.core;
 
-import play.db.ebean.Model;
+
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

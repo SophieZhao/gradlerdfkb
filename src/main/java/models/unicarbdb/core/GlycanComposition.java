@@ -9,7 +9,7 @@ package models.unicarbdb.core;
 import com.avaje.ebean.Ebean;
 import org.eurocarbdb.application.glycanbuilder.Glycan;
 import org.eurocarbdb.application.glycanbuilder.MassOptions;
-import play.db.ebean.Model;
+
 
 import javax.persistence.*;
 import java.util.List;

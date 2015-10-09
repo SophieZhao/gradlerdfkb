@@ -6,7 +6,7 @@
 
 package models.unicarbdb.ms;
 
-import play.db.ebean.Model;
+
 
 import javax.persistence.*;
 

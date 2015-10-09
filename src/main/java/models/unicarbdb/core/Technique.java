@@ -6,7 +6,7 @@
 
 package models.unicarbdb.core;
 
-import play.db.ebean.Model;
+
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -29,5 +29,35 @@ public class Technique  {
     @OneToMany(mappedBy = "technique")
     public List<Evidence> evidenceList;
 
+    public Long getTechniqueId() {
+        return techniqueId;
+    }
 
+    public void setTechniqueId(Long techniqueId) {
+        this.techniqueId = techniqueId;
+    }
+
+    public String getTechniqueAbbrev() {
+        return techniqueAbbrev;
+    }
+
+    public void setTechniqueAbbrev(String techniqueAbbrev) {
+        this.techniqueAbbrev = techniqueAbbrev;
+    }
+
+    public String getTechniqueName() {
+        return techniqueName;
+    }
+
+    public void setTechniqueName(String techniqueName) {
+        this.techniqueName = techniqueName;
+    }
+
+    public List<Evidence> getEvidenceList() {
+        return evidenceList;
+    }
+
+    public void setEvidenceList(List<Evidence> evidenceList) {
+        this.evidenceList = evidenceList;
+    }
 }

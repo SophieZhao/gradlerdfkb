@@ -1,6 +1,8 @@
 package org.unicarbkb.rdf;
 
 import com.avaje.ebean.Ebean;
+import com.avaje.ebean.EbeanServer;
+import com.avaje.ebean.Query;
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.vocabulary.RDF;
@@ -8,9 +10,7 @@ import models.database.Reference;
 import models.database.Structure;
 import models.unicarbdb.core.GlycanSequence;
 import models.unicarbdb.hplc.Lcmucin;
-import models.unicarbdb.ms.PeakLabeled;
-import models.unicarbdb.ms.PeakList;
-import models.unicarbdb.ms.Scan;
+import models.unicarbdb.ms.*;
 
 import java.util.List;
 import java.util.UUID;
@@ -21,16 +21,38 @@ import java.util.UUID;
 public class MassSpec {
 
     public static Model createLcStructureResource(Model model) {
-        List<Lcmucin> lcmucin = Ebean.find(Lcmucin.class).findList();
+        //Ebean.
+        EbeanServer defserver = Ebean.getServer("db");
+        System.out.println("ebean check: " + defserver.getName() );
+        List<Lcmucin> lcmucin = defserver.find(Lcmucin.class).findList();
         for(Lcmucin l : lcmucin) {
+            System.out.println("lcm: " + l.getLcmucinId());
             Resource r = null;
             String sequenceURI = "http://rdf.unicarbdb.org/structure/" + l.glycanSequence.glycanSequenceId;
             r = model.createResource(sequenceURI, GLYCOVOCAB.saccharide);
 
             r.addProperty(GLYCOVOCAB.glycosequence, createhasSequenceCTLcmucin(model, l.glycanSequence));
             createMSResource(model, l);
+            createAcquisition(model, l);
         }
         return model;
+    }
+
+    /*
+    we have limited data all ion trap but different manufactures so can be lesss strict for now
+     */
+    public static Resource createAcquisition(Model model, Lcmucin lcmucin){
+        Resource r = null;
+        String acquisitionURI= "http://rdf.unicarbdb.org/instrumentDetails/";
+        r = model.createResource(acquisitionURI);
+        Acquisition acquisition = Ebean.find(Acquisition.class, lcmucin.getAcquisitionId());
+        try{
+            Device device = acquisition.device;
+
+        } catch (Exception e) {
+
+        }
+        return r;
     }
 
     public static Resource createhasSequenceCTLcmucin(Model model, GlycanSequence structure) {
@@ -38,8 +60,7 @@ public class MassSpec {
         String sequenceURI = "http://rdf.unicarbdb.org/structure/" + structure.glycanSequenceId + "/ct";
         r = model.createResource(sequenceURI);
             try {
-                String glycoct = structure.sequenceCt;
-
+                String glycoct = structure.getSequenceCt();
                 if (!glycoct.isEmpty()) {
                     r.addProperty(GLYCOVOCAB.hasSequence, glycoct);
                     r.addProperty(GLYCOVOCAB.inCarbohydrateFormat, GLYCOVOCAB.carbohydrateFormatGlycoct);
@@ -48,7 +69,7 @@ public class MassSpec {
                 }
 
             } catch (Exception e) {
-                System.out.println("Failed here: " + e.getCause());
+                System.out.println("Failed here for ct: " + e.getCause());
             }
         return r;
     }
@@ -57,22 +78,24 @@ public class MassSpec {
 
         Resource r = null;
         try {
-            String uri = "http://rdf.unicarbkb.org/massSpectrum/" + lcmucin.lcmucinId; //might change to scan
+            String uri = "http://rdf.unicarbdb.org/massSpectrum/" + lcmucin.lcmucinId; //might change to scan
             r = model.createResource(uri, GLYCOVOCAB.massSpectrum);
             r.addLiteral(GLYCOVOCAB.hasRetentionTime, lcmucin.retentionTime);
-            r.addLiteral(GLYCOVOCAB.hasMsnLevel, "2");
+            r.addLiteral(GLYCOVOCAB.hasMsnLevel, 2);
             //add scan number number?
             models.unicarbdb.ms.Scan scan = lcmucin.scan;
+            List<PeakList> peakList = scan.getPeakLists();
 
-            for(PeakList peakList : scan.peakLists) {
-                    for(PeakLabeled peakLabeled : peakList.peakLabeled) {
-                        r.addProperty(GLYCOVOCAB.hasMsPeak, createMsPeak(model, peakLabeled));
-                    }
+            for(PeakList peak :peakList) {
+                //System.out.println("scan: " + peak.getPeakLabeled());
+                for(PeakLabeled peakLabeled : peak.getPeakLabeled()) {
+                    r.addProperty(GLYCOVOCAB.hasMsPeak, createMsPeak(model, peakLabeled));
+                }
             }
 
 
         } catch (Exception e) {
-            System.out.println("Failed here: " + e.getCause());
+            System.out.println("Failed here peaks: " + e.getCause());
         }
         return r;
     }
@@ -80,7 +103,7 @@ public class MassSpec {
     public static Resource createMsPeak(Model model, PeakLabeled peakLabeled) {
         Resource r = null;
         try{
-            String uri = "http://rdf.unicarbkb.org/massSpectrum/peakList/" + UUID.randomUUID();
+            String uri = "http://rdf.unicarbdb.org/massSpectrum/peakList/" + UUID.randomUUID();
             r = model.createResource(uri, GLYCOVOCAB.hasMsPeak);
             r.addLiteral(GLYCOVOCAB.hasIntensity, peakLabeled.intensityValue);
             r.addLiteral(GLYCOVOCAB.hasMz, peakLabeled.mzValue);

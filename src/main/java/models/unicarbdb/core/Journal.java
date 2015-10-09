@@ -6,7 +6,7 @@
 
 package models.unicarbdb.core;
 
-import play.db.ebean.Model;
+
 
 import javax.persistence.*;
 import java.util.List;
@@ -26,4 +26,35 @@ public class Journal  {
     @OneToMany
     public List<JournalReference> journalref;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getJournalTitle() {
+        return journalTitle;
+    }
+
+    public void setJournalTitle(String journalTitle) {
+        this.journalTitle = journalTitle;
+    }
+
+    public String getJournalAbbrev() {
+        return journalAbbrev;
+    }
+
+    public void setJournalAbbrev(String journalAbbrev) {
+        this.journalAbbrev = journalAbbrev;
+    }
+
+    public List<JournalReference> getJournalref() {
+        return journalref;
+    }
+
+    public void setJournalref(List<JournalReference> journalref) {
+        this.journalref = journalref;
+    }
 }

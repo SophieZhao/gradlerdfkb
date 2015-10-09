@@ -10,9 +10,9 @@ import java.util.*;
 
 import javax.persistence.*;
 
-import play.db.ebean.*;
-import play.data.format.*;
-import play.data.validation.*;
+
+
+
 
 import com.avaje.ebean.*;
 
@@ -28,4 +28,27 @@ public class TaxonomySynonym {
 	public Taxonomy taxonomy;
 	public String synonym;
 
+	public Long getTaxonomySynonymId() {
+		return taxonomySynonymId;
+	}
+
+	public void setTaxonomySynonymId(Long taxonomySynonymId) {
+		this.taxonomySynonymId = taxonomySynonymId;
+	}
+
+	public Taxonomy getTaxonomy() {
+		return taxonomy;
+	}
+
+	public void setTaxonomy(Taxonomy taxonomy) {
+		this.taxonomy = taxonomy;
+	}
+
+	public String getSynonym() {
+		return synonym;
+	}
+
+	public void setSynonym(String synonym) {
+		this.synonym = synonym;
+	}
 }

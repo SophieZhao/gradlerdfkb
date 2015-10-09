@@ -6,8 +6,8 @@
 
 package models.unicarbdb.ms;
 
-import models.hplc.Lcmucin;
-import play.db.ebean.Model;
+import models.unicarbdb.hplc.Lcmucin;
+
 
 import javax.persistence.*;
 import java.util.List;
@@ -35,5 +35,59 @@ public class ReducingEnd  {
     @OneToMany(mappedBy = "reducingEnd")
     public List<models.unicarbdb.hplc.Lcmucin> lcmucin;
 
+    public Long getReducingEndId() {
+        return reducingEndId;
+    }
 
+    public void setReducingEndId(Long reducingEndId) {
+        this.reducingEndId = reducingEndId;
+    }
+
+    public String getAbbreviation() {
+        return abbreviation;
+    }
+
+    public void setAbbreviation(String abbreviation) {
+        this.abbreviation = abbreviation;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getUri() {
+        return uri;
+    }
+
+    public void setUri(String uri) {
+        this.uri = uri;
+    }
+
+    public List<PeakAnnotated> getPeakAnnotateds() {
+        return peakAnnotateds;
+    }
+
+    public void setPeakAnnotateds(List<PeakAnnotated> peakAnnotateds) {
+        this.peakAnnotateds = peakAnnotateds;
+    }
+
+    public List<Scan> getScan() {
+        return scan;
+    }
+
+    public void setScan(List<Scan> scan) {
+        this.scan = scan;
+    }
+
+    public List<Lcmucin> getLcmucin() {
+        return lcmucin;
+    }
+
+    public void setLcmucin(List<Lcmucin> lcmucin) {
+        this.lcmucin = lcmucin;
+    }
 }

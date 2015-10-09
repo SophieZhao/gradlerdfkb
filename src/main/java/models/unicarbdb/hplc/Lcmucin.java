@@ -6,28 +6,15 @@
 
 package models.unicarbdb.hplc;
 
-import com.avaje.ebean.Ebean;
-import com.avaje.ebean.Expr;
-import com.avaje.ebean.Junction;
-import models.core.*;
-import models.ms.*;
-import models.unicarbdb.core.Evidence;
-import models.unicarbdb.core.GlycanSequence;
-import models.unicarbdb.core.JournalReference;
+import models.unicarbdb.core.*;
+import models.unicarbdb.ms.Persubstitution;
+import models.unicarbdb.ms.ReducingEnd;
 import models.unicarbdb.ms.Scan;
-import org.apache.commons.lang.StringUtils;
-import org.eurocarbdb.application.glycanbuilder.Glycan;
-import org.eurocarbdb.application.glycanbuilder.GlycoCTCondensedParser;
-import org.eurocarbdb.application.glycanbuilder.MassOptions;
-import play.Logger;
-import play.db.ebean.Model;
 
 import javax.persistence.Column;
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
-import static models.core.GlycanSequence.countSubstring;
+
 
 @Entity
 @Table(schema="hplc", name="lcmucin")
@@ -41,7 +28,7 @@ public class Lcmucin  {
 
     @ManyToOne
     @JoinColumn(name="column_id")
-    public models.hplc.Column column;
+    public models.unicarbdb.hplc.Column column;
 
     @ManyToOne
     @JoinColumn(name="glycan_sequence_id")
@@ -49,12 +36,184 @@ public class Lcmucin  {
 
     @ManyToOne
     @JoinColumn(name="method_run_id")
-    public models.hplc.MethodRun methodRun;
+    public models.unicarbdb.hplc.MethodRun methodRun;
 
     public Double retentionTime;
 
     public Evidence evidence;
     public Evidence evidencelc;
+
+    public static String getBool() {
+        return bool;
+    }
+
+    public Long getLcmucinId() {
+        return lcmucinId;
+    }
+
+    public void setLcmucinId(Long lcmucinId) {
+        this.lcmucinId = lcmucinId;
+    }
+
+    public models.unicarbdb.hplc.Column getColumn() {
+        return column;
+    }
+
+    public void setColumn(models.unicarbdb.hplc.Column column) {
+        this.column = column;
+    }
+
+    public GlycanSequence getGlycanSequence() {
+        return glycanSequence;
+    }
+
+    public void setGlycanSequence(GlycanSequence glycanSequence) {
+        this.glycanSequence = glycanSequence;
+    }
+
+    public MethodRun getMethodRun() {
+        return methodRun;
+    }
+
+    public void setMethodRun(MethodRun methodRun) {
+        this.methodRun = methodRun;
+    }
+
+    public Double getRetentionTime() {
+        return retentionTime;
+    }
+
+    public void setRetentionTime(Double retentionTime) {
+        this.retentionTime = retentionTime;
+    }
+
+    public Evidence getEvidence() {
+        return evidence;
+    }
+
+    public void setEvidence(Evidence evidence) {
+        this.evidence = evidence;
+    }
+
+    public Evidence getEvidencelc() {
+        return evidencelc;
+    }
+
+    public void setEvidencelc(Evidence evidencelc) {
+        this.evidencelc = evidencelc;
+    }
+
+    public Scan getScan() {
+        return scan;
+    }
+
+    public void setScan(Scan scan) {
+        this.scan = scan;
+    }
+
+    public Integer getScanparent() {
+        return scanparent;
+    }
+
+    public void setScanparent(Integer scanparent) {
+        this.scanparent = scanparent;
+    }
+
+    public Integer getAcquisitionId() {
+        return acquisitionId;
+    }
+
+    public void setAcquisitionId(Integer acquisitionId) {
+        this.acquisitionId = acquisitionId;
+    }
+
+    public String getGwpname() {
+        return gwpname;
+    }
+
+    public void setGwpname(String gwpname) {
+        this.gwpname = gwpname;
+    }
+
+    public String getIonizationMethod() {
+        return ionizationMethod;
+    }
+
+    public void setIonizationMethod(String ionizationMethod) {
+        this.ionizationMethod = ionizationMethod;
+    }
+
+    public Integer getStandard() {
+        return standard;
+    }
+
+    public void setStandard(Integer standard) {
+        this.standard = standard;
+    }
+
+    public String getNote() {
+        return note;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
+    }
+
+    public EvidenceToGlycoprotein getEvidenceToGlycoprotein() {
+        return evidenceToGlycoprotein;
+    }
+
+    public void setEvidenceToGlycoprotein(EvidenceToGlycoprotein evidenceToGlycoprotein) {
+        this.evidenceToGlycoprotein = evidenceToGlycoprotein;
+    }
+
+    public JournalReference getJournalReference() {
+        return journalReference;
+    }
+
+    public void setJournalReference(JournalReference journalReference) {
+        this.journalReference = journalReference;
+    }
+
+    public Integer getBiologicalContextId() {
+        return biologicalContextId;
+    }
+
+    public void setBiologicalContextId(Integer biologicalContextId) {
+        this.biologicalContextId = biologicalContextId;
+    }
+
+    public BiologicalContext getBiologicalContext() {
+        return biologicalContext;
+    }
+
+    public void setBiologicalContext(BiologicalContext biologicalContext) {
+        this.biologicalContext = biologicalContext;
+    }
+
+    public ReducingEnd getReducingEnd() {
+        return reducingEnd;
+    }
+
+    public void setReducingEnd(ReducingEnd reducingEnd) {
+        this.reducingEnd = reducingEnd;
+    }
+
+    public Persubstitution getPersubstitution() {
+        return persubstitution;
+    }
+
+    public void setPersubstitution(Persubstitution persubstitution) {
+        this.persubstitution = persubstitution;
+    }
+
+    public boolean isShowHide() {
+        return showHide;
+    }
+
+    public void setShowHide(boolean showHide) {
+        this.showHide = showHide;
+    }
 
     @ManyToOne
     @JoinColumn(name="scan_id")
@@ -81,7 +240,7 @@ public class Lcmucin  {
 
     @ManyToOne
     @JoinColumn(name="biological_context_id")
-    public models.core.BiologicalContext biologicalContext;
+    public models.unicarbdb.core.BiologicalContext biologicalContext;
 
     @ManyToOne
     @JoinColumn(name = "reducing_end_id")
@@ -93,73 +252,10 @@ public class Lcmucin  {
     @Column(name = "persubstitution_id")
     public Persubstitution persubstitution;
 
-    /*
-    This is temp while we curated and cleanup for version 2.0 release
-    true = hide
-     */
+
     public boolean showHide;
 
     public static final String bool = "FALSE";
 
 
-    p
-
-    /*
-    TODO need to remove the below
-     */
-    public void setColumn(models.unicarbdb.hplc.Column column) {
-        this.column = column;
-    }
-
-    public void setGlycanSequence(GlycanSequence glycanSequence) {
-        this.glycanSequence = glycanSequence;
-    }
-
-    public void setMethodRun(MethodRun methodRun) {
-        this.methodRun = methodRun;
-    }
-
-    public void setRetentionTime(Double retentionTime) {
-        this.retentionTime = retentionTime;
-    }
-
-    public void setEvidence(Evidence evidence) {
-        this.evidence = evidence;
-    }
-
-    public void setEvidencelc(Evidence evidencelc) {
-        this.evidencelc = evidencelc;
-    }
-
-    public void setScan(models.unicarbdb.ms.Scan scan) {
-        this.scan = scan;
-    }
-
-    public void setScanparent(Integer scanparent) {
-        this.scanparent = scanparent;
-    }
-
-    public void setAcquisitionId(Integer acquisitionId) {
-        this.acquisitionId = acquisitionId;
-    }
-
-    public void setGwpname(String gwpname) {
-        this.gwpname = gwpname;
-    }
-
-    public void setIonizationMethod(String ionizationMethod) {
-        this.ionizationMethod = ionizationMethod;
-    }
-
-    public void setStandard(Integer standard) {
-        this.standard = standard;
-    }
-
-    public void setJournalReference(JournalReference journalReference) {
-        this.journalReference = journalReference;
-    }
-
-    public void setBiologicalContextId(Integer biologicalContextId) {
-        this.biologicalContextId = biologicalContextId;
-    }
 }

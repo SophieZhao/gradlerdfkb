@@ -6,7 +6,7 @@
 
 package models.unicarbdb.ms;
 
-import play.db.ebean.Model;
+
 
 import javax.persistence.*;
 import java.util.List;
@@ -38,32 +38,72 @@ public class PeakLabeled  {
     @OneToMany(mappedBy = "peakLabeled", cascade = CascadeType.ALL)
     public List<PeakAnnotated> peakAnnotateds; // = new HashSet<org.eurocarbdb.dataaccess.ms.PeakAnnotated>();
 
+    public Long getPeakLabeledId() {
+        return peakLabeledId;
+    }
+
+    public void setPeakLabeledId(Long peakLabeledId) {
+        this.peakLabeledId = peakLabeledId;
+    }
+
+    public PeakList getPeakList() {
+        return peakList;
+    }
+
     public void setPeakList(PeakList peakList) {
         this.peakList = peakList;
+    }
+
+    public Double getMzValue() {
+        return mzValue;
     }
 
     public void setMzValue(Double mzValue) {
         this.mzValue = mzValue;
     }
 
+    public Double getIntensityValue() {
+        return intensityValue;
+    }
+
     public void setIntensityValue(Double intensityValue) {
         this.intensityValue = intensityValue;
+    }
+
+    public Boolean getMonoisotopic() {
+        return monoisotopic;
     }
 
     public void setMonoisotopic(Boolean monoisotopic) {
         this.monoisotopic = monoisotopic;
     }
 
+    public Integer getChargeCount() {
+        return chargeCount;
+    }
+
     public void setChargeCount(Integer chargeCount) {
         this.chargeCount = chargeCount;
+    }
+
+    public Double getFwhm() {
+        return fwhm;
     }
 
     public void setFwhm(Double fwhm) {
         this.fwhm = fwhm;
     }
 
+    public Double getSignalToNoise() {
+        return signalToNoise;
+    }
+
     public void setSignalToNoise(Double signalToNoise) {
         this.signalToNoise = signalToNoise;
+    }
+
+    public List<PeakAnnotated> getPeakAnnotateds() {
+        return peakAnnotateds;
     }
 
     public void setPeakAnnotateds(List<PeakAnnotated> peakAnnotateds) {

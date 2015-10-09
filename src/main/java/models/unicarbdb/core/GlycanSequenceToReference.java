@@ -11,9 +11,9 @@ import java.math.BigDecimal;
 
 import javax.persistence.*;
 
-import play.db.ebean.*;
-import play.data.format.*;
-import play.data.validation.*;
+
+
+
 
 import com.avaje.ebean.*;
 
@@ -34,5 +34,43 @@ public class GlycanSequenceToReference  {
 
 	public Date dateEntered = new Date();
 
+	public Long getGlycanSequenceReferenceId() {
+		return glycanSequenceReferenceId;
+	}
 
+	public void setGlycanSequenceReferenceId(Long glycanSequenceReferenceId) {
+		this.glycanSequenceReferenceId = glycanSequenceReferenceId;
+	}
+
+	public Reference getReference() {
+		return reference;
+	}
+
+	public void setReference(Reference reference) {
+		this.reference = reference;
+	}
+
+	public GlycanSequence getGlycanSequence() {
+		return glycanSequence;
+	}
+
+	public void setGlycanSequence(GlycanSequence glycanSequence) {
+		this.glycanSequence = glycanSequence;
+	}
+
+	public Contributor getContributor() {
+		return contributor;
+	}
+
+	public void setContributor(Contributor contributor) {
+		this.contributor = contributor;
+	}
+
+	public Date getDateEntered() {
+		return dateEntered;
+	}
+
+	public void setDateEntered(Date dateEntered) {
+		this.dateEntered = dateEntered;
+	}
 }

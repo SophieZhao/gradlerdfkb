@@ -6,7 +6,7 @@
 
 package models.unicarbdb.ms;
 
-import play.db.ebean.Model;
+
 
 import javax.persistence.*;
 
@@ -22,5 +22,35 @@ public class PeakAnnotatedToSmallMolecule  {
     public Boolean gain;
     public Integer number;
 
+    public Long getPeakAnnotatedToSmallMoleculeId() {
+        return peakAnnotatedToSmallMoleculeId;
+    }
 
+    public void setPeakAnnotatedToSmallMoleculeId(Long peakAnnotatedToSmallMoleculeId) {
+        this.peakAnnotatedToSmallMoleculeId = peakAnnotatedToSmallMoleculeId;
+    }
+
+    public PeakAnnotated getPeakAnnotated() {
+        return peakAnnotated;
+    }
+
+    public void setPeakAnnotated(PeakAnnotated peakAnnotated) {
+        this.peakAnnotated = peakAnnotated;
+    }
+
+    public Boolean getGain() {
+        return gain;
+    }
+
+    public void setGain(Boolean gain) {
+        this.gain = gain;
+    }
+
+    public Integer getNumber() {
+        return number;
+    }
+
+    public void setNumber(Integer number) {
+        this.number = number;
+    }
 }

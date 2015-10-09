@@ -7,7 +7,7 @@
 package models.unicarbdb.core;
 
 import com.avaje.ebean.Ebean;
-import play.db.ebean.Model;
+
 
 import javax.persistence.Entity;
 import javax.persistence.Id;

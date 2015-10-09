@@ -10,9 +10,9 @@ import java.util.*;
 
 import javax.persistence.*;
 
-import play.db.ebean.*;
-import play.data.format.*;
-import play.data.validation.*;
+
+
+
 
 import com.avaje.ebean.*;
 
@@ -27,4 +27,27 @@ public class TissueTaxonomySynonym  {
     public TissueTaxonomy tissueTaxonomy;
     public String synonym;
 
+    public Long getTissueTaxonomySynonymId() {
+        return tissueTaxonomySynonymId;
+    }
+
+    public void setTissueTaxonomySynonymId(Long tissueTaxonomySynonymId) {
+        this.tissueTaxonomySynonymId = tissueTaxonomySynonymId;
+    }
+
+    public TissueTaxonomy getTissueTaxonomy() {
+        return tissueTaxonomy;
+    }
+
+    public void setTissueTaxonomy(TissueTaxonomy tissueTaxonomy) {
+        this.tissueTaxonomy = tissueTaxonomy;
+    }
+
+    public String getSynonym() {
+        return synonym;
+    }
+
+    public void setSynonym(String synonym) {
+        this.synonym = synonym;
+    }
 }

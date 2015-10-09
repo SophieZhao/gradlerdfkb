@@ -6,7 +6,7 @@
 
 package models.unicarbdb.ms;
 
-import play.db.ebean.Model;
+
 
 import javax.persistence.*;
 
@@ -32,5 +32,51 @@ public class ScanToIon  {
     public boolean gain;
     public String neutralexchange;
 
+    public Long getScanToIonId() {
+        return scanToIonId;
+    }
 
+    public void setScanToIonId(Long scanToIonId) {
+        this.scanToIonId = scanToIonId;
+    }
+
+    public Ion getIon() {
+        return ion;
+    }
+
+    public void setIon(Ion ion) {
+        this.ion = ion;
+    }
+
+    public Scan getScan() {
+        return scan;
+    }
+
+    public void setScan(Scan scan) {
+        this.scan = scan;
+    }
+
+    public int getCharge() {
+        return charge;
+    }
+
+    public void setCharge(int charge) {
+        this.charge = charge;
+    }
+
+    public boolean isGain() {
+        return gain;
+    }
+
+    public void setGain(boolean gain) {
+        this.gain = gain;
+    }
+
+    public String getNeutralexchange() {
+        return neutralexchange;
+    }
+
+    public void setNeutralexchange(String neutralexchange) {
+        this.neutralexchange = neutralexchange;
+    }
 }

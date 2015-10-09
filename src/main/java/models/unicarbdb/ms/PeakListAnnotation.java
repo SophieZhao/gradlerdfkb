@@ -6,7 +6,7 @@
 
 package models.unicarbdb.ms;
 
-import play.db.ebean.Model;
+
 
 import javax.persistence.*;
 import java.util.List;
@@ -24,4 +24,27 @@ public class PeakListAnnotation  {
     private String description;
     private List<PeakList> peakLists; // = new HashSet<org.eurocarbdb.dataaccess.ms.PeakList>();
 
+    public Long getPeakListAnnotationId() {
+        return peakListAnnotationId;
+    }
+
+    public void setPeakListAnnotationId(Long peakListAnnotationId) {
+        this.peakListAnnotationId = peakListAnnotationId;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public List<PeakList> getPeakLists() {
+        return peakLists;
+    }
+
+    public void setPeakLists(List<PeakList> peakLists) {
+        this.peakLists = peakLists;
+    }
 }

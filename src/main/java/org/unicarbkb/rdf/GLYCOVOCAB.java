@@ -161,12 +161,15 @@ public class GLYCOVOCAB extends Object {
     static final String nhasMsPeak = "has_ms_peak";
     public static Property hasMsPeak = null;
 
+    //strictly should use MS:1000042 from PSI-MS
     static final String nhasIntensity = "has_intensity";
     public static Property hasIntensity = null;
 
+    //check PSI-MS
     static final String nhasCharge = "has_charge";
     public static Property hasCharge = null;
 
+    //strictly should use MS:1000040 from psi-ms
     static final String nhasMz = "has_mz";
     public static Property hasMz = null;
 
