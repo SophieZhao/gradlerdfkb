@@ -1,6 +1,10 @@
 package org.unicarbkb.rdf;
 
-import com.hp.hpl.jena.rdf.model.*;
+
+import org.apache.jena.rdf.model.Model;
+import org.apache.jena.rdf.model.ModelFactory;
+import org.apache.jena.rdf.model.Property;
+import org.apache.jena.rdf.model.Resource;
 
 
 public class bibo {

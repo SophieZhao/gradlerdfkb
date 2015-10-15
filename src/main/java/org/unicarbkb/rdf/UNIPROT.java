@@ -1,9 +1,10 @@
 package org.unicarbkb.rdf;
 
-import com.hp.hpl.jena.rdf.model.Property;
-import com.hp.hpl.jena.rdf.model.RDFNode;
-import com.hp.hpl.jena.rdf.model.impl.PropertyImpl;
-import com.hp.hpl.jena.reasoner.ReasonerException;
+
+import org.apache.jena.rdf.model.Property;
+import org.apache.jena.rdf.model.RDFNode;
+import org.apache.jena.rdf.model.impl.PropertyImpl;
+import org.apache.jena.reasoner.ReasonerException;
 
 public class UNIPROT {
 

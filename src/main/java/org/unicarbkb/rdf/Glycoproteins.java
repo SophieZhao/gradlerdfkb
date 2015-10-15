@@ -1,16 +1,12 @@
 package org.unicarbkb.rdf;
 
-import com.hp.hpl.jena.rdf.model.Model;
-import com.hp.hpl.jena.rdf.model.Resource;
-import com.hp.hpl.jena.rdf.model.ResourceFactory;
-import com.hp.hpl.jena.shared.uuid.JenaUUID;
-import com.hp.hpl.jena.vocabulary.DC;
-import com.hp.hpl.jena.vocabulary.RDF;
-import models.database.*;
-import org.unicarbkb.rdf.StructureRDF;
+import org.apache.jena.rdf.model.Model;
+import org.apache.jena.rdf.model.Resource;
+
+import models.unicarbkb.*;
+import org.apache.jena.vocabulary.RDF;
 
 import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 import java.util.List;
 
 import static java.net.URLEncoder.encode;

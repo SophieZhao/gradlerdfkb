@@ -1,17 +1,13 @@
 package org.unicarbkb.rdf;
 
 import com.avaje.ebean.Ebean;
-import com.hp.hpl.jena.rdf.model.Model;
-import com.hp.hpl.jena.rdf.model.Resource;
-import com.hp.hpl.jena.shared.uuid.JenaUUID;
-import com.hp.hpl.jena.vocabulary.RDF;
-import com.hp.hpl.jena.vocabulary.RDFS;
-import models.database.Reference;
-import models.database.Sourceref;
-import models.database.Strproteintaxbiolsource;
-import models.database.Taxonomy;
+import models.unicarbkb.Strproteintaxbiolsource;
+import models.unicarbkb.Taxonomy;
+import org.apache.jena.rdf.model.Model;
+import org.apache.jena.rdf.model.Resource;
+import org.apache.jena.vocabulary.RDF;
+import org.apache.jena.vocabulary.RDFS;
 
-import java.net.URLEncoder;
 import java.util.List;
 
 import static org.unicarbkb.rdf.ReferenceRDF.createPublication;
@@ -22,9 +18,9 @@ import static org.unicarbkb.rdf.StructureRDF.createStructureFromDefinedSite;
 public class TaxonomyBiol {
 
     /*
-    Use this to create taxonomy records
-    Need to add IDs from uniprot taxonomy
-     */
+        Use this to create taxonomy records
+        Need to add IDs from uniprot taxonomy
+         */
     public static void createTaxonomy(Model model) {
         try {
             List<Taxonomy> taxonomy;

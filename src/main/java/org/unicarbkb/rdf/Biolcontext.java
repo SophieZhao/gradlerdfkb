@@ -1,9 +1,9 @@
 package org.unicarbkb.rdf;
 
 import com.avaje.ebean.Ebean;
-import com.hp.hpl.jena.rdf.model.Model;
-import com.hp.hpl.jena.rdf.model.Resource;
-import models.database.Biolsource;
+import org.apache.jena.rdf.model.Model;
+import org.apache.jena.rdf.model.Resource;
+import models.unicarbkb.Biolsource;
 
 import java.util.List;
 

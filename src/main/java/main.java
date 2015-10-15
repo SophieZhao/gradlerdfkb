@@ -1,24 +1,11 @@
-import com.avaje.ebean.Ebean;
-import com.hp.hpl.jena.rdf.model.Model;
-import com.hp.hpl.jena.rdf.model.ResIterator;
-import com.hp.hpl.jena.rdf.model.Resource;
-import com.hp.hpl.jena.rdf.model.StmtIterator;
-import models.database.Proteins;
-import models.database.Reference;
-import models.database.Structure;
-import models.unicarbdb.hplc.Lcmucin;
+
+import org.apache.jena.rdf.model.Model;
 import org.unicarbkb.rdf.Namespaces;
 
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.List;
 
-import static org.unicarbkb.rdf.Glycoproteins.createProteins;
 import static org.unicarbkb.rdf.MassSpec.createLcStructureResource;
-import static org.unicarbkb.rdf.ReferenceRDF.createPublication;
-import static org.unicarbkb.rdf.StructureRDF.createStructureResource;
-import static org.unicarbkb.rdf.TaxonomyBiol.*;
-import models.database.CTParser;
 
 /**
  * Created by matthew on 07/05/2014.

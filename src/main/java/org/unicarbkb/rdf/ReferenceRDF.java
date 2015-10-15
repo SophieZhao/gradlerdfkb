@@ -1,22 +1,20 @@
 package org.unicarbkb.rdf;
 
 import com.avaje.ebean.Ebean;
-import com.hp.hpl.jena.rdf.model.Model;
-import com.hp.hpl.jena.rdf.model.Resource;
-import com.hp.hpl.jena.rdf.model.ResourceFactory;
-import com.hp.hpl.jena.vocabulary.DC;
-import com.hp.hpl.jena.vocabulary.DCTerms;
-import com.hp.hpl.jena.vocabulary.OWL;
-import com.hp.hpl.jena.vocabulary.RDF;
-import models.database.Journal;
-import models.database.Method;
-import models.database.Reference;
-import models.database.Refmethod;
-import com.hp.hpl.jena.sparql.vocabulary.FOAF;
+import models.unicarbkb.Journal;
+import models.unicarbkb.Method;
+import models.unicarbkb.Reference;
+import models.unicarbkb.Refmethod;
+import org.apache.jena.rdf.model.Model;
+import org.apache.jena.rdf.model.Resource;
+import org.apache.jena.sparql.vocabulary.FOAF;
+import org.apache.jena.vocabulary.DC;
+import org.apache.jena.vocabulary.DCTerms;
+import org.apache.jena.vocabulary.OWL;
+import org.apache.jena.vocabulary.RDF;
 
 import java.net.URLEncoder;
 import java.util.List;
-import java.util.logging.Logger;
 
 /**
  * Created by matthew on 07/05/2014.

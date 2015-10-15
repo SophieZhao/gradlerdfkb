@@ -2,15 +2,11 @@ package org.unicarbkb.rdf;
 
 import com.avaje.ebean.Ebean;
 import com.avaje.ebean.EbeanServer;
-import com.avaje.ebean.Query;
-import com.hp.hpl.jena.rdf.model.Model;
-import com.hp.hpl.jena.rdf.model.Resource;
-import com.hp.hpl.jena.vocabulary.RDF;
-import models.database.Reference;
-import models.database.Structure;
 import models.unicarbdb.core.GlycanSequence;
 import models.unicarbdb.hplc.Lcmucin;
 import models.unicarbdb.ms.*;
+import org.apache.jena.rdf.model.Model;
+import org.apache.jena.rdf.model.Resource;
 
 import java.util.List;
 import java.util.UUID;
@@ -27,6 +23,9 @@ public class MassSpec {
         List<Lcmucin> lcmucin = defserver.find(Lcmucin.class).findList();
         for(Lcmucin l : lcmucin) {
             System.out.println("lcm: " + l.getLcmucinId());
+
+
+
             Resource r = null;
             String sequenceURI = "http://rdf.unicarbdb.org/structure/" + l.glycanSequence.glycanSequenceId;
             r = model.createResource(sequenceURI, GLYCOVOCAB.saccharide);
