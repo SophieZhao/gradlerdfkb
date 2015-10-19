@@ -1,10 +1,13 @@
 package glycobase;
 
+import com.google.common.base.Splitter;
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -13,46 +16,56 @@ import java.util.stream.Stream;
  */
 public class Glycobase {
 
-        private final String glycanName;
-        private final int glycobaseId;
-        private final String glycoCT; //note presence of comma in string
-        private final String uplc;
-        private final String hplc;
-        private final String ce;
-        private final String rpuplc;
-        private final String taxonomy;
-        private final String tissue;
-        private final String disease;
-        private final String reportTitle;
-        private final String reportIds;
-        private final String sampleTitle;
-        private final String sampleIds;
-        private final String profileTitles;
-        private final String profileIds;
-        private final String digestionChildren;
-        private final String digestionParents;
+    private final String glycanName;
+    private final int glycobaseId;
+    private final String glycoCT; //note presence of comma in string
+    private final String uplc;
+    private final String hplc;
+    private final String ce;
+    private final String rpuplc;
+    private final String taxonomy;
+    private final String tissue;
+    private final String disease;
+    private final String reportTitle;
+    private final String reportIds;
+    private final String sampleTitle;
+    private final String sampleIds;
+    private final String profileTitles;
+    private final String profileIds;
+    private final String digestionChildren;
+    private final String digestionParents;
 
-        public Glycobase(String glycanName, int glycobaseId, String glycoCT, String uplc, String hplc, String ce, String rpuplc, String taxonomy, String tissue, String disease, String reportTitle, String reportIds, String sampleTitle, String sampleIds, String profileTitles, String profileIds, String digestionChildren, String digestionParents) {
-            this.glycanName = glycanName;
-            this.glycobaseId = glycobaseId;
-            this.glycoCT = glycoCT;
-            this.uplc = uplc;
-            this.hplc = hplc;
-            this.ce = ce;
-            this.rpuplc = rpuplc;
-            this.taxonomy = taxonomy;
-            this.tissue = tissue;
-            this.disease = disease;
-            this.reportTitle = reportTitle;
-            this.reportIds = reportIds;
-            this.sampleTitle = sampleTitle;
-            this.sampleIds = sampleIds;
-            this.profileTitles = profileTitles;
-            this.profileIds = profileIds;
-            this.digestionChildren = digestionChildren;
-            this.digestionParents = digestionParents;
-        }
+    public Glycobase(String glycanName, int glycobaseId, String glycoCT, String uplc, String hplc, String ce, String rpuplc, String taxonomy, String tissue, String disease, String reportTitle, String reportIds, String sampleTitle, String sampleIds, String profileTitles, String profileIds, String digestionChildren, String digestionParents) {
+        this.glycanName = glycanName;
+        this.glycobaseId = glycobaseId;
+        this.glycoCT = glycoCT;
+        this.uplc = uplc;
+        this.hplc = hplc;
+        this.ce = ce;
+        this.rpuplc = rpuplc;
+        this.taxonomy = taxonomy;
+        this.tissue = tissue;
+        this.disease = disease;
+        this.reportTitle = reportTitle;
+        this.reportIds = reportIds;
+        this.sampleTitle = sampleTitle;
+        this.sampleIds = sampleIds;
+        this.profileTitles = profileTitles;
+        this.profileIds = profileIds;
+        this.digestionChildren = digestionChildren;
+        this.digestionParents = digestionParents;
+    }
 
+    public static List<String> readArrayLine(String data) {
+
+        List<String> elementsInString = Splitter.on(",").splitToList(data);
+
+        return elementsInString;
+    }
+
+    /*
+    Read csv file and chop up
+     */
     public void readCSV() throws IOException {
         ClassLoader classLoader = getClass().getClassLoader();
         File file = new File(classLoader.getResource("glycobase.csv").getFile());
@@ -62,10 +75,10 @@ public class Glycobase {
             glycobase = lines.skip(1).map(line -> line.split("\\t")).map(line -> {
                 final int id = Integer.parseInt(line[1]);
                 final String name = line[0];
-                final String ct = line [2];
+                final String ct = line[2];
                 final String uplc = line[3];
                 final String hplc = line[4];
-                final String ce = line[5] ;
+                final String ce = line[5];
                 final String rpuplc = line[6];
                 final String taxonomy = line[7];
                 final String tissue = line[8];
@@ -82,8 +95,25 @@ public class Glycobase {
             }).collect(Collectors.toList());
         }
 
-        System.out.println("check size " + glycobase.size());
+        for (Glycobase glycan : glycobase) {
 
+            List<String> uplcSplit = Glycobase.readArrayLine(glycan.getUplc());
+            List<String> hplcSplit = Glycobase.readArrayLine(glycan.getHplc());
+            List<String> ceSplit = Glycobase.readArrayLine(glycan.getCe());
+            List<String> rpuplcSplit = Glycobase.readArrayLine(glycan.getRpuplc());
+            List<String> taxonomySplit = Glycobase.readArrayLine(glycan.getTaxonomy());
+            List<String> tissueSplit = Glycobase.readArrayLine(glycan.getTissue());
+            List<String> diseaseSplit = Glycobase.readArrayLine(glycan.getDisease());
+            List<String> reportTitleSplit = Glycobase.readArrayLine(glycan.getReportTitle());
+            List<String> reportIdsSplit = Glycobase.readArrayLine(glycan.getReportIds());
+            List<String> sampleTitleSplit = Glycobase.readArrayLine(glycan.getSampleTitle());
+            List<String> sampleIdsSplit = Glycobase.readArrayLine(glycan.getSampleIds());
+            List<String> profileTitlesSplit = Glycobase.readArrayLine(glycan.getProfileTitles());
+            List<String> profileIdsSplit = Glycobase.readArrayLine(glycan.getProfileIds());
+            Map<String, String> digestionChildrenSplit = DigestChildrenParent.readDigestChildren(glycan.getDigestionChildren());
+            Map<String, String> digestionParentsSplit = DigestChildrenParent.readDigestChildren(glycan.getDigestionParents());
+
+        }
     }
 
     public String getGlycanName() {
