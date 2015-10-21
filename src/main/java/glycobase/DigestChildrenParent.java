@@ -1,5 +1,6 @@
 package glycobase;
 
+import com.avaje.ebean.EbeanServer;
 import com.google.common.base.Splitter;
 import models.glycobase.DigestChildren;
 import models.glycobase.DigestParent;
@@ -44,7 +45,7 @@ public class DigestChildrenParent {
         this.standard = standard;
     }
 
-    public static Map<String, String> readDigestChildren(String digestChildren, Structure structure) {
+    public static Map<String, String> readDigestChildren(String digestChildren, Structure structure, EbeanServer glycobaseServer) {
 
         digestChildren = digestChildren.replaceAll("enzymes:BTG, SPG", "enzymes:BTG;SPG");
         digestChildren = digestChildren.replaceAll("enzymes:SPG, BTG", "enzymes:SPG;BTG");
@@ -83,27 +84,29 @@ public class DigestChildrenParent {
 
                 //need to tidy up choped keys
                 DigestChildren digestChildren1 = new DigestChildren();
-                digestChildren1.setEnzymes(map.get("nzymes").replaceAll("\\s+", ""));
-                digestChildren1.setGu(Double.parseDouble(map.get("etention (GU)").replaceAll("\\s+", "")));
-                digestChildren1.setName(map.get("ame").replaceAll("\\s+", ""));
+                digestChildren1.setEnzymes(map.get("nzymes").replaceAll("^\\s+", ""));
+                digestChildren1.setGu(Double.parseDouble(map.get("etention (GU)").replaceAll("^\\s+", "")));
+                digestChildren1.setName(map.get("ame").replaceAll("^\\s+", ""));
 
                 if(map.get("rofile ID").matches("\\s+NA")){
                     digestChildren1.setProfileId(0);
                 }else {
-                    digestChildren1.setProfileId(Integer.parseInt(map.get("rofile ID").replaceAll("\\s+", ""))); //can be 'NA'
+                    digestChildren1.setProfileId(Integer.parseInt(map.get("rofile ID").replaceAll("^\\s+", ""))); //can be 'NA'
                 }
-                digestChildren1.setProfileInstrument(map.get("rofile instrument").replaceAll("\\s+", ""));
-                digestChildren1.setProfileName(map.get("rofile name").replaceAll("\\s+", ""));
-                digestChildren1.setStandard(map.get("rofile dextran standard").replaceAll("\\s+", ""));
+                digestChildren1.setProfileInstrument(map.get("rofile instrument").replaceAll("^\\s+", ""));
+                digestChildren1.setProfileName(map.get("rofile name").replaceAll("^\\s+", ""));
+                digestChildren1.setStandard(map.get("rofile dextran standard").replaceAll("^\\s+", ""));
                 digestChildren1.setStructure(structure);
-                digestChildren1.setTechnique(map.get("echnique").replaceAll("\\s+", ""));
+                digestChildren1.setTechnique(map.get("echnique").replaceAll("^\\s+", ""));
+
+                glycobaseServer.save(digestChildren1);
 
             }
         }
         return map;
     }
 
-    public static Map<String, String> readDigestParent(String digestChildren, Structure structure) {
+    public static Map<String, String> readDigestParent(String digestChildren, Structure structure, EbeanServer glycobaseServer) {
 
         digestChildren = digestChildren.replaceAll("enzymes:BTG, SPG", "enzymes:BTG;SPG");
         digestChildren = digestChildren.replaceAll("enzymes:SPG, BTG", "enzymes:SPG;BTG");
@@ -142,21 +145,22 @@ public class DigestChildrenParent {
 
                 //need to tidy up choped keys
                 DigestParent digestParent = new DigestParent();
-                digestParent.setEnzymes(map.get("nzymes").replaceAll("\\s+", ""));
-                digestParent.setGu(Double.parseDouble(map.get("etention (GU)").replaceAll("\\s+", "")));
-                digestParent.setName(map.get("ame").replaceAll("\\s+", ""));
+                digestParent.setEnzymes(map.get("nzymes").replaceAll("^\\s+", ""));
+                digestParent.setGu(Double.parseDouble(map.get("etention (GU)").replaceAll("^\\s+", "")));
+                digestParent.setName(map.get("ame").replaceAll("^\\s+", ""));
 
                 if(map.get("rofile ID").matches("\\s+NA")){
                     digestParent.setProfileId(0);
                 }else {
-                    digestParent.setProfileId(Integer.parseInt(map.get("rofile ID").replaceAll("\\s+", ""))); //can be 'NA'
+                    digestParent.setProfileId(Integer.parseInt(map.get("rofile ID").replaceAll("^\\s+", ""))); //can be 'NA'
                 }
-                digestParent.setProfileInstrument(map.get("rofile instrument").replaceAll("\\s+", ""));
-                digestParent.setProfileName(map.get("rofile name").replaceAll("\\s+", ""));
-                digestParent.setStandard(map.get("rofile dextran standard").replaceAll("\\s+", ""));
-                    digestParent.setStructure(structure);
-                digestParent.setTechnique(map.get("echnique").replaceAll("\\s+", ""));
+                digestParent.setProfileInstrument(map.get("rofile instrument").replaceAll("^\\s+", ""));
+                digestParent.setProfileName(map.get("rofile name").replaceAll("^\\s+", ""));
+                digestParent.setStandard(map.get("rofile dextran standard").replaceAll("^\\s+", ""));
+                digestParent.setStructure(structure);
+                digestParent.setTechnique(map.get("echnique").replaceAll("^\\s+", ""));
 
+                glycobaseServer.save(digestParent);
             }
         }
         return map;
