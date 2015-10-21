@@ -10,6 +10,8 @@ import javax.persistence.*;
 public class Hplc {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hplc_gen")
+    @SequenceGenerator(name = "hplc_gen", sequenceName = "hplc_id_seq", allocationSize=1)
     public Long Id;
 
     @ManyToOne

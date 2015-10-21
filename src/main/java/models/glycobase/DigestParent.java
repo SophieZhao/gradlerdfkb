@@ -7,12 +7,12 @@ import java.util.List;
  * Created by matthew on 19/10/2015.
  */
 @Entity
-@Table(schema="public", name="digest_children")
-public class DigestChildren {
+@Table(schema="public", name="digest_parent")
+public class DigestParent {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "digest_children_gen")
-    @SequenceGenerator(name = "digest_children_gen", sequenceName = "digest_children_id_seq", allocationSize=1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "digest_parent_gen")
+    @SequenceGenerator(name = "digest_parent_gen", sequenceName = "digest_parent_id_seq", allocationSize=1)
     public Long Id;
 
     public String technique;

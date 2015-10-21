@@ -7,7 +7,7 @@ import java.util.List;
  * Created by matthew on 19/10/2015.
  */
 @Entity
-@Table(schema="public", name="hplc")
+@Table(schema="public", name="structure")
 public class Structure {
 
     @Id

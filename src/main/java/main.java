@@ -1,4 +1,5 @@
 
+import glycobase.Glycobase;
 import org.apache.jena.rdf.model.Model;
 import org.unicarbkb.rdf.Namespaces;
 
@@ -13,14 +14,22 @@ import static org.unicarbkb.rdf.MassSpec.createLcStructureResource;
 public class main {
 
     public static void main(String[] args) {
-        Namespaces n = new Namespaces();
-        Model m = n.createModel();
+
+        try {
+            Glycobase.readCSV();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+        //Namespaces n = new Namespaces();
+        //Model m = n.createModel();
 
         /*
         build unicarbdb
         see use of to ebeans for db access
          */
-        createLcStructureResource(m);
+        //createLcStructureResource(m);
 
 
 
@@ -52,7 +61,7 @@ public class main {
 
       */
 
-        String fileName = "/tmp/out";
+        /*String fileName = "/tmp/out";
         FileWriter out = null;
         try {
             out = new FileWriter( fileName );
@@ -70,7 +79,7 @@ public class main {
                 // ignore
             }
         }
-
+*/
         //CTParser.readCT();
 
     }

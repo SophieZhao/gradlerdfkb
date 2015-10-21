@@ -1,11 +1,17 @@
 package glycobase;
 
+import com.avaje.ebean.Ebean;
+import com.avaje.ebean.EbeanServer;
 import com.google.common.base.Splitter;
+import com.google.common.base.Strings;
+import models.glycobase.*;
+import org.apache.commons.lang3.StringUtils;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -66,9 +72,12 @@ public class Glycobase {
     /*
     Read csv file and chop up
      */
-    public void readCSV() throws IOException {
-        ClassLoader classLoader = getClass().getClassLoader();
-        File file = new File(classLoader.getResource("glycobase.csv").getFile());
+    public static boolean readCSV() throws IOException {
+        //ClassLoader classLoader = getClass().getClassLoader();
+        File file = new File("/tmp/glycobase_spread.csv");
+
+        EbeanServer glycobaseServer = Ebean.getServer("glycobase");
+
         final List<Glycobase> glycobase;
 
         try (final Stream<String> lines = Files.lines(file.toPath())) {
@@ -96,24 +105,165 @@ public class Glycobase {
         }
 
         for (Glycobase glycan : glycobase) {
+            System.out.println("glycobase Id: " + glycan.glycobaseId);
+            Structure structure = new Structure();
+            structure.setId(Long.valueOf(glycan.getGlycobaseId()));
+            structure.setGlycoct(glycan.getGlycoCT());
+            //glycobaseServer.save(structure);
+
 
             List<String> uplcSplit = Glycobase.readArrayLine(glycan.getUplc());
+
+            for(String uplc : uplcSplit){
+                //System.out.println("uplc string: " + uplc);
+                Uplc uplc1 = new Uplc();
+
+                if (!uplc.matches("\\[\\]")) {
+                    uplc = uplc.replaceAll("\\[", "").replaceAll("\\]", "");
+                    //System.out.println("uplc entry: " + uplc);
+                    uplc1.setGu(Double.parseDouble(uplc));
+                    uplc1.setStructure(structure);
+                    //glycobaseServer.save(uplc1);
+                }
+            }
+
             List<String> hplcSplit = Glycobase.readArrayLine(glycan.getHplc());
+
+            for(String hplc : hplcSplit){
+                Hplc hplc1 = new Hplc();
+                if (!hplc.matches("\\[\\]")) {
+                    hplc = hplc.replaceAll("\\[", "").replaceAll("\\]", "");
+                    hplc1.setGu(Double.parseDouble(hplc));
+                    hplc1.setStructure(structure);
+                    //glycobaseServer.save(hplc1);
+                }
+            }
+
+
             List<String> ceSplit = Glycobase.readArrayLine(glycan.getCe());
+
+            for(String ce : ceSplit){
+                Ce ce1 = new Ce();
+                if (!ce.matches("\\[\\]")) {
+                    ce = ce.replaceAll("\\[", "").replaceAll("\\]", "");
+                    ce1.setGu(Double.parseDouble(ce));
+                    ce1.setStructure(structure);
+                    //glycobaseServer.save(ce1);
+                }
+            }
+
+
+
             List<String> rpuplcSplit = Glycobase.readArrayLine(glycan.getRpuplc());
+            for(String rp : rpuplcSplit){
+                Rpuplc rpuplc = new Rpuplc();
+                if (!rp.matches("\\[\\]")) {
+                    rp = rp.replaceAll("\\[", "").replaceAll("\\]", "");
+                    rpuplc.setAu(Double.parseDouble(rp));
+                    rpuplc.setStructure(structure);
+                    //glycobaseServer.save(rpuplc);
+                }
+            }
+
             List<String> taxonomySplit = Glycobase.readArrayLine(glycan.getTaxonomy());
+
+            for(String tax : taxonomySplit){
+                Taxonomy taxonomy = new Taxonomy();
+                if (!tax.matches("\\[\\]")) {
+                    tax = tax.replaceAll("\\[", "").replaceAll("\\]", "");
+                    taxonomy.setTaxonomy(tax);
+                    taxonomy.setStructure(structure);
+                    //glycobaseServer.save(taxonomy);
+                }
+            }
+
             List<String> tissueSplit = Glycobase.readArrayLine(glycan.getTissue());
+            for(String tissue : tissueSplit){
+                Tissue tissue1 = new Tissue();
+                if (!tissue.matches("\\[\\]")) {
+                    tissue = tissue.replaceAll("\\[", "").replaceAll("\\]", "");
+                    tissue1.setTissue(tissue);
+                    tissue1.setStructure(structure);
+                    //glycobaseServer.save(tissue1);
+                }
+            }
+
             List<String> diseaseSplit = Glycobase.readArrayLine(glycan.getDisease());
+            for(String disease : diseaseSplit){
+                Disease disease1 = new Disease();
+                if (!disease.matches("\\[\\]")) {
+                    disease = disease.replaceAll("\\[", "").replaceAll("\\]", "");
+                    disease1.setDisease(disease);
+                    disease1.setStructure(structure);
+                    //glycobaseServer.save(disease1);
+                }
+            }
+
             List<String> reportTitleSplit = Glycobase.readArrayLine(glycan.getReportTitle());
+
+
+            for(String report : reportTitleSplit){
+                System.out.println("check string: " + report);
+
+                ReportTitle reportTitle = new ReportTitle();
+                if(!report.matches("\\[\\]")) {
+                    report = report.replaceAll("\\[", "").replaceAll("\\]", "");
+                    reportTitle.setReportId(0);
+                    reportTitle.setReportTitle(report);
+                    reportTitle.setStructure(structure);
+                }
+            }
+
+
             List<String> reportIdsSplit = Glycobase.readArrayLine(glycan.getReportIds());
+
             List<String> sampleTitleSplit = Glycobase.readArrayLine(glycan.getSampleTitle());
+
+            for(String sample : sampleTitleSplit){
+
+                SampleTitle sampleTitle = new SampleTitle();
+                if(!sample.matches("\\[\\]")) {
+                    sample = sample.replaceAll("\\[", "").replaceAll("\\]", "");
+                    sampleTitle.setSampleId(0);
+                    sampleTitle.setSampleTitle(sample);
+                    sampleTitle.setStructure(structure);
+                }
+            }
+
             List<String> sampleIdsSplit = Glycobase.readArrayLine(glycan.getSampleIds());
+
+
+
             List<String> profileTitlesSplit = Glycobase.readArrayLine(glycan.getProfileTitles());
+
+            for(String profile : profileTitlesSplit){
+
+                ProfileTitle profileTitle = new ProfileTitle();
+                if(!profile.matches("\\[\\]")) {
+                    profile = profile.replaceAll("\\[", "").replaceAll("\\]", "");
+                    profileTitle.setProfileId(0);
+                    profileTitle.setProfileTitle(profile);
+                    profileTitle.setStructure(structure);
+                }
+            }
+
+
             List<String> profileIdsSplit = Glycobase.readArrayLine(glycan.getProfileIds());
-            Map<String, String> digestionChildrenSplit = DigestChildrenParent.readDigestChildren(glycan.getDigestionChildren());
-            Map<String, String> digestionParentsSplit = DigestChildrenParent.readDigestChildren(glycan.getDigestionParents());
+
+            if (glycan.getDigestionChildren().length() > 5){
+
+                Map<String, String> digestionChildrenSplit = DigestChildrenParent.readDigestChildren(glycan.getDigestionChildren(), structure);
+
+
+            }
+
+            if (glycan.getDigestionParents().length() > 5) {
+                Map<String, String> digestionParentsSplit = DigestChildrenParent.readDigestParent(glycan.getDigestionParents(), structure);
+            }
+
 
         }
+        return true;
     }
 
     public String getGlycanName() {

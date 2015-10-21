@@ -1,9 +1,6 @@
 package models.glycobase;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.persistence.Id;
 
 /**
@@ -14,6 +11,8 @@ import javax.persistence.Id;
 public class Rpuplc {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "rpuplc_gen")
+    @SequenceGenerator(name = "rpuplc_gen", sequenceName = "rpuplc_id_seq", allocationSize=1)
     public Long Id;
 
     @ManyToOne

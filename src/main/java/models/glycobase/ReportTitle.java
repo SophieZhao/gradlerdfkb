@@ -10,6 +10,8 @@ import javax.persistence.*;
 public class ReportTitle {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "report_title_gen")
+    @SequenceGenerator(name = "report_title_gen", sequenceName = "report_title_id_seq", allocationSize=1)
     public Long Id;
 
     public int reportId;

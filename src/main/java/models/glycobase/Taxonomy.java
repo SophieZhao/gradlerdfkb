@@ -1,9 +1,6 @@
 package models.glycobase;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * Created by matthew on 19/10/2015.
@@ -13,6 +10,8 @@ import javax.persistence.Table;
 public class Taxonomy {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "taxonomy_gen")
+    @SequenceGenerator(name = "taxonomy_gen", sequenceName = "taxonomy_id_seq", allocationSize=1)
     public Long Id;
 
     @ManyToOne
