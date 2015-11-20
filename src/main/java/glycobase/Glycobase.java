@@ -109,7 +109,7 @@ public class Glycobase {
             Structure structure = new Structure();
             structure.setId(Long.valueOf(glycan.getGlycobaseId()));
             structure.setGlycoct(glycan.getGlycoCT());
-            //glycobaseServer.save(structure);
+            glycobaseServer.save(structure);
 
 
             List<String> uplcSplit = Glycobase.readArrayLine(glycan.getUplc());
@@ -120,10 +120,9 @@ public class Glycobase {
 
                 if (!uplc.matches("\\[\\]")) {
                     uplc = uplc.replaceAll("\\[", "").replaceAll("\\]", "");
-                    //System.out.println("uplc entry: " + uplc);
                     uplc1.setGu(Double.parseDouble(uplc));
                     uplc1.setStructure(structure);
-                    //glycobaseServer.save(uplc1);
+                    glycobaseServer.save(uplc1);
                 }
             }
 
@@ -135,7 +134,7 @@ public class Glycobase {
                     hplc = hplc.replaceAll("\\[", "").replaceAll("\\]", "");
                     hplc1.setGu(Double.parseDouble(hplc));
                     hplc1.setStructure(structure);
-                    //glycobaseServer.save(hplc1);
+                    glycobaseServer.save(hplc1);
                 }
             }
 
@@ -148,7 +147,7 @@ public class Glycobase {
                     ce = ce.replaceAll("\\[", "").replaceAll("\\]", "");
                     ce1.setGu(Double.parseDouble(ce));
                     ce1.setStructure(structure);
-                    //glycobaseServer.save(ce1);
+                    glycobaseServer.save(ce1);
                 }
             }
 
@@ -161,7 +160,7 @@ public class Glycobase {
                     rp = rp.replaceAll("\\[", "").replaceAll("\\]", "");
                     rpuplc.setAu(Double.parseDouble(rp));
                     rpuplc.setStructure(structure);
-                    //glycobaseServer.save(rpuplc);
+                    glycobaseServer.save(rpuplc);
                 }
             }
 
@@ -173,7 +172,7 @@ public class Glycobase {
                     tax = tax.replaceAll("\\[", "").replaceAll("\\]", "");
                     taxonomy.setTaxonomy(tax);
                     taxonomy.setStructure(structure);
-                    //glycobaseServer.save(taxonomy);
+                    glycobaseServer.save(taxonomy);
                 }
             }
 
@@ -184,7 +183,7 @@ public class Glycobase {
                     tissue = tissue.replaceAll("\\[", "").replaceAll("\\]", "");
                     tissue1.setTissue(tissue);
                     tissue1.setStructure(structure);
-                    //glycobaseServer.save(tissue1);
+                    glycobaseServer.save(tissue1);
                 }
             }
 
@@ -195,7 +194,7 @@ public class Glycobase {
                     disease = disease.replaceAll("\\[", "").replaceAll("\\]", "");
                     disease1.setDisease(disease);
                     disease1.setStructure(structure);
-                    //glycobaseServer.save(disease1);
+                    glycobaseServer.save(disease1);
                 }
             }
 
@@ -211,6 +210,7 @@ public class Glycobase {
                     reportTitle.setReportId(0);
                     reportTitle.setReportTitle(report);
                     reportTitle.setStructure(structure);
+                    glycobaseServer.save(reportTitle);
                 }
             }
 
@@ -227,6 +227,7 @@ public class Glycobase {
                     sampleTitle.setSampleId(0);
                     sampleTitle.setSampleTitle(sample);
                     sampleTitle.setStructure(structure);
+                    glycobaseServer.save(sampleTitle);
                 }
             }
 
@@ -244,6 +245,7 @@ public class Glycobase {
                     profileTitle.setProfileId(0);
                     profileTitle.setProfileTitle(profile);
                     profileTitle.setStructure(structure);
+                    glycobaseServer.save(profileTitle);
                 }
             }
 
@@ -252,13 +254,13 @@ public class Glycobase {
 
             if (glycan.getDigestionChildren().length() > 5){
 
-                Map<String, String> digestionChildrenSplit = DigestChildrenParent.readDigestChildren(glycan.getDigestionChildren(), structure);
+                Map<String, String> digestionChildrenSplit = DigestChildrenParent.readDigestChildren(glycan.getDigestionChildren(), structure, glycobaseServer);
 
 
             }
 
             if (glycan.getDigestionParents().length() > 5) {
-                Map<String, String> digestionParentsSplit = DigestChildrenParent.readDigestParent(glycan.getDigestionParents(), structure);
+                Map<String, String> digestionParentsSplit = DigestChildrenParent.readDigestParent(glycan.getDigestionParents(), structure, glycobaseServer);
             }
 
 
