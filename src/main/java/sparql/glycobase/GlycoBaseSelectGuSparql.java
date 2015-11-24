@@ -41,3 +41,4 @@ public class GlycoBaseSelectGuSparql extends GlycanSelectSparql implements Glyco
         return where;
     }
 }
+
