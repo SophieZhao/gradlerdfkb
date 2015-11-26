@@ -6,7 +6,7 @@ public class StructureBySample extends GlycanSelectSparql implements GlycanGlyco
 
     public StructureBySample() {
         super();
-        this.prefix = "PREFIX glycan: <http://purl.jp/bio/12/glyco/glycan/>";  //need to add # glycan#
+        this.prefix = "PREFIX glycan: <http://purl.jp/bio/12/glyco/glycan/> \n";  //need to add # glycan#
         this.select = super.getSelect() + '\n';
     }
 

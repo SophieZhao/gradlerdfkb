@@ -7,7 +7,7 @@ public class StructureByTissue extends GlycanSelectSparql implements GlycanGlyco
 
     public StructureByTissue() {
         super();
-        this.prefix = "PREFIX glycan: <http://purl.jp/bio/12/glyco/glycan/>";  //need to add # glycan#
+        this.prefix = "PREFIX glycan: <http://purl.jp/bio/12/glyco/glycan/> \n";  //need to add # glycan#
         this.select = super.getSelect() + " ?"+ Taxon + "\n";
     }
 

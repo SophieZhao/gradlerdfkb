@@ -23,7 +23,7 @@ public class GlycanSelectSparql extends SelectSparqlBean implements GlycanGlycob
         this.prefix = "PREFIX glycan: <http://purl.jp/bio/12/glyco/glycan#>\n"
                 + "PREFIX glytoucan: <http://www.glytoucan.org/glyco/owl/glytoucan#>\n";
         this.select = "DISTINCT ?" + SaccharideURI + " ?" + Uoxf ;
-        this.from = "FROM <http://137.92.56.159:443/glycobase>\n";
+//        this.from = "FROM <http://137.92.56.159:443/glycobase>\n";
     }
 
     @Override

@@ -19,7 +19,7 @@ public class GlycobaseSelectSparql extends SaccharideSelectSparql implements Gly
 
     public GlycobaseSelectSparql() {
         super();
-        this.prefix = "PREFIX glycan: <http://purl.jp/bio/12/glyco/glycan>";  //need to add # glycan#
+        this.prefix = "PREFIX glycan: <http://purl.jp/bio/12/glyco/glycan/>";  //need to add # glycan#
         this.select = super.getSelect() + " ?" + Sequence + "\n";
     }
 

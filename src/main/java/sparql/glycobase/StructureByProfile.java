@@ -17,7 +17,7 @@ public class StructureByProfile extends SelectSparqlBean implements GlycanGlycob
         super();
         this.prefix = "PREFIX glycan: <http://purl.jp/bio/12/glyco/glycan/> \n";  //need to add # glycan#
         this.select = "DISTINCT ?" + Uoxf + " ?" + Gu + " ?" + PeakArea + " ?"+ EvidenceType + "\n";
-        this.from = "FROM <http://137.92.56.159:443/glycobase>\n";
+//        this.from = "FROM <http://137.92.56.159:443/glycobase>\n";
     }
 
     public String getProfileId() {

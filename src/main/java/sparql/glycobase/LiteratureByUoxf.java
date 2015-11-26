@@ -26,7 +26,7 @@ public class LiteratureByUoxf extends SelectSparqlBean implements GlycanGlycobas
                 + "PREFIX dc: <http://purl.org/dc/elements/1.1/> \n";;  //need to add # glycan#
         this.select = "DISTINCT ?" + ReferenceCompoundURI + " ?" + Author + " ?" + Title + " ?"+ Year
                 + " ?"+ Gu + " ?" + PeakArea + " ?" + Ms1Verified + " ?" + Ms2Verified + "\n";
-        this.from = "FROM <http://137.92.56.159:443/glycobase>\n";
+//        this.from = "FROM <http://137.92.56.159:443/glycobase>\n";
     }
 
     public String getUoxf() {
