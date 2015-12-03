@@ -23,7 +23,7 @@ dependencies {
     compile 'org.apache.jena:jena-core:3.0.0'
     compile 'org.apache.jena:jena-base:3.0.0'
     compile 'org.apache.jena:jena-arq:3.0.0'
-    compile 'com.google.guava:guava:18.0', 'org.apache.commons:commons-lang3:3.0'
+    compile 'com.google.guava:guava:19.0-rc2', 'org.apache.commons:commons-lang3:3.0'
 }
 
 task wrapper(type: Wrapper) {

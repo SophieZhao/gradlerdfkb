@@ -1,4 +1,3 @@
-package test;
 
 import org.apache.jena.ontology.Profile;
 import org.junit.Test;

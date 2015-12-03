@@ -15,7 +15,7 @@ public class StructureByGlycobaseID extends GlycanSelectSparql implements Glycan
         return "\"" + getSparqlEntity().getValue(GlycanGlycobase.SampleName) + "\"";
     }
 
-    public String getGlycoBaseId() { return "\"" + getSparqlEntity().getValue(GlycanGlycobase.GlycoBaseId) + "\""; }
+    public String getGlycoBaseId() { return getSparqlEntity().getValue(GlycanGlycobase.GlycoBaseId); }
 
     @Override
     public String getWhere() throws SparqlException {
