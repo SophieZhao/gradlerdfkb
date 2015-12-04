@@ -200,7 +200,7 @@ public class sparqlExampleTest {
     StructureByProfile getStructureByProfile(){
         StructureByProfile structure = new StructureByProfile();
         SparqlEntity sparqlentity = new SparqlEntity();
-        sparqlentity.setValue(GlycanGlycobase.ProfileId, "1400");
+        sparqlentity.setValue(GlycanGlycobase.ProfileId, "572");
         structure.setSparqlEntity(sparqlentity);
         return structure;
     }
