@@ -30,28 +30,32 @@ public class StructureByProfile extends SelectSparqlBean implements GlycanGlycob
         String where = "OPTIONAL{ <http://rdf.glycobase.org/hplc/" + getProfileId() +"> a glycan:evidence_hplc; \n"
                 + " a ?" + EvidenceType + " ;\n"
                 + " glycan:has_lc_chromatogram_peak ?" + PeakURI + " .\n"
-                + "?" + PeakURI + " glycan:has_glucose_unit ?" + Gu + " ;\n glycan:has_peak_area ?" + PeakArea + " .\n"
+                + "?" + PeakURI + " glycan:has_glucose_unit ?" + Gu
+                + " .\n OPTIONAL{?"+ PeakURI + " glycan:has_peak_area ?" + PeakArea + " .}\n"
                 + "?" + SaccharideURI + " glycan:has_lc_chromatogram_peak ?" + PeakURI + " ;\n"
                 + " a glycan:saccharide ;\n glycan:has_uoxf ?" + Uoxf + " .}\n"
 
                 + "OPTIONAL{ <http://rdf.glycobase.org/rpuplc/" + getProfileId() +"> a glycan:evidence_rpuplc; \n"
                 + " a ?" + EvidenceType + " ;\n"
                 + " glycan:has_lc_chromatogram_peak ?" + PeakURI + " .\n"
-                + "?" + PeakURI + " glycan:has_arabinose_unit ?" + Gu + " ;\n glycan:has_peak_area ?" + PeakArea + " .\n"
+                + "?" + PeakURI + " glycan:has_arabinose_unit ?" + Gu
+                + " .\n OPTIONAL{?"+ PeakURI + " glycan:has_peak_area ?" + PeakArea + " .}\n"
                 + "?" + SaccharideURI + " glycan:has_lc_chromatogram_peak ?" + PeakURI + " ;\n"
                 + " a glycan:saccharide ;\n glycan:has_uoxf ?" + Uoxf + " .}\n"
 
                 + "OPTIONAL{ <http://rdf.glycobase.org/uplc/" + getProfileId() +"> a glycan:evidence_uplc; \n"
                 + " a ?" + EvidenceType + " ;\n"
                 + " glycan:has_lc_chromatogram_peak ?" + PeakURI + " .\n"
-                + "?" + PeakURI + " glycan:has_glucose_unit ?" + Gu + " ;\n glycan:has_peak_area ?" + PeakArea + " .\n"
+                + "?" + PeakURI + " glycan:has_glucose_unit ?" + Gu
+                + " .\n OPTIONAL{?"+ PeakURI + " glycan:has_peak_area ?" + PeakArea + " .}\n"
                 + "?" + SaccharideURI + " glycan:has_lc_chromatogram_peak ?" + PeakURI + " ;\n"
                 + " a glycan:saccharide ;\n glycan:has_uoxf ?" + Uoxf + " .}\n"
 
                 + "OPTIONAL{ <http://rdf.glycobase.org/ce/" + getProfileId() +"> a glycan:evidence_ce; \n"
                 + " a ?" + EvidenceType + " ;\n"
                 + " glycan:has_ce_peak ?" + PeakURI + " .\n"
-                + "?" + PeakURI + " glycan:has_glucose_unit ?" + Gu + " ;\n glycan:has_peak_area ?" + PeakArea + " .\n"
+                + "?" + PeakURI + " glycan:has_glucose_unit ?" + Gu
+                + " .\n OPTIONAL{?"+ PeakURI + " glycan:has_peak_area ?" + PeakArea + " .}\n"
                 + "?" + SaccharideURI + " glycan:has_ce_peak ?" + PeakURI + " ;\n"
                 + " a glycan:saccharide ;\n glycan:has_uoxf ?" + Uoxf + " .}\n";
 
