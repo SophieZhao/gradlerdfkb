@@ -245,4 +245,15 @@ public class sparqlExampleTest {
     public void testGlycanOnProtein() throws SparqlException{
         System.out.println("sparql query glycans on protein is: \n" +getGlycanOnProtein().getSparql());
     }
+
+    ListLiterature getLiterature(){
+        ListLiterature structure = new ListLiterature();
+        SparqlEntity sparqlentity = new SparqlEntity();
+        structure.setSparqlEntity(sparqlentity);
+        return structure;
+    }
+    @Test
+    public void testListLiterature() throws SparqlException{
+        System.out.println("sparql query glycans on protein is: \n" +getLiterature().getSparql());
+    }
 }
