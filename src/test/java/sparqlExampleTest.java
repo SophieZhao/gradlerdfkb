@@ -234,4 +234,15 @@ public class sparqlExampleTest {
     public void testListProfile() throws SparqlException{
         System.out.println("sparql query list all profiles is: \n" +getListProfile().getSparql());
     }
+
+    ListStructureOnProtein getGlycanOnProtein(){
+        ListStructureOnProtein structure = new ListStructureOnProtein();
+        SparqlEntity sparqlentity = new SparqlEntity();
+        structure.setSparqlEntity(sparqlentity);
+        return structure;
+    }
+    @Test
+    public void testGlycanOnProtein() throws SparqlException{
+        System.out.println("sparql query glycans on protein is: \n" +getGlycanOnProtein().getSparql());
+    }
 }
