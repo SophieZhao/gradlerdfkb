@@ -243,7 +243,19 @@ public class sparqlExampleTest {
     }
     @Test
     public void testGlycanOnProtein() throws SparqlException{
-        System.out.println("sparql query glycans on protein is: \n" +getGlycanOnProtein().getSparql());
+        System.out.println("sparql query list protein with attached glycan is: \n" +getGlycanOnProtein().getSparql());
+    }
+
+    StructureByProtein getStructureByProtein(){
+        StructureByProtein structure = new StructureByProtein();
+        SparqlEntity sparqlentity = new SparqlEntity();
+        sparqlentity.setValue(GlycanGlycobase.ProteinName, "Human IgG");
+        structure.setSparqlEntity(sparqlentity);
+        return structure;
+    }
+    @Test
+    public void testStructureByProtein() throws SparqlException{
+        System.out.println("sparql query glycans on certain protein is: \n" +getStructureByProtein().getSparql());
     }
 
     ListLiterature getLiterature(){
@@ -254,6 +266,18 @@ public class sparqlExampleTest {
     }
     @Test
     public void testListLiterature() throws SparqlException{
-        System.out.println("sparql query glycans on protein is: \n" +getLiterature().getSparql());
+        System.out.println("sparql query list all literatures is: \n" +getLiterature().getSparql());
+    }
+
+    StructureByReference getStructureByReference(){
+        StructureByReference structure = new StructureByReference();
+        SparqlEntity sparqlentity = new SparqlEntity();
+        sparqlentity.setValue(GlycanGlycobase.PubmedId, "11969191");
+        structure.setSparqlEntity(sparqlentity);
+        return structure;
+    }
+    @Test
+    public void testStructureByReference() throws SparqlException{
+        System.out.println("sparql query glycans from certain paper is: \n" +getStructureByReference().getSparql());
     }
 }

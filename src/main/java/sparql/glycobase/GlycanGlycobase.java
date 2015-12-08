@@ -26,5 +26,8 @@ public interface GlycanGlycobase {
     public static final String Taxon = "Taxon";
     public static final String Enzyme = "Enzyme";
     public static final String ProfileId = "ProfileId";
+    public static final String ProteinName = "ProteinName";
+    public static final String ProteinURI = "ProteinURI";
+    public static final String PubmedId = "PubmedId";
 }
 

@@ -14,6 +14,7 @@ public class ListLiterature extends SelectSparqlBean implements GlycanGlycobase 
     public static final String PubmedLink = "PubmedLink";
     public static final String JournalName = "JournalName";
     public static final String JournalURI = "JournalURI";
+    public static final String Pmid = "Pmid";
 
     public ListLiterature(String sparql) {
         super(sparql);
@@ -26,12 +27,14 @@ public class ListLiterature extends SelectSparqlBean implements GlycanGlycobase 
                 "PREFIX dc: <http://purl.org/dc/elements/1.1/> \n" +
                 "PREFIX dcterms: <http://purl.org/dc/terms/> \n" +
                 "PREFIX owl: <http://www.w3.org/2002/07/owl#> \n";
-        this.select = "DISTINCT ?" + PaperTitle + " ?" + PaperAuthor + " ?" + PaperYear + " ?"+ PubmedLink + " ?" + JournalName+ "\n";
+        this.select = "DISTINCT ?" + Pmid + " ?" + PaperTitle + " ?" + PaperAuthor + " ?" + PaperYear
+                + " ?"+ PubmedLink + " ?" + JournalName+ "\n";
     }
 
     @Override
     public String getWhere() throws SparqlException {
         String where = "?" + RefURI + " a bibo:Article ;\n"
+                + " glycan:has_pmid ?" + Pmid + " ;\n"
                 + " dc:creator ?" + PaperAuthor + " ;\n"
                 + " dc:title ?" + PaperTitle + " ;\n"
                 + " bibo:issued ?" + PaperYear + " ;\n"
