@@ -162,7 +162,8 @@ public class SelectSparqlBean implements SelectSparql{
                 // sparqlbuf.append(" RETURN ").append(returnStatement);
                 sparqlbuf.append(getOrderBy() != null ? " ORDER BY " + getOrderBy()
                         + " " : " ");
-
+                sparqlbuf.append(getGroupBy() != null ? " GROUP BY " + getGroupBy()
+                        + " " : " ");
                 sparqlbuf.append(getLimit() != null ? " LIMIT " + getLimit() + " "
                         : " ");
                 sparqlbuf.append(getOffset() != null ? " OFFSET " + getOffset() + " "

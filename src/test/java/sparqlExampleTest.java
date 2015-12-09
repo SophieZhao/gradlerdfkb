@@ -272,7 +272,7 @@ public class sparqlExampleTest {
     StructureByReference getStructureByReference(){
         StructureByReference structure = new StructureByReference();
         SparqlEntity sparqlentity = new SparqlEntity();
-        sparqlentity.setValue(GlycanGlycobase.PubmedId, "11969191");
+        sparqlentity.setValue(GlycanGlycobase.PaperTitle, "HPLC-based analysis of serum N-glycans on a 96-well plate platform with dedicated database software.");
         structure.setSparqlEntity(sparqlentity);
         return structure;
     }

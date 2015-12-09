@@ -29,5 +29,6 @@ public interface GlycanGlycobase {
     public static final String ProteinName = "ProteinName";
     public static final String ProteinURI = "ProteinURI";
     public static final String PubmedId = "PubmedId";
+    public static final String PaperTitle="PaperTitle";
 }
 
