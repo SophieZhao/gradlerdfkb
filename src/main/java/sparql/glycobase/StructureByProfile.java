@@ -16,8 +16,7 @@ public class StructureByProfile extends SelectSparqlBean implements GlycanGlycob
     public StructureByProfile() {
         super();
         this.prefix = "PREFIX glycan: <http://purl.jp/bio/12/glyco/glycan/> \n";  //need to add # glycan#
-        this.select = "DISTINCT ?" + Uoxf + " ?" + Gu + " ?" + PeakArea + " ?"+ EvidenceType + " ?"+ SaccharideURI + "\n";
-//        this.from = "FROM <http://137.92.56.159:443/glycobase>\n";
+        this.select = "DISTINCT ?" + Uoxf +" ?"+ GlycoBaseId + " ?" + Gu + " ?" + PeakArea + " ?"+ EvidenceType + " ?"+ SaccharideURI + "\n";
     }
 
     public String getProfileId() {
@@ -33,7 +32,7 @@ public class StructureByProfile extends SelectSparqlBean implements GlycanGlycob
                 + "?" + PeakURI + " glycan:has_glucose_unit ?" + Gu
                 + " .\n OPTIONAL{?"+ PeakURI + " glycan:has_peak_area ?" + PeakArea + " .}\n"
                 + "?" + SaccharideURI + " glycan:has_lc_chromatogram_peak ?" + PeakURI + " ;\n"
-                + " a glycan:saccharide ;\n glycan:has_uoxf ?" + Uoxf + " .}\n"
+                + " a glycan:saccharide ;\n glycan:has_uoxf ?" + Uoxf + " ;\n glycan:has_glycobase_id ?" + GlycoBaseId +".}\n"
 
                 + "OPTIONAL{ <http://rdf.glycobase.org/rpuplc/" + getProfileId() +"> a glycan:evidence_rpuplc; \n"
                 + " a ?" + EvidenceType + " ;\n"
@@ -41,7 +40,7 @@ public class StructureByProfile extends SelectSparqlBean implements GlycanGlycob
                 + "?" + PeakURI + " glycan:has_arabinose_unit ?" + Gu
                 + " .\n OPTIONAL{?"+ PeakURI + " glycan:has_peak_area ?" + PeakArea + " .}\n"
                 + "?" + SaccharideURI + " glycan:has_lc_chromatogram_peak ?" + PeakURI + " ;\n"
-                + " a glycan:saccharide ;\n glycan:has_uoxf ?" + Uoxf + " .}\n"
+                + " a glycan:saccharide ;\n glycan:has_uoxf ?" + Uoxf + " ;\n glycan:has_glycobase_id ?" + GlycoBaseId +".}\n"
 
                 + "OPTIONAL{ <http://rdf.glycobase.org/uplc/" + getProfileId() +"> a glycan:evidence_uplc; \n"
                 + " a ?" + EvidenceType + " ;\n"
@@ -49,7 +48,7 @@ public class StructureByProfile extends SelectSparqlBean implements GlycanGlycob
                 + "?" + PeakURI + " glycan:has_glucose_unit ?" + Gu
                 + " .\n OPTIONAL{?"+ PeakURI + " glycan:has_peak_area ?" + PeakArea + " .}\n"
                 + "?" + SaccharideURI + " glycan:has_lc_chromatogram_peak ?" + PeakURI + " ;\n"
-                + " a glycan:saccharide ;\n glycan:has_uoxf ?" + Uoxf + " .}\n"
+                + " a glycan:saccharide ;\n glycan:has_uoxf ?" + Uoxf + " ;\n glycan:has_glycobase_id ?" + GlycoBaseId +".}\n"
 
                 + "OPTIONAL{ <http://rdf.glycobase.org/ce/" + getProfileId() +"> a glycan:evidence_ce; \n"
                 + " a ?" + EvidenceType + " ;\n"
@@ -57,7 +56,7 @@ public class StructureByProfile extends SelectSparqlBean implements GlycanGlycob
                 + "?" + PeakURI + " glycan:has_glucose_unit ?" + Gu
                 + " .\n OPTIONAL{?"+ PeakURI + " glycan:has_peak_area ?" + PeakArea + " .}\n"
                 + "?" + SaccharideURI + " glycan:has_ce_peak ?" + PeakURI + " ;\n"
-                + " a glycan:saccharide ;\n glycan:has_uoxf ?" + Uoxf + " .}\n";
+                + " a glycan:saccharide ;\n glycan:has_uoxf ?" + Uoxf + " ;\n glycan:has_glycobase_id ?" + GlycoBaseId +".}\n";
 
         return where;
     }

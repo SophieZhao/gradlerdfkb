@@ -1,5 +1,4 @@
 
-import org.apache.jena.ontology.Profile;
 import org.junit.Test;
 
 
@@ -15,67 +14,6 @@ import static org.junit.Assert.assertNotNull;
  * Created by matthew on 07/05/2014.
  */
 public class sparqlExampleTest {
-
-//    GlycobaseSelectSparql getGlycoBaseQuery() {
-//        GlycobaseSelectSparql glycobase = new GlycobaseSelectSparql();
-//        SparqlEntity sparqlentity = new SparqlEntity();
-//        sparqlentity.setValue(Saccharide.PrimaryId, "235");
-//        glycobase.setSparqlEntity(sparqlentity);
-//        return glycobase;
-//    }
-//
-//    @Test
-//    public void testSelectGlycobaseEntry() throws SparqlException {
-//        System.out.println("sparql query search by id is: " + getGlycoBaseQuery().getSparql());
-//        System.out.println("sparql query search by uoxf is: " + getGlycoBaseQueryUoxf().getSparql());
-//
-//    }
-//
-//
-//    GlycobaseSelectSparql getGlycoBaseQueryUoxf () {
-//        GlycobaseSelectSparql glycobase = new GlycobaseSelectSparql();
-//        SparqlEntity sparqlentity = new SparqlEntity();
-//        sparqlentity.setValue(GlycanGlycobase.Uoxf, "A2");
-//        glycobase.setSparqlEntity(sparqlentity);
-//        return glycobase;
-//    }
-//
-//
-//    @Test
-//    public void testSelectGlycobaseEntryUoxf ()throws SparqlException {
-//        System.out.println("sparql query is: " + getGlycoBaseQueryUoxf().getSparql());
-//
-//    }
-
-
-//    GlycoBaseSelectGuSparql getGlycoBaseQueryGu() {
-//        GlycoBaseSelectGuSparql glycobase = new GlycoBaseSelectGuSparql();
-//        SparqlEntity sparqlentity = new SparqlEntity();
-//        String gu = "6.2";
-//        gu += "\"^^xsd:float .\n";
-//        sparqlentity.setValue(GlycanGlycobase.Gu, gu);
-//        glycobase.setSparqlEntity(sparqlentity);
-//        return glycobase;
-//    }
-//
-//    @Test
-//    public void testSelectGlycobaseEntryGu() throws SparqlException {
-//        System.out.println("sparql query is: " + getGlycoBaseQueryGu().getSparql());
-//
-//    }
-
-//    ListProfile getGlycoBaseQueryProfile(){
-//        ListProfile profile = new ListProfile();
-//        SparqlEntity sparqlentity = new SparqlEntity();
-//        profile.setSparqlEntity(sparqlentity);
-//
-//        return profile;
-//    }
-//
-//    @Test
-//    public void testListProfile() throws SparqlException{
-//        System.out.println("List hplc profile sparql query is: \n" +getGlycoBaseQueryProfile().getSparql());
-//    }
 
     StructureByReport getStructureFromReport(){
         StructureByReport report = new StructureByReport();
@@ -137,70 +75,82 @@ public class sparqlExampleTest {
         System.out.println("sparql query search by taxon is: \n" +getStructureByTaxon().getSparql());
     }
 
-    ProfileByUoxf getProfileByUoxf(){
-        ProfileByUoxf profile = new ProfileByUoxf();
+    ProfileByID getProfileByID(){
+        ProfileByID profile = new ProfileByID();
         SparqlEntity sparqlentity = new SparqlEntity();
-        sparqlentity.setValue(GlycanGlycobase.Uoxf, "F(6)A3G(4)3");
+        sparqlentity.setValue(GlycanGlycobase.GlycoBaseId, "775");
         profile.setSparqlEntity(sparqlentity);
         return profile;
     }
     @Test
-    public void testProfileByUoxf() throws SparqlException{
-        System.out.println("sparql query search profile by uoxf is: \n" +getProfileByUoxf().getSparql());
+    public void testProfileByID() throws SparqlException{
+        System.out.println("sparql query search profile by id is: \n" +getProfileByID().getSparql());
     }
 
-    SequenceByUoxf getSequenceByUoxf(){
-        SequenceByUoxf sequence = new SequenceByUoxf();
+    SequenceByID getSequenceByID(){
+        SequenceByID sequence = new SequenceByID();
         SparqlEntity sparqlentity = new SparqlEntity();
-        sparqlentity.setValue(GlycanGlycobase.Uoxf, "F(6)A3G(4)3");
+        sparqlentity.setValue(GlycanGlycobase.GlycoBaseId, "775");
         sequence.setSparqlEntity(sparqlentity);
         return sequence;
     }
     @Test
-    public void testSequenceByUoxf() throws SparqlException{
-        System.out.println("sparql query search sequence by uoxf is: \n" +getSequenceByUoxf().getSparql());
+    public void testSequenceByID() throws SparqlException{
+        System.out.println("sparql query search sequence by id is: \n" +getSequenceByID().getSparql());
     }
 
-    ReactionByUoxf getReactionByUoxf(){
-        ReactionByUoxf reaction = new ReactionByUoxf();
+    IdByUoxf getIdByUoxf(){
+        IdByUoxf id = new IdByUoxf();
         SparqlEntity sparqlentity = new SparqlEntity();
-        sparqlentity.setValue(GlycanGlycobase.Uoxf, "F(6)A3G(4)3");
+        sparqlentity.setValue(GlycanGlycobase.Uoxf, "Gal");
+        id.setSparqlEntity(sparqlentity);
+        return id;
+    }
+    @Test
+    public void testIdByUoxf() throws SparqlException{
+        System.out.println("sparql query search glycobaseId by uoxf is: \n" +getIdByUoxf().getSparql());
+    }
+
+    ReactionByID getReactionByID(){
+        ReactionByID reaction = new ReactionByID();
+        SparqlEntity sparqlentity = new SparqlEntity();
+        sparqlentity.setValue(GlycanGlycobase.GlycoBaseId, "775");
         reaction.setSparqlEntity(sparqlentity);
         return reaction;
     }
     @Test
-    public void testReactionByUoxf() throws SparqlException{
-        System.out.println("sparql query search reaction by uoxf is: \n" +getReactionByUoxf().getSparql());
+    public void testReactionByID() throws SparqlException{
+        System.out.println("sparql query search reaction by id is: \n" +getReactionByID().getSparql());
     }
 
-    LiteratureByUoxf getLiteratureByUoxf(){
-        LiteratureByUoxf literature = new LiteratureByUoxf();
+    LiteratureByID getLiteratureByID(){
+        LiteratureByID literature = new LiteratureByID();
         SparqlEntity sparqlentity = new SparqlEntity();
-        sparqlentity.setValue(GlycanGlycobase.Uoxf, "F(6)A3G(4)3");
+        sparqlentity.setValue(GlycanGlycobase.GlycoBaseId, "775");
         literature.setSparqlEntity(sparqlentity);
         return literature;
     }
     @Test
-    public void testLiteratureByUoxf() throws SparqlException{
-        System.out.println("sparql query search literature recorded GU by uoxf is: \n" +getLiteratureByUoxf().getSparql());
+    public void testLiteratureByID() throws SparqlException{
+        System.out.println("sparql query search literature recorded GU by id is: \n" +getLiteratureByID().getSparql());
     }
 
-    RecordByUoxf getRecordByUoxf(){
-        RecordByUoxf record = new RecordByUoxf();
+    RecordByID getRecordByID(){
+        RecordByID record = new RecordByID();
         SparqlEntity sparqlentity = new SparqlEntity();
-        sparqlentity.setValue(GlycanGlycobase.Uoxf, "F(6)A3G(4)3");
+        sparqlentity.setValue(GlycanGlycobase.GlycoBaseId, "775");
         record.setSparqlEntity(sparqlentity);
         return record;
     }
     @Test
-    public void testRecordByUoxf() throws SparqlException{
-        System.out.println("sparql query search all records by uoxf is: \n" +getRecordByUoxf().getSparql());
+    public void testRecordByID() throws SparqlException{
+        System.out.println("sparql query search all records by id is: \n" +getRecordByID().getSparql());
     }
 
     StructureByProfile getStructureByProfile(){
         StructureByProfile structure = new StructureByProfile();
         SparqlEntity sparqlentity = new SparqlEntity();
-        sparqlentity.setValue(GlycanGlycobase.ProfileId, "02746e8a-c004-4b62-97fe-7923531643e2");
+        sparqlentity.setValue(GlycanGlycobase.ProfileId, "1400");
         structure.setSparqlEntity(sparqlentity);
         return structure;
     }
@@ -323,5 +273,53 @@ public class sparqlExampleTest {
     @Test
     public void testListTissue() throws SparqlException{
         System.out.println("sparql query list all tissue is: \n" +getTissue().getSparql());
+    }
+
+    AvgHplcGu getAvgHpgu(){
+        AvgHplcGu hpgu = new AvgHplcGu();
+        SparqlEntity avgHpSpqEntity = new SparqlEntity();
+        avgHpSpqEntity.setValue(GlycanGlycobase.GlycoBaseId, "683");
+        hpgu.setSparqlEntity(avgHpSpqEntity);
+        return hpgu;
+    }
+    @Test
+    public void testAvgHpgu() throws SparqlException{
+        System.out.println("sparql query average hplc gu value is: \n" +getAvgHpgu().getSparql());
+    }
+
+    AvgUplcGu getAvgUpgu(){
+        AvgUplcGu upgu = new AvgUplcGu();
+        SparqlEntity avgUpSpqEntity = new SparqlEntity();
+        avgUpSpqEntity.setValue(GlycanGlycobase.GlycoBaseId, "683");
+        upgu.setSparqlEntity(avgUpSpqEntity);
+        return upgu;
+    }
+    @Test
+    public void testAvgUpgu() throws SparqlException{
+        System.out.println("sparql query average uplc gu value is: \n" +getAvgUpgu().getSparql());
+    }
+
+    AvgRpGu getAvgRpgu(){
+        AvgRpGu rpgu = new AvgRpGu();
+        SparqlEntity avgRpSpqEntity = new SparqlEntity();
+        avgRpSpqEntity.setValue(GlycanGlycobase.GlycoBaseId, "778");
+        rpgu.setSparqlEntity(avgRpSpqEntity);
+        return rpgu;
+    }
+    @Test
+    public void testAvgRpgu() throws SparqlException{
+        System.out.println("sparql query average rplc gu value is: \n" +getAvgRpgu().getSparql());
+    }
+
+    AvgCeGu getAvgCegu(){
+        AvgCeGu cegu = new AvgCeGu();
+        SparqlEntity avgCeSpqEntity = new SparqlEntity();
+        avgCeSpqEntity.setValue(GlycanGlycobase.GlycoBaseId, "683");
+        cegu.setSparqlEntity(avgCeSpqEntity);
+        return cegu;
+    }
+    @Test
+    public void testAvgCegu() throws SparqlException{
+        System.out.println("sparql query average ce gu value is: \n" +getAvgCegu().getSparql());
     }
 }

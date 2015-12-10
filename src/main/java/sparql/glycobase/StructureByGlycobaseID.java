@@ -11,10 +11,6 @@ public class StructureByGlycobaseID extends GlycanSelectSparql implements Glycan
         this.select = super.getSelect() + '\n';
     }
 
-    public String getSampleName() {
-        return "\"" + getSparqlEntity().getValue(GlycanGlycobase.SampleName) + "\"";
-    }
-
     public String getGlycoBaseId() { return getSparqlEntity().getValue(GlycanGlycobase.GlycoBaseId); }
 
     @Override

@@ -17,15 +17,15 @@ public class ListStructureOnProtein extends SelectSparqlBean implements GlycanGl
     public ListStructureOnProtein() {
         super();
         this.prefix = "PREFIX glycan: <http://purl.jp/bio/12/glyco/glycan/> \n";
-        this.select = "DISTINCT ?" + ProteinName + " ?" + Uoxf + "\n";
-//        this.from = "FROM <http://137.92.56.159:443/glycobase>\n";
+        this.select = "DISTINCT ?" + ProteinName + " ?" + Uoxf + " ?" + GlycoBaseId + "\n";
     }
 
     @Override
     public String getWhere() throws SparqlException {
         String where = "?" + ProteinURI + " glycan:has_protein_name ?" + ProteinName + " ;\n"
                 + " glycan:has_attached_glycan ?" + SaccharideURI + " .\n"
-                + "?" + SaccharideURI +" glycan:has_uoxf ?" + Uoxf + " .\n";
+                + "?" + SaccharideURI +" glycan:has_uoxf ?" + Uoxf + " ;\n"
+                + " glycan:has_glycobase_id ?"+ GlycoBaseId + " .\n";
 
         return where;
     }

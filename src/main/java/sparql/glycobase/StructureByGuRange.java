@@ -4,19 +4,18 @@ import sparql.SelectSparqlBean;
 import sparql.SparqlException;
 
 
-public class StructureByGuRange extends SelectSparqlBean implements GlycanGlycobase {
+public class StructureByGuRange extends GlycanSelectSparql implements GlycanGlycobase {
 
     public static final String Uoxf = GlycanGlycobase.Uoxf;
 
-    public StructureByGuRange(String sparql) {
-        super(sparql);
-    }
+//    public StructureByGuRange(String sparql) {
+//        super(sparql);
+//    }
 
     public StructureByGuRange() {
         super();
         this.prefix = "PREFIX glycan: <http://purl.jp/bio/12/glyco/glycan/> \n";
-        this.select = "DISTINCT ?" + SaccharideURI + " ?" + Uoxf + " ?" + Gu + "\n";
-//        this.from = "FROM <http://137.92.56.159:443/glycobase>\n";
+        this.select = super.getSelect() + " ?" + Gu + "\n";
     }
 
     public String getEvidenceType() { return getSparqlEntity().getValue(GlycanGlycobase.EvidenceType);}
@@ -27,7 +26,7 @@ public class StructureByGuRange extends SelectSparqlBean implements GlycanGlycob
     @Override
     public String getWhere() throws SparqlException {
         String type = getEvidenceType();
-        String where = "";
+        String where = super.getWhere();
         if(type.equals("uplc")){
             where += "?" + PeakURI + " glycan:has_glucose_unit ?"+ Gu + " .\n"
                     + "?" + EvidenceURI + " a glycan:evidence_uplc;\n glycan:has_lc_chromatogram_peak ?" + PeakURI + ".\n"

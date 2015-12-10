@@ -6,8 +6,6 @@ import sparql.SparqlException;
 
 public class ListTaxon extends SelectSparqlBean implements GlycanGlycobase {
 
-    public static final String SampleName = GlycanGlycobase.SampleName;
-
     public ListTaxon(String sparql) {
         super(sparql);
     }

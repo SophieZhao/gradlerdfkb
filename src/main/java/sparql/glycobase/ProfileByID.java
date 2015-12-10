@@ -4,27 +4,23 @@ import sparql.SelectSparqlBean;
 import sparql.SparqlException;
 
 
-public class ProfileByUoxf extends SelectSparqlBean implements GlycanGlycobase {
+public class ProfileByID extends SelectSparqlBean implements GlycanGlycobase {
 
-    public ProfileByUoxf(String sparql) {
+    public ProfileByID(String sparql) {
         super(sparql);
     }
 
-    public ProfileByUoxf() {
+    public ProfileByID() {
         super();
         this.prefix = "PREFIX glycan: <http://purl.jp/bio/12/glyco/glycan/> \n";  //need to add # glycan#
         this.select = "DISTINCT ?" + SaccharideURI + " ?" + EvidenceURI + " ?" + EvidenceType + "\n";
-//        this.from = "FROM <http://137.92.56.159:443/glycobase>\n";
     }
 
-    public String getUoxf() {
-        return "\"" + getSparqlEntity().getValue(GlycanGlycobase.Uoxf) + "\"";
-    }
-
+    public String getId() {return getSparqlEntity().getValue(GlycanGlycobase.GlycoBaseId);}
 
     @Override
     public String getWhere() throws SparqlException {
-        String where = "?" + SaccharideURI + " glycan:has_uoxf " + getUoxf() + " .\n"
+        String where = "?" + SaccharideURI + " glycan:has_glycobase_id " + getId() + " .\n"
                 + "?" + SaccharideURI + " (glycan:has_lc_chromatogram_peak|glycan:has_ce_peak) ?" + PeakURI + " .\n"
                 + "OPTIONAL{\n ?" + EvidenceURI + " a glycan:evidence_hplc; \n a ?" + EvidenceType + " ;\n"
                 + " glycan:has_lc_chromatogram_peak ?" + PeakURI + " .\n}\n"

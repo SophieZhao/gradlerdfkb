@@ -15,7 +15,7 @@ public class StructureByProtein extends SelectSparqlBean implements GlycanGlycob
     public StructureByProtein() {
         super();
         this.prefix = "PREFIX glycan: <http://purl.jp/bio/12/glyco/glycan/> \n";  //need to add # glycan#
-        this.select = "DISTINCT ?" + Uoxf + "\n";
+        this.select = "DISTINCT ?" + Uoxf + " ?"+ GlycoBaseId + "\n";
     }
 
     public String getProtein() {
@@ -27,7 +27,8 @@ public class StructureByProtein extends SelectSparqlBean implements GlycanGlycob
     public String getWhere() throws SparqlException {
         String where = "?" + ProteinURI + " glycan:has_protein_name " + getProtein() + " ;\n"
                 + " glycan:has_attached_glycan ?"+ SaccharideURI + " .\n"
-                + "?" + SaccharideURI + " glycan:has_uoxf ?" + Uoxf + " .\n";
+                + "?" + SaccharideURI + " glycan:has_uoxf ?" + Uoxf + " ;\n"
+                + " glycan:has_glycobase_id ?" + GlycoBaseId + " .\n";
 
         return where;
     }
