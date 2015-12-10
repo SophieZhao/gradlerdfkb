@@ -280,4 +280,48 @@ public class sparqlExampleTest {
     public void testStructureByReference() throws SparqlException{
         System.out.println("sparql query glycans from certain paper is: \n" +getStructureByReference().getSparql());
     }
+
+    ListReport getReport(){
+        ListReport report = new ListReport();
+        SparqlEntity sparqlentity = new SparqlEntity();
+        report.setSparqlEntity(sparqlentity);
+        return report;
+    }
+    @Test
+    public void testListReport() throws SparqlException{
+        System.out.println("sparql query list all report is: \n" +getReport().getSparql());
+    }
+
+    ListSample getSample(){
+        ListSample sample = new ListSample();
+        SparqlEntity sparqlentity = new SparqlEntity();
+        sample.setSparqlEntity(sparqlentity);
+        return sample;
+    }
+    @Test
+    public void testListSample() throws SparqlException{
+        System.out.println("sparql query list all sample is: \n" +getSample().getSparql());
+    }
+
+    ListTaxon getTaxon(){
+        ListTaxon taxon = new ListTaxon();
+        SparqlEntity sparqlentity = new SparqlEntity();
+        taxon.setSparqlEntity(sparqlentity);
+        return taxon;
+    }
+    @Test
+    public void testListTaxon() throws SparqlException{
+        System.out.println("sparql query list all taxon is: \n" +getTaxon().getSparql());
+    }
+
+    ListTissue getTissue(){
+        ListTissue tissue = new ListTissue();
+        SparqlEntity sparqlentity = new SparqlEntity();
+        tissue.setSparqlEntity(sparqlentity);
+        return tissue;
+    }
+    @Test
+    public void testListTissue() throws SparqlException{
+        System.out.println("sparql query list all tissue is: \n" +getTissue().getSparql());
+    }
 }

@@ -7,10 +7,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aa2c5371-5830-4927-bfb5-e597898033b9" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/sparql/glycobase/ListReport.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/sparql/glycobase/ListSample.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/sparql/glycobase/ListTaxon.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/sparql/glycobase/ListTissue.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/sparql/SelectSparqlBean.java" afterPath="$PROJECT_DIR$/src/main/java/sparql/SelectSparqlBean.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/sparql/glycobase/GlycanGlycobase.java" afterPath="$PROJECT_DIR$/src/main/java/sparql/glycobase/GlycanGlycobase.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/sparql/glycobase/StructureByReference.java" afterPath="$PROJECT_DIR$/src/main/java/sparql/glycobase/StructureByReference.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/sparqlExampleTest.java" afterPath="$PROJECT_DIR$/src/test/java/sparqlExampleTest.java" />
     </list>
     <ignored path="untitled3.iws" />
@@ -90,11 +91,41 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="sparqlExampleTest.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="sparqlExampleTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/sparqlExampleTest.java">
           <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.65460527">
+              <caret line="319" column="45" selection-start-line="317" selection-start-column="8" selection-end-line="319" selection-end-column="45" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ListTissue.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/sparql/glycobase/ListTissue.java">
+          <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="259" column="0" selection-start-line="259" selection-start-column="0" selection-end-line="259" selection-end-column="0" />
+              <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ListSample.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/sparql/glycobase/ListSample.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="12" column="5" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ListTaxon.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/sparql/glycobase/ListTaxon.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="7" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -105,20 +136,16 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="38" column="53" selection-start-line="38" selection-start-column="53" selection-end-line="38" selection-end-column="53" />
-              <folding>
-                <element signature="imports" expanded="false" />
-                <element signature="e#723#724#0" expanded="false" />
-                <element signature="e#752#753#0" expanded="false" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="StructureByReference.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/sparql/glycobase/StructureByReference.java">
+      <file leaf-file-name="ListReport.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/sparql/glycobase/ListReport.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.68899524">
-              <caret line="40" column="30" selection-start-line="40" selection-start-column="30" selection-end-line="40" selection-end-column="30" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="5" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -127,8 +154,8 @@
       <file leaf-file-name="GlycanGlycobase.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/sparql/glycobase/GlycanGlycobase.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="31" column="55" selection-start-line="31" selection-start-column="55" selection-end-line="31" selection-end-column="55" />
+            <state vertical-scroll-proportion="-10.387096">
+              <caret line="23" column="37" selection-start-line="23" selection-start-column="31" selection-end-line="23" selection-end-column="37" />
               <folding />
             </state>
           </provider>
@@ -433,9 +460,13 @@
         <option value="$PROJECT_DIR$/src/main/java/sparql/glycobase/StructureByProtein.java" />
         <option value="$PROJECT_DIR$/src/main/java/sparql/glycobase/ListLiterature.java" />
         <option value="$PROJECT_DIR$/src/main/java/sparql/glycobase/GlycanGlycobase.java" />
-        <option value="$PROJECT_DIR$/src/test/java/sparqlExampleTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/sparql/glycobase/StructureByReference.java" />
         <option value="$PROJECT_DIR$/src/main/java/sparql/SelectSparqlBean.java" />
+        <option value="$PROJECT_DIR$/src/main/java/sparql/glycobase/ListReport.java" />
+        <option value="$PROJECT_DIR$/src/main/java/sparql/glycobase/ListSample.java" />
+        <option value="$PROJECT_DIR$/src/main/java/sparql/glycobase/ListTaxon.java" />
+        <option value="$PROJECT_DIR$/src/main/java/sparql/glycobase/ListTissue.java" />
+        <option value="$PROJECT_DIR$/src/test/java/sparqlExampleTest.java" />
       </list>
     </option>
   </component>
@@ -447,8 +478,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="65" />
-    <option name="y" value="52" />
+    <option name="x" value="75" />
+    <option name="y" value="24" />
     <option name="width" value="1845" />
     <option name="height" value="1028" />
   </component>
@@ -480,9 +511,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="Scratches" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -1193,25 +1224,16 @@
       <option name="project" value="LOCAL" />
       <updated>1449541406099</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="modify literature query -&gt; add average gu value to result">
+      <created>1449642209485</created>
+      <option name="number" value="00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1449642209485</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="sparqlExampleTest - 2015.12.08 at 11h 28m 52s.xml">
-      <configuration name="sparqlExampleTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="sparqlExampleTest - 2015.12.08 at 11h 37m 27s.xml">
-      <configuration name="sparqlExampleTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="sparqlExampleTest - 2015.12.08 at 11h 45m 07s.xml">
-      <configuration name="sparqlExampleTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="sparqlExampleTest - 2015.12.08 at 11h 46m 06s.xml">
-      <configuration name="sparqlExampleTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="sparqlExampleTest - 2015.12.09 at 16h 11m 14s.xml">
-      <configuration name="sparqlExampleTest" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="sparqlExampleTest - 2015.12.09 at 16h 12m 16s.xml">
       <configuration name="sparqlExampleTest" configurationId="JUnit" />
     </history-entry>
@@ -1224,12 +1246,27 @@
     <history-entry file="sparqlExampleTest - 2015.12.09 at 17h 16m 56s.xml">
       <configuration name="sparqlExampleTest" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="sparqlExampleTest - 2015.12.10 at 11h 44m 22s.xml">
+      <configuration name="sparqlExampleTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="sparqlExampleTest - 2015.12.10 at 11h 57m 23s.xml">
+      <configuration name="sparqlExampleTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="sparqlExampleTest - 2015.12.10 at 13h 25m 53s.xml">
+      <configuration name="sparqlExampleTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="sparqlExampleTest - 2015.12.10 at 13h 37m 51s.xml">
+      <configuration name="sparqlExampleTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="sparqlExampleTest - 2015.12.10 at 13h 44m 09s.xml">
+      <configuration name="sparqlExampleTest" configurationId="JUnit" />
+    </history-entry>
     <history-entry file="sparqlExampleTest_testStructureByReport - 2015.11.25 at 16h 45m 10s.xml">
       <configuration name="sparqlExampleTest.testStructureByReport" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="65" y="52" width="1845" height="1028" extended-state="0" />
+    <frame x="75" y="24" width="1845" height="1028" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1239,7 +1276,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295099" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2943072" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2934662" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2788321" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26570317" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -1278,7 +1315,8 @@
     <MESSAGE value="add query glycans on protein" />
     <MESSAGE value="add query all literature" />
     <MESSAGE value="add query by paper, query by protein" />
-    <option name="LAST_COMMIT_MESSAGE" value="add query by paper, query by protein" />
+    <MESSAGE value="modify literature query -&gt; add average gu value to result" />
+    <option name="LAST_COMMIT_MESSAGE" value="modify literature query -&gt; add average gu value to result" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1289,34 +1327,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/unicarbkb/rdf/Namespaces.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="46" column="54" selection-start-line="46" selection-start-column="45" selection-end-line="46" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/unicarbkb/rdf/Glycoproteins.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/unicarbkb/rdf/Glycoproteins.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/unicarbkb/rdf/FALDO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="32" column="56" selection-start-line="32" selection-start-column="56" selection-end-line="32" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pg-create.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1507,14 +1517,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/sparql/glycobase/SequenceByUoxf.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.30874786">
-          <caret line="15" column="70" selection-start-line="15" selection-start-column="70" selection-end-line="15" selection-end-column="70" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/sparql/glycobase/GlycobaseSelectSparql.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3567753">
@@ -1554,7 +1556,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.75">
           <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1574,34 +1575,6 @@
         <state vertical-scroll-proportion="0.8378378">
           <caret line="40" column="0" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/sparql/glycobase/ListProfile.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.027881041">
-          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/sparql/glycobase/ListStructureOnProtein.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3866171">
-          <caret line="18" column="61" selection-start-line="18" selection-start-column="61" selection-end-line="18" selection-end-column="61" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/sparql/glycobase/ListLiterature.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="38" column="53" selection-start-line="38" selection-start-column="53" selection-end-line="38" selection-end-column="53" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#723#724#0" expanded="false" />
-            <element signature="e#752#753#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1636,37 +1609,101 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/sparql/glycobase/GlycanGlycobase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="31" column="55" selection-start-line="31" selection-start-column="55" selection-end-line="31" selection-end-column="55" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/sparqlExampleTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="259" column="0" selection-start-line="259" selection-start-column="0" selection-end-line="259" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/sparql/SelectSparqlBean.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.72408295">
           <caret line="165" column="35" selection-start-line="165" selection-start-column="35" selection-end-line="165" selection-end-column="35" />
           <folding>
-            <element signature="e#1684#1685#0" expanded="true" />
-            <element signature="e#1739#1740#0" expanded="true" />
+            <element signature="e#1684#1685#0" expanded="false" />
+            <element signature="e#1739#1740#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/sparql/glycobase/StructureByReference.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.68899524">
+        <state vertical-scroll-proportion="0.0">
           <caret line="40" column="30" selection-start-line="40" selection-start-column="30" selection-end-line="40" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/sparql/glycobase/SequenceByUoxf.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="32" column="1" selection-start-line="32" selection-start-column="1" selection-end-line="32" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/sparql/glycobase/ListProfile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.17182131">
+          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/sparql/glycobase/ListLiterature.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="38" column="53" selection-start-line="38" selection-start-column="53" selection-end-line="38" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/sparql/glycobase/ListStructureOnProtein.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/sparql/glycobase/ListReport.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="5" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/sparql/glycobase/GlycanGlycobase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.387096">
+          <caret line="23" column="37" selection-start-line="23" selection-start-column="31" selection-end-line="23" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/sparql/glycobase/ListSample.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="12" column="5" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/sparql/glycobase/ListTaxon.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="7" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/sparql/glycobase/ListTissue.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/sparqlExampleTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.65460527">
+          <caret line="319" column="45" selection-start-line="317" selection-start-column="8" selection-end-line="319" selection-end-column="45" />
           <folding />
         </state>
       </provider>
