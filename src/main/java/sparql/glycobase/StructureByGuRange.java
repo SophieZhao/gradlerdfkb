@@ -15,7 +15,7 @@ public class StructureByGuRange extends GlycanSelectSparql implements GlycanGlyc
     public StructureByGuRange() {
         super();
         this.prefix = "PREFIX glycan: <http://purl.jp/bio/12/glyco/glycan/> \n";
-        this.select = super.getSelect() + " ?" + Gu + "\n";
+        this.select = super.getSelect() + "\n";
     }
 
     public String getEvidenceType() { return getSparqlEntity().getValue(GlycanGlycobase.EvidenceType);}
