@@ -9,7 +9,9 @@ public class ReactionByID extends SelectSparqlBean implements GlycanGlycobase {
     public static final String SubstrateURI = "SubstrateURI";
     public static final String ProductURI = "ProductURI";
     public static final String SubstrateUoxf = "SubstrateUoxf";
+    public static final String SubstrateId = "SubstrateId";
     public static final String ProductUoxf = "ProductUoxf";
+    public static final String ProductId = "ProductId";
 
     public ReactionByID(String sparql) {
         super(sparql);
@@ -18,7 +20,8 @@ public class ReactionByID extends SelectSparqlBean implements GlycanGlycobase {
     public ReactionByID() {
         super();
         this.prefix = "PREFIX glycan: <http://purl.jp/bio/12/glyco/glycan/> \n";  //need to add # glycan#
-        this.select = "DISTINCT ?" + ReactionURI + " ?" + Enzyme + " ?" + SubstrateUoxf + " ?" + ProductUoxf + "\n";
+        this.select = "DISTINCT ?" + ReactionURI + " ?" + Enzyme + " ?" + SubstrateUoxf + " ?"+ SubstrateId
+                + " ?" + ProductUoxf + " ?" + ProductId + "\n";
     }
 
     public String getId() {return getSparqlEntity().getValue(GlycanGlycobase.GlycoBaseId);}
@@ -31,8 +34,10 @@ public class ReactionByID extends SelectSparqlBean implements GlycanGlycobase {
                 + "?" + ReactionURI + " glycan:has_exglycosidase ?" + Enzyme + " ;\n"
                 + " glycan:has_substrate ?" + SubstrateURI + " ;\n"
                 + " glycan:has_product ?" + ProductURI + " .\n"
-                + "?" + SubstrateURI + " glycan:has_uoxf ?" + SubstrateUoxf+ " .\n"
-                + "?" + ProductURI + " glycan:has_uoxf ?" + ProductUoxf + " .\n";
+                + "?" + SubstrateURI + " glycan:has_uoxf ?" + SubstrateUoxf+ " ;\n"
+                + " glycan:has_glycobase_id ?" + SubstrateId + " .\n"
+                + "?" + ProductURI + " glycan:has_uoxf ?" + ProductUoxf + " ;\n"
+                + " glycan:has_glycobase_id ?"+ ProductId + " .\n";
 
         return where;
     }
