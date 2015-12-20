@@ -322,4 +322,28 @@ public class sparqlExampleTest {
     public void testAvgCegu() throws SparqlException{
         System.out.println("sparql query average ce gu value is: \n" +getAvgCegu().getSparql());
     }
+
+    LiteratureDetail getLiteratureDetail(){
+        LiteratureDetail paper = new LiteratureDetail();
+        SparqlEntity paperSpqEntity = new SparqlEntity();
+        paperSpqEntity.setValue(GlycanGlycobase.PaperTitle, "HPLC-based analysis of serum N-glycans on a 96-well plate platform with dedicated database software.");
+        paper.setSparqlEntity(paperSpqEntity);
+        return paper;
+    }
+    @Test
+    public void testLiteratureDetail() throws SparqlException{
+        System.out.println("sparql query list paper detail is: \n" +getLiteratureDetail().getSparql());
+    }
+
+    PaperLinkedSource getPaperLinkedSource(){
+        PaperLinkedSource source = new PaperLinkedSource();
+        SparqlEntity sourceSpqEntity = new SparqlEntity();
+        sourceSpqEntity.setValue(GlycanGlycobase.PaperTitle, "HPLC-based analysis of serum N-glycans on a 96-well plate platform with dedicated database software.");
+        source.setSparqlEntity(sourceSpqEntity);
+        return source;
+    }
+    @Test
+    public void testPaperLinkedSource() throws SparqlException{
+        System.out.println("sparql query list paper realted source detail is: \n" +getPaperLinkedSource().getSparql());
+    }
 }

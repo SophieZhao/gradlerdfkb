@@ -15,7 +15,7 @@ public class AvgUplcGu extends SelectSparqlBean implements GlycanGlycobase {
     public AvgUplcGu() {
         super();
         this.prefix = "PREFIX glycan: <http://purl.jp/bio/12/glyco/glycan/> \n";  //need to add # glycan#
-        this.select = "DISTINCT ?" + SaccharideURI + "(AVG(?" + UplcGu + ") AS ?" + avgUp + ") \n";
+        this.select = "DISTINCT ?" + SaccharideURI + " (AVG(?" + UplcGu + ") AS ?" + avgUp + ") \n";
     }
 
     public String getId() {
