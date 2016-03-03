@@ -21,10 +21,11 @@ public class GlycoSequenceSelectSparql extends SaccharideSelectSparql implements
     public GlycoSequenceSelectSparql()  {
         super();
         this.prefix = "PREFIX glycan: <http://purl.jp/bio/12/glyco/glycan#>\n"
+                + "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\n"
                 + "PREFIX glytoucan:  <http://www.glytoucan.org/glyco/owl/glytoucan#>";
         this.select = super.getSelect() + " ?" + Sequence + "\n";
-        this.from = "FROM <http://rdf.glytoucan.org>\n"
-                + "FROM <http://rdf.glytoucan.org/sequence/wurcs>";
+        /*this.from = "FROM <http://rdf.glytoucan.org>\n"
+                + "FROM <http://rdf.glytoucan.org/sequence/wurcs>";*/
     }
 
     public String getPrimaryId() {

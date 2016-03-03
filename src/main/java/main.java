@@ -15,11 +15,11 @@ public class main {
 
     public static void main(String[] args) {
 
-        try {
+        /*try {
             Glycobase.readCSV();
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
 
 
         //Namespaces n = new Namespaces();
