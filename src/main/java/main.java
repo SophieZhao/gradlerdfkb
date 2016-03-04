@@ -2,6 +2,8 @@
 import glycobase.Glycobase;
 import org.apache.jena.rdf.model.Model;
 import org.unicarbkb.rdf.Namespaces;
+import sparql.SparqlException;
+import sparql.unicarbkb.UnicarbkbWurcs;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -14,6 +16,12 @@ import static org.unicarbkb.rdf.MassSpec.createLcStructureResource;
 public class main {
 
     public static void main(String[] args) {
+
+        try {
+            UnicarbkbWurcs.checkTouCan();
+        } catch (SparqlException e) {
+            e.printStackTrace();
+        }
 
         /*try {
             Glycobase.readCSV();

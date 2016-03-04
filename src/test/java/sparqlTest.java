@@ -1,5 +1,6 @@
 
 import models.unicarbkb.Structure;
+import models.unicarbkb.Translation;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.jena.query.*;
 import org.apache.jena.rdf.model.*;
@@ -503,7 +504,7 @@ public class sparqlTest {
         String ct = "";
 
         for(Structure structure : structures) {
-            if (structure.id >= 7400 ) {
+            if (structure.id >= 7400  ) {
 
                 if (structure.glycanst.startsWith("v--")) {
                     structure.glycanst = structure.glycanst.replace("v--", "FreeEnd--");
@@ -527,53 +528,54 @@ public class sparqlTest {
                 workspace.setNotation("cfg"); //cfgbw | uoxf | uoxfcol | text
                 GlycanRenderer renderer = workspace.getGlycanRenderer();
                 org.eurocarbdb.application.glycanbuilder.Glycan glycan = org.eurocarbdb.application.glycanbuilder.Glycan.fromString(structure.glycanst.trim());
-                ct = glycan.toGlycoCTCondensed();
-                System.out.println("this was the ct: " + ct);
-                GlycoSequenceToWurcsSelectSparql s = new GlycoSequenceToWurcsSelectSparql("glycoct");
-                SparqlEntity se = new SparqlEntity();
-                ct = StringUtils.chomp(ct);
-                se.setValue(GlycoSequenceToWurcsSelectSparql.FromSequence, ct.replaceAll("\n", "\\\\n").trim());
-                s.setSparqlEntity(se);
-                logger.debug(s.getSparql());
+                if(glycan != null) {
+                    ct = glycan.toGlycoCTCondensed();
+                    System.out.println("this was the ct: " + ct);
+                    GlycoSequenceToWurcsSelectSparql s = new GlycoSequenceToWurcsSelectSparql("glycoct");
+                    SparqlEntity se = new SparqlEntity();
+                    ct = StringUtils.chomp(ct);
+                    se.setValue(GlycoSequenceToWurcsSelectSparql.FromSequence, ct.replaceAll("\n", "\\\\n").replaceAll("x\\(", "u\\(").replaceAll("\\)x", "\\)u").trim());
+                    s.setSparqlEntity(se);
+                    logger.debug(s.getSparql());
 
-                Query query = QueryFactory.create(s.getSparql().replaceAll("null", "").replace("?Sequence", ""));
-                System.out.println("Id " + structure.id + " Query: " + s.getSparql().replaceAll("null", "").replace("?Sequence", ""));
-                QueryExecution qe = QueryExecutionFactory.sparqlService("http://test.ts.glytoucan.org/sparql",query);
-                ResultSet rs = qe.execSelect();
+                    Query query = QueryFactory.create(s.getSparql().replaceAll("null", "").replace("?Sequence", ""));
+                    System.out.println("Id " + structure.id + " Query: " + s.getSparql().replaceAll("null", "").replace("?Sequence", ""));
+                    QueryExecution qe = QueryExecutionFactory.sparqlService("http://test.ts.glytoucan.org/sparql", query);
+                    ResultSet rs = qe.execSelect();
 
-                List<SparqlEntity> results = new ArrayList<>();
-                HashSet<String> resultsList = new HashSet<>();
+                    List<SparqlEntity> results = new ArrayList<>();
+                    HashSet<String> resultsList = new HashSet<>();
 
-                while (rs.hasNext()) {
-                    QuerySolution row = rs.next();
-                    Iterator<String> columns = row.varNames();
-                    SparqlEntity se2 = new SparqlEntity();
-                    while (columns.hasNext()) {
-                        String column = columns.next();
-                        RDFNode cell = row.get(column);
+                    while (rs.hasNext()) {
+                        QuerySolution row = rs.next();
+                        Iterator<String> columns = row.varNames();
+                        SparqlEntity se2 = new SparqlEntity();
+                        while (columns.hasNext()) {
+                            String column = columns.next();
+                            RDFNode cell = row.get(column);
 
-                        if (cell.isResource()) {
-                            Resource resource =  cell.asResource();
-                            //do something maybe with the OntModel???
-                            if (resource.isLiteral())
-                                se.setValue(column, resource.asLiteral().getString());
-                            else
-                                se.setValue(column, resource.toString());
+                            if (cell.isResource()) {
+                                Resource resource = cell.asResource();
+                                //do something maybe with the OntModel???
+                                if (resource.isLiteral())
+                                    se.setValue(column, resource.asLiteral().getString());
+                                else
+                                    se.setValue(column, resource.toString());
+                            } else if (cell.isLiteral()) {
+                                se.setValue(column, cell.asLiteral().getString());
+                            } else if (cell.isAnon()) {
+                                se.setValue(column, "anon");
+                            } else {
+                                se.setValue(column, cell.toString());
+                            }
                         }
-                        else if (cell.isLiteral()) {
-                            se.setValue(column, cell.asLiteral().getString());
-                        } else if (cell.isAnon()) {
-                            se.setValue(column, "anon");
-                        } else {
-                            se.setValue(column, cell.toString());
-                        }
+                        results.add(se);
                     }
-                    results.add(se);
-                }
 
-                for(SparqlEntity entity : results){
-                    System.out.println("results: " + entity.getValue("PrimaryId"));
-                    resultList.add(structure.id + "\t" + entity.getValue("PrimaryId").toString());
+                    for (SparqlEntity entity : results) {
+                        //System.out.println("results: " + entity.getValue("PrimaryId"));
+                        resultList.add(structure.id + "\t" + entity.getValue("PrimaryId").toString());
+                    }
                 }
             }
         }
@@ -590,5 +592,92 @@ public class sparqlTest {
             writer.println(c);
         }
     }
+
+
+    @Test
+    public void testKBtoWurcsSparqlTranslation()  throws SparqlException {
+
+        List<Translation> translations = Ebean.find(Translation.class).findList();
+        HashSet<String> resultList = new HashSet<>();
+
+        String ct = "";
+
+        for(Translation translation : translations) {
+            System.out.println("id check " + translation.id + " ct " + translation.ct);
+            if(translation.ct == null)
+                continue;
+
+            if (translation.structure.id > 0 ) {
+
+                ct = translation.ct;
+
+                GlycoSequenceToWurcsSelectSparql s = new GlycoSequenceToWurcsSelectSparql("glycoct");
+                SparqlEntity se = new SparqlEntity();
+                ct = StringUtils.chomp(ct);
+                System.out.println("ct on top: " + ct);
+                if (ct != null) {
+                    se.setValue(GlycoSequenceToWurcsSelectSparql.FromSequence, ct.replaceAll("\n", "\\\\n").replaceAll("x\\(", "u\\(").replaceAll("\\)x", "\\)u").trim());
+                    s.setSparqlEntity(se);
+                    logger.debug(s.getSparql());
+
+                    Query query = QueryFactory.create(s.getSparql().replaceAll("null", "").replace("?Sequence", ""));
+                    System.out.println("Id " + translation.structure.id + " Query: " + s.getSparql().replaceAll("null", "").replace("?Sequence", ""));
+                    QueryExecution qe = QueryExecutionFactory.sparqlService("http://test.ts.glytoucan.org/sparql", query);
+                    ResultSet rs = qe.execSelect();
+
+                    List<SparqlEntity> results = new ArrayList<>();
+                    HashSet<String> resultsList = new HashSet<>();
+
+                    while (rs.hasNext()) {
+                        QuerySolution row = rs.next();
+                        Iterator<String> columns = row.varNames();
+                        SparqlEntity se2 = new SparqlEntity();
+                        while (columns.hasNext()) {
+                            String column = columns.next();
+                            RDFNode cell = row.get(column);
+
+                            if (cell.isResource()) {
+                                Resource resource = cell.asResource();
+                                //do something maybe with the OntModel???
+                                if (resource.isLiteral())
+                                    se.setValue(column, resource.asLiteral().getString());
+                                else
+                                    se.setValue(column, resource.toString());
+                            } else if (cell.isLiteral()) {
+                                se.setValue(column, cell.asLiteral().getString());
+                            } else if (cell.isAnon()) {
+                                se.setValue(column, "anon");
+                            } else {
+                                se.setValue(column, cell.toString());
+                            }
+                        }
+                        results.add(se);
+                    }
+
+                    for (SparqlEntity entity : results) {
+                        //System.out.println("results: " + entity.getValue("PrimaryId"));
+                        resultList.add(translation.structure.id + "\t" + entity.getValue("PrimaryId").toString());
+                    }
+                }
+
+            }
+        }
+
+        for(String c : resultList){
+            System.out.println(c);
+        }
+    }
+
+    @Test
+    public void motifTouCanSearch() {}
+        MotifSearchSparql getMotifSearchSparql() {
+        MotifSearchSparql motfs = new MotifSearchSparql();
+        SparqlEntity se = new SparqlEntity();
+        // G00047MO
+        se.setValue(GlycoSequence.Sequence, "WURCS=2.0/3,3,2/[x2122h-1x_1-5_2*NCC/3=O][12112h-1b_1-5][11221m-1a_1-5]/1-2-3/a3-b1_a4-c1");
+        motfs.setSparqlEntity(se);
+
+    }
+
 
 }
