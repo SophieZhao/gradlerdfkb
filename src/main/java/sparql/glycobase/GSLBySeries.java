@@ -10,6 +10,8 @@ public class GSLBySeries extends SelectSparqlBean implements GlycanGlycobase {
     public static final String composition = "composition";
     public static final String monoisotopicMass = "monoisotopicMass";
     public static final String samplePrepURI = "samplePrepURI";
+    public static final String gslCode = "gslCode";
+
 
     public GSLBySeries(String sparql) {
         super(sparql);
@@ -18,7 +20,7 @@ public class GSLBySeries extends SelectSparqlBean implements GlycanGlycobase {
     public GSLBySeries() {
         super();
         this.prefix = "PREFIX glycan: <http://purl.jp/bio/12/glyco/glycan/> \n";
-        this.select = "DISTINCT ?" + SampleName + " ?" + GlycoBaseId + " ?" + name + " ?" + composition
+        this.select = "DISTINCT ?" + SampleName + " ?" + gslCode + " ?"+ GlycoBaseId + " ?" + name + " ?" + composition
                 + " ?" + monoisotopicMass + " ?" + Gu +" \n";
     }
 
@@ -33,7 +35,7 @@ public class GSLBySeries extends SelectSparqlBean implements GlycanGlycobase {
     public String getWhere() throws SparqlException {
         String where = "?" + SaccharideURI + " a glycan:glycolipid;\n glycan:has_name ?" + name
                 + ";\n glycan:has_glycobase_id ?" + GlycoBaseId + ";\n glycan:has_composition ?" + composition
-                + ";\n glycan:has_monoisotopic_mass ?" + monoisotopicMass + ".\n"
+                + ";\n glycan:has_monoisotopic_mass ?" + monoisotopicMass +";\n glycan:has_code ?" + gslCode + ".\n"
                 + "?" + ReferenceCompoundURI + " glycan:has_glycan ?" + SaccharideURI + ";\n"
                 + " glycan:has_lc_chromatogram_peak ?" + PeakURI + " ;\n glycan:sample_preparation ?" + samplePrepURI
                 + ";\n glycan:is_from_report " + getReportName() + ".\n "
