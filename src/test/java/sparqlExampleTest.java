@@ -346,4 +346,51 @@ public class sparqlExampleTest {
     public void testPaperLinkedSource() throws SparqlException{
         System.out.println("sparql query list paper realted source detail is: \n" +getPaperLinkedSource().getSparql());
     }
+
+    AllGlycan getAllGlycan(){
+        AllGlycan structure = new AllGlycan();
+        SparqlEntity sparqlentity = new SparqlEntity();
+        structure.setSparqlEntity(sparqlentity);
+        return structure;
+    }
+    @Test
+    public void testAllGlycan() throws SparqlException{
+        System.out.println("sparql query list all structure is: \n" +getAllGlycan().getSparql());
+    }
+
+    GSLGu getGSLGu(){
+        GSLGu structure = new GSLGu();
+        SparqlEntity sparqlentity = new SparqlEntity();
+        sparqlentity.setValue(GlycanGlycobase.LabelType, "2-AB");
+        structure.setSparqlEntity(sparqlentity);
+        return structure;
+    }
+    @Test
+    public void testGSLGu() throws SparqlException{
+        System.out.println("sparql query GSL gu is: \n" +getGSLGu().getSparql());
+    }
+
+    ListGSLseries getGSLseries(){
+        ListGSLseries structure = new ListGSLseries();
+        SparqlEntity sparqlentity = new SparqlEntity();
+        structure.setSparqlEntity(sparqlentity);
+        return structure;
+    }
+    @Test
+    public void testListGSLseries() throws SparqlException{
+        System.out.println("sparql query list GSL series is: \n" +getGSLseries().getSparql());
+    }
+
+    GSLBySeries getGSLBySeries(){
+        GSLBySeries structure = new GSLBySeries();
+        SparqlEntity sparqlentity = new SparqlEntity();
+        sparqlentity.setValue(GlycanGlycobase.LabelType, "2-AB");
+        sparqlentity.setValue(GlycanGlycobase.ReportName, "lacto");
+        structure.setSparqlEntity(sparqlentity);
+        return structure;
+    }
+    @Test
+    public void testGSLBySeries() throws SparqlException{
+        System.out.println("sparql query list GSL structures by series is: \n" +getGSLBySeries().getSparql());
+    }
 }
