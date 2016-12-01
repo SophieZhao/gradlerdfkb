@@ -393,4 +393,5 @@ public class sparqlExampleTest {
     public void testGSLBySeries() throws SparqlException{
         System.out.println("sparql query list GSL structures by series is: \n" +getGSLBySeries().getSparql());
     }
+
 }

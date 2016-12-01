@@ -7,7 +7,7 @@ public interface GlycanGlycobase {
 
     public static final String SaccharideURI = "SaccharideURI";
     public static final String ReferenceCompoundURI = "ReferenceCompoundURI";
-    public static final String EvidenceURI = "EvidenceURI";
+    public static final String ProfileURI = "ProfileURI";
     public static final String PeakURI = "PeakURI";
     public static final String SequenceURI = "SequenceURI";
     public static final String EvidenceType = "EvidenceType";
@@ -18,6 +18,8 @@ public interface GlycanGlycobase {
     public static final String GuLowBoundary = "GuLowBoundary";
     public static final String GuHighBoundary = "GuHighBoundary";
     public static final String Gu = "Gu";
+    public static final String Gu2AB = "Gu2AB";
+    public static final String GuProcainamide = "GuProcainamide";
     public static final String Au = "Au";
     public static final String ReportName = "ReportName";
     public static final String SampleName = "SampleName";

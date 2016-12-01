@@ -26,19 +26,19 @@ public class MotifSearchSparql extends SelectSparqlBean {
                 + "FROM <http://rdf.glycoinfo.org/wurcs/0.5.0/ms>";
     }
 
-    @Override
-    public String getWhere() throws SparqlException {
-        this.where = ""
-                + "?" + Saccharide.URI + " glycan:has_glycosequence ?gseq .\n";
-
-
-        SubstructureSearchSparql substructureSearchSparql = new SubstructureSearchSparql();
-        SparqlEntity se = new SparqlEntity();
-        se.setValue(GlycoSequenceSparql.Sequence, getSparqlEntity().getValue(GlycoSequenceSparql.Sequence));
-        substructureSearchSparql.setSparqlEntity(se);
-
-        this.where += substructureSearchSparql.getWhere();
-
-        return where;
-    }
+//    @Override
+//    public String getWhere() throws SparqlException {
+//        this.where = ""
+//                + "?" + Saccharide.URI + " glycan:has_glycosequence ?gseq .\n";
+//
+//
+//        SubstructureSearchSparql substructureSearchSparql = new SubstructureSearchSparql();
+//        SparqlEntity se = new SparqlEntity();
+//        se.setValue(GlycoSequenceSparql.Sequence, getSparqlEntity().getValue(GlycoSequenceSparql.Sequence));
+//        substructureSearchSparql.setSparqlEntity(se);
+//
+//        this.where += substructureSearchSparql.getWhere();
+//
+//        return where;
+//    }
 }

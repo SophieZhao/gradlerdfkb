@@ -27,7 +27,7 @@ public class AvgCeGu extends SelectSparqlBean implements GlycanGlycobase {
     public String getWhere() throws SparqlException {
         String where = "?" + SaccharideURI + " glycan:has_glycobase_id " + getId() + " .\n"
                 + "OPTIONAL{?" + SaccharideURI + " glycan:has_ce_peak ?" + PeakURI + " .\n"
-                + "?" + EvidenceURI + " a glycan:evidence_ce;\n"
+                + "?" + ProfileURI + " a glycan:evidence_ce;\n"
                 + " glycan:has_ce_peak ?" + PeakURI + " .\n"
                 + "?" + PeakURI +" glycan:has_glucose_unit ?" + CeGu + " .}\n";
         return where;

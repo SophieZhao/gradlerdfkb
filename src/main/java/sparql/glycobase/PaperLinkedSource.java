@@ -30,10 +30,9 @@ public class PaperLinkedSource extends SelectSparqlBean implements GlycanGlycoba
     @Override
     public String getWhere() throws SparqlException {
         String where = "?" + ReferenceCompoundURI + " glycan:published_in ?" + PaperURI + " ;\n"
-                + " glycan:is_from_source ?" + SourceURI + " ;\n"
-                + " glycan:is_from_report ?" + ReportName + " .\n"
-                + "?" + PaperURI + " a bibo:Article;\n"
-                + " dc:title " + getTitle() + " .\n"
+                + " glycan:is_from_source ?" + SourceURI + " .\n"
+                + "OPTIONAL{\n?" + ReferenceCompoundURI + " glycan:is_from_report ?" + ReportName + " .\n}\n"
+                + "?" + PaperURI + " dc:title " + getTitle() + " .\n"
                 + "?" + SourceURI + " glycan:from_sample ?" + SampleName + " .\n"
                 + "OPTIONAL{\n?" + SourceURI + " glycan:has_taxon ?" + Taxon + " ;\n"
                 + " glycan:has_tissue ?" + Tissue + " .\n}\n";

@@ -38,18 +38,22 @@ public class LiteratureDetail extends SelectSparqlBean implements GlycanGlycobas
 
     @Override
     public String getWhere() throws SparqlException {
-        String where = "?" + PaperURI + " a bibo:Article ;\n"
-                + " dc:title " + getTitle() + " ;\n"
-                + " glycan:has_pmid ?" + PubmedId + " ;\n"
-                + " dc:creator ?" + Author + " ;\n"
+        String where = "?" + PaperURI + " dc:title " + getTitle() + " ;\n"
+                + " bibo:authorList ?" + Author + " ;\n"
+                + " bibo:issued ?" + PublishYear + " ;\n"
+                + " owl:sameAs ?" + PubmedLink + " .\n" // PubmedLink is the link to posters when it is not a paper
+
+                + "OPTIONAL{\n ?" + PaperURI + " glycan:has_pmid ?" + PubmedId + " ;\n"
                 + " dcterms:isPartOf ?" + JournalURI +" ;\n"
                 + " bibo:pageEnd ?"+ PageEnd + " ;\n"
                 + " bibo:pageStart ?" + PageStart + " ;\n"
                 + " bibo:volume ?" + Volume + " ;\n"
-                + " bibo:issued ?" + PublishYear + " ;\n"
-                + " owl:sameAs ?" + PubmedLink + " .\n"
                 + "?" + JournalURI + " a bibo:journal ;\n"
-                + " dc:title ?" + Jounral + ".\n";
+                + " dc:title ?" + Jounral + " .\n}\n";
+
+
+
+
         return where;
     }
 

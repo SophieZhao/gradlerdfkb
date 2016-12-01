@@ -27,7 +27,7 @@ public class AvgHplcGu extends SelectSparqlBean implements GlycanGlycobase {
     public String getWhere() throws SparqlException {
         String where = "?" + SaccharideURI + " glycan:has_glycobase_id " + getId() + " .\n"
                 + "OPTIONAL{?" + SaccharideURI + " glycan:has_lc_chromatogram_peak ?" + PeakURI + " .\n"
-                + "?" + EvidenceURI + " a glycan:evidence_hplc;\n"
+                + "?" + ProfileURI + " a glycan:evidence_hplc;\n"
                 + " glycan:has_lc_chromatogram_peak ?" + PeakURI + " .\n"
                 + "?" + PeakURI +" glycan:has_glucose_unit ?" + HplcGu + " .}\n";
         return where;

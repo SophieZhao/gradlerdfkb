@@ -29,25 +29,25 @@ public class StructureByGuRange extends GlycanSelectSparql implements GlycanGlyc
         String where = super.getWhere();
         if(type.equals("uplc")){
             where += "?" + PeakURI + " glycan:has_glucose_unit ?"+ Gu + " .\n"
-                    + "?" + EvidenceURI + " a glycan:evidence_uplc;\n glycan:has_lc_chromatogram_peak ?" + PeakURI + ".\n"
+                    + "?" + ProfileURI + " a glycan:evidence_uplc;\n glycan:has_lc_chromatogram_peak ?" + PeakURI + ".\n"
                     + "?" + SaccharideURI + " glycan:has_lc_chromatogram_peak ?" + PeakURI + " ;\nglycan:has_uoxf ?"+ Uoxf+" .\n"
                     + "FILTER(?"+Gu +">"+getUoxfLowBoundary()+" && ?"+ Gu +"<"+getUoxfHighBoundary() + ")";
         }
         else if(type.equals("hplc")){
             where += "?" + PeakURI + " glycan:has_glucose_unit ?"+ Gu + " .\n"
-                    + "?" + EvidenceURI + " a glycan:evidence_hplc;\n glycan:has_lc_chromatogram_peak ?" + PeakURI + ".\n"
+                    + "?" + ProfileURI + " a glycan:evidence_hplc;\n glycan:has_lc_chromatogram_peak ?" + PeakURI + ".\n"
                     + "?" + SaccharideURI + " glycan:has_lc_chromatogram_peak ?" + PeakURI + " ;\nglycan:has_uoxf ?"+ Uoxf+" .\n"
                     + "FILTER(?"+Gu +">"+getUoxfLowBoundary()+" && ?"+ Gu +"<"+getUoxfHighBoundary() + ")";
         }
         else if(type.equals("rpuplc")){
             where += "?" + PeakURI + " glycan:has_arabinose_unit ?"+ Gu + " .\n"
-                    + "?" + EvidenceURI + " a glycan:evidence_rpuplc;\n glycan:has_lc_chromatogram_peak ?" + PeakURI + ".\n"
+                    + "?" + ProfileURI + " a glycan:evidence_rpuplc;\n glycan:has_lc_chromatogram_peak ?" + PeakURI + ".\n"
                     + "?" + SaccharideURI + " glycan:has_lc_chromatogram_peak ?" + PeakURI + " ;\nglycan:has_uoxf ?"+ Uoxf+" .\n"
                     + "FILTER(?"+Gu +">"+getUoxfLowBoundary()+" && ?"+ Gu +"<"+getUoxfHighBoundary() + ")";
         }
         else if(type.equals("ce")){
             where += "?" + PeakURI + " glycan:has_glucose_unit ?"+ Gu + " .\n"
-                    + "?" + EvidenceURI + " a glycan:evidence_ce;\n glycan:has_ce_peak ?" + PeakURI + ".\n"
+                    + "?" + ProfileURI + " a glycan:evidence_ce;\n glycan:has_ce_peak ?" + PeakURI + ".\n"
                     + "?" + SaccharideURI + " glycan:has_ce_peak ?" + PeakURI + " ;\nglycan:has_uoxf ?"+ Uoxf+" .\n"
                     + "FILTER(?"+Gu +">"+getUoxfLowBoundary()+" && ?"+ Gu +"<"+getUoxfHighBoundary() + ")";
         }

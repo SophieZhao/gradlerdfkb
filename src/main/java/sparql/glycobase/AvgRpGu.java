@@ -27,7 +27,7 @@ public class AvgRpGu extends SelectSparqlBean implements GlycanGlycobase {
     public String getWhere() throws SparqlException {
         String where = "?" + SaccharideURI + " glycan:has_glycobase_id " + getId() + " .\n"
                 + "OPTIONAL{?" + SaccharideURI + " glycan:has_lc_chromatogram_peak ?" + PeakURI + " .\n"
-                + "?" + EvidenceURI + " a glycan:evidence_rpuplc;\n"
+                + "?" + ProfileURI + " a glycan:evidence_rpuplc;\n"
                 + " glycan:has_lc_chromatogram_peak ?" + PeakURI + " .\n"
                 + "?" + PeakURI +" glycan:has_arabinose_unit ?" + RpGu + " .}\n";
         return where;

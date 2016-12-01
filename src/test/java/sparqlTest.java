@@ -668,16 +668,16 @@ public class sparqlTest {
         }
     }
 
-    @Test
-    public void motifTouCanSearch() {}
-        MotifSearchSparql getMotifSearchSparql() {
-        MotifSearchSparql motfs = new MotifSearchSparql();
-        SparqlEntity se = new SparqlEntity();
-        // G00047MO
-        se.setValue(GlycoSequence.Sequence, "WURCS=2.0/3,3,2/[x2122h-1x_1-5_2*NCC/3=O][12112h-1b_1-5][11221m-1a_1-5]/1-2-3/a3-b1_a4-c1");
-        motfs.setSparqlEntity(se);
-
-    }
+//    @Test
+//    public void motifTouCanSearch() {}
+//        MotifSearchSparql getMotifSearchSparql() {
+//        MotifSearchSparql motfs = new MotifSearchSparql();
+//        SparqlEntity se = new SparqlEntity();
+//        // G00047MO
+//        se.setValue(GlycoSequence.Sequence, "WURCS=2.0/3,3,2/[x2122h-1x_1-5_2*NCC/3=O][12112h-1b_1-5][11221m-1a_1-5]/1-2-3/a3-b1_a4-c1");
+//        motfs.setSparqlEntity(se);
+//
+//    }
 
 
 }
