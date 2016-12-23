@@ -27,9 +27,15 @@ public class StructureByGuRange extends GlycanSelectSparql implements GlycanGlyc
     public String getWhere() throws SparqlException {
         String type = getEvidenceType();
         String where = super.getWhere();
-        if(type.equals("uplc")){
+        if(type.equals("uplc_2-ab")){
             where += "?" + PeakURI + " glycan:has_glucose_unit ?"+ Gu + " .\n"
-                    + "?" + ProfileURI + " a glycan:evidence_uplc;\n glycan:has_lc_chromatogram_peak ?" + PeakURI + ".\n"
+                    + "?" + ProfileURI + " a glycan:evidence_uplc;\n glycan:has_label " +"'2-AB'"+ ";\n glycan:has_lc_chromatogram_peak ?" + PeakURI + ".\n"
+                    + "?" + SaccharideURI + " glycan:has_lc_chromatogram_peak ?" + PeakURI + " ;\nglycan:has_uoxf ?"+ Uoxf+" .\n"
+                    + "FILTER(?"+Gu +">"+getUoxfLowBoundary()+" && ?"+ Gu +"<"+getUoxfHighBoundary() + ")";
+        }
+        else if(type.equals("uplc_procainamide")){
+            where += "?" + PeakURI + " glycan:has_glucose_unit ?"+ Gu + " .\n"
+                    + "?" + ProfileURI + " a glycan:evidence_uplc;\n glycan:has_label " +"'Procainamide'"+ ";\n glycan:has_lc_chromatogram_peak ?" + PeakURI + ".\n"
                     + "?" + SaccharideURI + " glycan:has_lc_chromatogram_peak ?" + PeakURI + " ;\nglycan:has_uoxf ?"+ Uoxf+" .\n"
                     + "FILTER(?"+Gu +">"+getUoxfLowBoundary()+" && ?"+ Gu +"<"+getUoxfHighBoundary() + ")";
         }

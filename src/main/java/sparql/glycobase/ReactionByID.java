@@ -31,7 +31,7 @@ public class ReactionByID extends SelectSparqlBean implements GlycanGlycobase {
     public String getWhere() throws SparqlException {
         String where = "?" + SaccharideURI + " glycan:has_glycobase_id " + getId() + " .\n"
                 + "?" + SaccharideURI + " glycan:has_reaction ?" + ReactionURI + " .\n"
-                + "?" + ReactionURI + " glycan:has_exglycosidase ?" + Enzyme + " ;\n"
+                + "?" + ReactionURI + " glycan:has_exglycosidase_treatment ?" + Enzyme + " ;\n"
                 + " glycan:has_substrate ?" + SubstrateURI + " ;\n"
                 + " glycan:has_product ?" + ProductURI + " .\n"
                 + "?" + SubstrateURI + " glycan:has_uoxf ?" + SubstrateUoxf+ " ;\n"

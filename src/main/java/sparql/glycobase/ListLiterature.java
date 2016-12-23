@@ -35,7 +35,7 @@ public class ListLiterature extends SelectSparqlBean implements GlycanGlycobase 
     public String getWhere() throws SparqlException {
         String where = "?" + RefURI + " a bibo:Article ;\n"
                 + " glycan:has_pmid ?" + Pmid + " ;\n"
-                + " dc:creator ?" + PaperAuthor + " ;\n"
+                + " bibo:authorList ?" + PaperAuthor + " ;\n"
                 + " dc:title ?" + PaperTitle + " ;\n"
                 + " bibo:issued ?" + PaperYear + " ;\n"
                 + " owl:sameAs ?" + PubmedLink + " ;\n"

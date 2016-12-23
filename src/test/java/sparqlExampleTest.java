@@ -39,16 +39,28 @@ public class sparqlExampleTest {
         System.out.println("sparql query search by sample is: \n" +getStructureFromSample().getSparql());
     }
 
-    StructureByGlycobaseID getStructureByID(){
-        StructureByGlycobaseID id = new StructureByGlycobaseID();
+    UoxfByID getStructureByID(){
+        UoxfByID id = new UoxfByID();
         SparqlEntity sparqlentity = new SparqlEntity();
         sparqlentity.setValue(GlycanGlycobase.GlycoBaseId, "723");
         id.setSparqlEntity(sparqlentity);
         return id;
     }
     @Test
-    public void testStructureByGlycobaseID() throws SparqlException{
-        System.out.println("sparql query search by glycobaseID is: \n" +getStructureByID().getSparql());
+    public void testUoxfByID() throws SparqlException{
+        System.out.println("sparql query search uoxf by glycobaseID is: \n" +getStructureByID().getSparql());
+    }
+
+    MassByID getMassByID(){
+        MassByID id = new MassByID();
+        SparqlEntity sparqlentity = new SparqlEntity();
+        sparqlentity.setValue(GlycanGlycobase.GlycoBaseId, "723");
+        id.setSparqlEntity(sparqlentity);
+        return id;
+    }
+    @Test
+    public void testMassByID() throws SparqlException{
+        System.out.println("sparql query search mono mass by glycobaseID is: \n" +getMassByID().getSparql());
     }
 
     StructureByTissue getStructureByTissue(){
@@ -162,7 +174,7 @@ public class sparqlExampleTest {
     StructureByGuRange getStructureByGuRange(){
         StructureByGuRange structure = new StructureByGuRange();
         SparqlEntity sparqlentity = new SparqlEntity();
-        sparqlentity.setValue(GlycanGlycobase.EvidenceType, "uplc");
+        sparqlentity.setValue(GlycanGlycobase.EvidenceType, "uplc_procainamide");
         sparqlentity.setValue(GlycanGlycobase.GuLowBoundary, "2");
         sparqlentity.setValue(GlycanGlycobase.GuHighBoundary, "3");
         structure.setSparqlEntity(sparqlentity);
@@ -185,15 +197,15 @@ public class sparqlExampleTest {
         System.out.println("sparql query list all profiles is: \n" +getListProfile().getSparql());
     }
 
-    ListStructureOnProtein getGlycanOnProtein(){
-        ListStructureOnProtein structure = new ListStructureOnProtein();
+    ListProtein getListProtein(){
+        ListProtein structure = new ListProtein();
         SparqlEntity sparqlentity = new SparqlEntity();
         structure.setSparqlEntity(sparqlentity);
         return structure;
     }
     @Test
-    public void testGlycanOnProtein() throws SparqlException{
-        System.out.println("sparql query list protein with attached glycan is: \n" +getGlycanOnProtein().getSparql());
+    public void testListProtein() throws SparqlException{
+        System.out.println("sparql query list protein is: \n" +getListProtein().getSparql());
     }
 
     StructureByProtein getStructureByProtein(){
@@ -358,16 +370,16 @@ public class sparqlExampleTest {
         System.out.println("sparql query list all structure is: \n" +getAllGlycan().getSparql());
     }
 
-    GSLGu getGSLGu(){
-        GSLGu structure = new GSLGu();
+    GSLInfo getGSLInfo(){
+        GSLInfo structure = new GSLInfo();
         SparqlEntity sparqlentity = new SparqlEntity();
-        sparqlentity.setValue(GlycanGlycobase.LabelType, "2-AB");
+        sparqlentity.setValue(GlycanGlycobase.GlycoBaseId, "30200");
         structure.setSparqlEntity(sparqlentity);
         return structure;
     }
     @Test
-    public void testGSLGu() throws SparqlException{
-        System.out.println("sparql query GSL gu is: \n" +getGSLGu().getSparql());
+    public void testGSLInfo() throws SparqlException{
+        System.out.println("sparql query GSL gu is: \n" +getGSLInfo().getSparql());
     }
 
     ListGSLseries getGSLseries(){

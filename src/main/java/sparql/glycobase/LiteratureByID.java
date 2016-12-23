@@ -25,7 +25,7 @@ public class LiteratureByID extends SelectSparqlBean implements GlycanGlycobase 
                 + "PREFIX bibo: <http://purl.org/ontology/bibo/> \n"
                 + "PREFIX dc: <http://purl.org/dc/elements/1.1/> \n";;  //need to add # glycan#
         this.select = "DISTINCT ?" + ReferenceCompoundURI + " ?" + Title + " ?"+ Year
-                + " ?"+ Gu2AB + " ?"+ GuProcainamide + " ?" + PeakArea + " ?" + Ms1Verified + " ?" + Ms2Verified + " ?" + EnzymeVerified + "\n";
+                + " ?"+ Gu2AB + " ?"+ GuProcainamide + " ?" + PeakArea + " ?" + Ms1Verified + " ?" + Ms2Verified  + "\n";
     }
 
     public String getId() {
@@ -44,18 +44,17 @@ public class LiteratureByID extends SelectSparqlBean implements GlycanGlycobase 
                 + "?" + MsVerificationURI + " glycan:ms1_verified ?" + Ms1Verified + " .\n}\n"
                 + "OPTIONAL{\n ?" + ReferenceCompoundURI + " glycan:has_evidence ?" + MsVerificationURI + " .\n"
                 + "?" + MsVerificationURI + " glycan:ms2_verified ?" + Ms2Verified + " .\n}\n"
-                + "OPTIONAL{\n ?" + ReferenceCompoundURI + " glycan:is_exoglycosidase_confirmed ?" + EnzymeVerified + " .\n}\n"
                 + "OPTIONAL{\n ?" + PeakURI + " glycan:has_peak_area ?" + PeakArea + " .\n}\n"
 
                 + "?" + LiteratureURI + " dc:title ?" + Title + " ;\n"
                 + " bibo:issued ?" + Year + " .\n"
 
-                + "OPTIONAL{\n ?" + ProfileURI + " glycan:has_label " + "Procainamide;\n"
+                + "OPTIONAL{\n ?" + ProfileURI + " glycan:has_label " + "'Procainamide';\n"
                 + " glycan:has_lc_chromatogram_peak ?" + PeakURI + ".\n"
                 + "?" + PeakURI + " (glycan:has_glucose_unit|glycan:has_arabinose_unit) ?" + GuProcainamide + " .\n}\n"
 
 
-                + "OPTIONAL{\n ?" + ProfileURI + " glycan:has_label " + "2-AB;\n"
+                + "OPTIONAL{\n ?" + ProfileURI + " glycan:has_label " + "'2-AB';\n"
                 + " glycan:has_lc_chromatogram_peak ?" + PeakURI + ".\n"
                 + "?" + PeakURI + " (glycan:has_glucose_unit|glycan:has_arabinose_unit) ?" + Gu2AB + " .\n}\n";
 

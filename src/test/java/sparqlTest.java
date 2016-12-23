@@ -4,7 +4,6 @@ import models.unicarbkb.Translation;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.jena.query.*;
 import org.apache.jena.rdf.model.*;
-import org.apache.jena.sparql.engine.binding.Binding;
 import org.apache.jena.sparql.engine.http.QueryEngineHTTP;
 
 import org.eurocarbdb.application.glycanbuilder.BuilderWorkspace;
@@ -21,7 +20,6 @@ import sparql.*;
 import sparql.glycobase.GlycanGlycobase;
 import sparql.glycobase.GlycoBaseSelectGuSparql;
 import sparql.glycobase.GlycobaseSelectSparql;
-import sparql.glycobase.StructureByGlycobaseID;
 import sparql.wurcs.GlycoSequenceToWurcsSelectSparql;
 
 import java.io.*;

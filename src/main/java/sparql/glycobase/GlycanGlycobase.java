@@ -33,5 +33,11 @@ public interface GlycanGlycobase {
     public static final String PubmedId = "PubmedId";
     public static final String PaperTitle="PaperTitle";
     public static final String LabelType = "LabelType";
+    public static final String CoreFMotif = "CoreFMotif";
+    public static final String BisectMotif = "BisectMotif";
+    public static final String OuterFMotif = "OuterFMotif";
+    public static final String HybridMotif = "HybridMotif";
+    public static final String MannoseMotif = "MannoseMotif";
+    public static final String GlycoStoreId = "GlycoStoreId"; // Matthew use glycostoreid, sophie use glycobaseid, unsolved
 }
 

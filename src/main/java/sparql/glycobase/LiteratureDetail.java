@@ -47,7 +47,7 @@ public class LiteratureDetail extends SelectSparqlBean implements GlycanGlycobas
                 + " dcterms:isPartOf ?" + JournalURI +" ;\n"
                 + " bibo:pageEnd ?"+ PageEnd + " ;\n"
                 + " bibo:pageStart ?" + PageStart + " ;\n"
-                + " bibo:volume ?" + Volume + " ;\n"
+                + " bibo:volume ?" + Volume + " .\n"
                 + "?" + JournalURI + " a bibo:journal ;\n"
                 + " dc:title ?" + Jounral + " .\n}\n";
 

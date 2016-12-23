@@ -18,7 +18,7 @@ public class StructureByReference extends SelectSparqlBean implements GlycanGlyc
         super();
         this.prefix = "PREFIX glycan: <http://purl.jp/bio/12/glyco/glycan/> \n"
                     + "PREFIX dc: <http://purl.org/dc/elements/1.1/> \n";  //need to add # glycan#
-        this.select = "DISTINCT ?" + GlycoBaseId + " ?" + Uoxf +" (AVG(?" + Gu + ") AS ?" + avgGu + ") \n";
+        this.select = "DISTINCT ?" + GlycoBaseId + " ?" + Uoxf + " ?" + LabelType +" (AVG(?" + Gu + ") AS ?" + avgGu + ") \n";
     }
 
     public String getTitle() {
@@ -29,10 +29,12 @@ public class StructureByReference extends SelectSparqlBean implements GlycanGlyc
     @Override
     public String getWhere() throws SparqlException {
         String where = "?" + ReferenceCompoundURI + " glycan:published_in ?" + PaperURI + " ;\n"
-                + " glycan:has_lc_chromatogram_peak ?" + PeakURI + " ;\n"
+                + " glycan:is_from_profile ?" + ProfileURI + " ;\n"
                 + " glycan:has_glycan ?"+ SaccharideURI + " .\n"
                 + "?" + SaccharideURI + " glycan:has_glycobase_id ?"+ GlycoBaseId + " ;\n"
                 + " glycan:has_uoxf ?" + Uoxf + " .\n"
+                + "?" + ProfileURI + " glycan:has_lc_chromatogram_peak ?" + PeakURI + " ;\n"
+                + " glycan:has_label ?" + LabelType + " .\n"
                 + "?" + PeakURI + " glycan:has_glucose_unit ?" + Gu + " .\n"
                 + "?" + PaperURI + " dc:title " + getTitle() + " .\n";
         return where;
@@ -40,7 +42,7 @@ public class StructureByReference extends SelectSparqlBean implements GlycanGlyc
 
     @Override
     public String getGroupBy(){
-        String group = "?" + GlycoBaseId + " ?"+ Uoxf;
+        String group = "?" + GlycoBaseId + " ?"+ Uoxf + " ?" + LabelType;
         return group;
     }
 }
