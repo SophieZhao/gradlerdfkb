@@ -16,6 +16,9 @@ import com.avaje.ebean.SqlRow;
 import models.unicarbkb.Journal;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import ch.qos.logback.*;
+
 import sparql.*;
 import sparql.glycobase.GlycanGlycobase;
 import sparql.glycobase.GlycoBaseSelectGuSparql;
@@ -40,6 +43,7 @@ public class sparqlTest {
     public static Logger logger = (Logger) LoggerFactory
             .getLogger(sparqlTest.class);
 
+
     @Test
     public void testConnection() {
 
@@ -52,25 +56,6 @@ public class sparqlTest {
 
         List<Journal> journal = Ebean.find(Journal.class).findList();
         assertNotNull(journal);
-    }
-
-    @Test
-    public void testSparql() {
-
-        String queryStr = "select distinct ?Concept where {[] a ?Concept} LIMIT 10";
-        Query query = QueryFactory.create(queryStr);
-
-        // Remote execution.
-        try (QueryExecution qexec = QueryExecutionFactory.sparqlService("http://dbpedia.org/sparql", query)) {
-            // Set the DBpedia specific timeout.
-            ((QueryEngineHTTP) qexec).addParam("timeout", "10000");
-
-            // Execute.
-            ResultSet rs = qexec.execSelect();
-            ResultSetFormatter.out(System.out, rs, query);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
     @Test
@@ -98,10 +83,10 @@ public class sparqlTest {
         Selector selector = new SimpleSelector(null, model.getProperty("<http://www.geneontology.org/formats/oboInOwl#hasDbXref>"), (RDFNode) null);  // you need to cast the last null as otherwise the method is ambigious
         */
 
-        List<String> dbXref = new ArrayList<>();
-        List<String> iao = new ArrayList<>();
-        List<String> exactSynonym = new ArrayList<>();
-        List<String> alternativeId = new ArrayList<>();
+        List<String> dbXref = new ArrayList<String>();
+        List<String> iao = new ArrayList<String>();
+        List<String> exactSynonym = new ArrayList<String>();
+        List<String> alternativeId = new ArrayList<String>();
         String diseaseLabel;
 
         while(results.hasNext()){
@@ -497,7 +482,7 @@ public class sparqlTest {
     public void testKBtoWurcsSparql()  throws SparqlException {
 
         List<Structure> structures = Ebean.find(Structure.class).findList();
-        HashSet<String> resultList = new HashSet<>();
+        HashSet<String> resultList = new HashSet<String>();
 
         String ct = "";
 
@@ -541,8 +526,8 @@ public class sparqlTest {
                     QueryExecution qe = QueryExecutionFactory.sparqlService("http://test.ts.glytoucan.org/sparql", query);
                     ResultSet rs = qe.execSelect();
 
-                    List<SparqlEntity> results = new ArrayList<>();
-                    HashSet<String> resultsList = new HashSet<>();
+                    List<SparqlEntity> results = new ArrayList<SparqlEntity>();
+                    HashSet<String> resultsList = new HashSet<String>();
 
                     while (rs.hasNext()) {
                         QuerySolution row = rs.next();
@@ -596,7 +581,7 @@ public class sparqlTest {
     public void testKBtoWurcsSparqlTranslation()  throws SparqlException {
 
         List<Translation> translations = Ebean.find(Translation.class).findList();
-        HashSet<String> resultList = new HashSet<>();
+        HashSet<String> resultList = new HashSet<String>();
 
         String ct = "";
 
@@ -623,8 +608,8 @@ public class sparqlTest {
                     QueryExecution qe = QueryExecutionFactory.sparqlService("http://test.ts.glytoucan.org/sparql", query);
                     ResultSet rs = qe.execSelect();
 
-                    List<SparqlEntity> results = new ArrayList<>();
-                    HashSet<String> resultsList = new HashSet<>();
+                    List<SparqlEntity> results = new ArrayList<SparqlEntity>();
+                    HashSet<String> resultsList = new HashSet<String>();
 
                     while (rs.hasNext()) {
                         QuerySolution row = rs.next();
