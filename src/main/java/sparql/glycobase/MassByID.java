@@ -20,7 +20,7 @@ public class MassByID extends SelectSparqlBean implements GlycanGlycobase{
     @Override
     public String getWhere() throws SparqlException{
         String where = "?" + SaccharideURI + " glycan:has_glycobase_id " + getGlycoBaseId() + ".\n"
-                + "OPTIONAL{?" + SaccharideURI + " glycan:has_average_molecular_weight ?" + MonoMass + ".}\n";
+                + "OPTIONAL{?" + SaccharideURI + " glycan:has_monoisotopic_molecular_weight ?" + MonoMass + ".}\n";
 
         return where;
     }

@@ -34,7 +34,7 @@ public class GSLBySeries extends SelectSparqlBean implements GlycanGlycobase {
     public String getWhere() throws SparqlException {
         String where = "?" + SaccharideURI + " a glycan:glycolipid;\n glycan:has_uoxf ?" + Uoxf
                 + ";\n glycan:has_glycobase_id ?" + GlycoBaseId + ";\n glycan:has_alternative_name ?" + composition
-                + ";\n glycan:has_average_molecular_weight ?" + monoisotopicMass +";\n glycan:has_code ?" + gslCode + ".\n"
+                + ";\n glycan:has_monoisotopic_molecular_weight ?" + monoisotopicMass +";\n glycan:has_code ?" + gslCode + ".\n"
                 + "?" + ReferenceCompoundURI + " glycan:has_glycan ?" + SaccharideURI + ";\n"
                 + " glycan:has_lc_chromatogram_peak ?" + PeakURI
                 + ";\n glycan:is_from_report " + getReportName() + ".\n "
