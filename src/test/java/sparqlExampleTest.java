@@ -359,7 +359,7 @@ public class sparqlExampleTest {
         System.out.println("sparql query list paper realted source detail is: \n" +getPaperLinkedSource().getSparql());
     }
 
-    AllGlycan getAllGlycan(){
+    /*AllGlycan getAllGlycan(){
         AllGlycan structure = new AllGlycan();
         SparqlEntity sparqlentity = new SparqlEntity();
         structure.setSparqlEntity(sparqlentity);
@@ -368,7 +368,7 @@ public class sparqlExampleTest {
     @Test
     public void testAllGlycan() throws SparqlException{
         System.out.println("sparql query list all structure is: \n" +getAllGlycan().getSparql());
-    }
+    }*/
 
     GSLInfo getGSLInfo(){
         GSLInfo structure = new GSLInfo();

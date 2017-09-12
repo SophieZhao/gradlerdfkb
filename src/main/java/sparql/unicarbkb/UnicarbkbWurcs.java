@@ -27,7 +27,7 @@ public class UnicarbkbWurcs {
     public static String checkTouCan() throws SparqlException {
 
         List<Structure> structures = Ebean.find(Structure.class).findList();
-        HashSet<String> resultList = new HashSet<>();
+        HashSet<String> resultList = new HashSet<String>();
 
         String ct = "";
 
