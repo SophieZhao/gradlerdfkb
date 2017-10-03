@@ -53,7 +53,7 @@ public class RecordByID extends SelectSparqlBean implements GlycanGlycobase {
 
                 + "UNION{\n"+ "?" + SaccharideURI + " glycan:has_glycobase_id " + getId() + " ;\n"
                 + " glycan:has_lc_chromatogram_peak ?" + PeakURI + " .\n"
-                + "?" + PeakURI + " glycan:has_arabinose_unit ?" + Au + " .\n"
+                + "?" + PeakURI + " glycan:has_arabinose_unit ?" + Gu + " .\n"
                 + "?" + ReferenceCompoundURI + " glycan:has_lc_chromatogram_peak ?" + PeakURI + " ;\n"
                 + " glycan:is_from_report ?" + ReportName + " ;\n"
                 + " glycan:is_from_source ?" + SourceURI + " .\n"
