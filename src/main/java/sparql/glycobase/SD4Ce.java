@@ -36,7 +36,7 @@ public class SD4Ce extends SelectSparqlBean implements GlycanGlycobase {
                 + " glycan:has_ce_peak ?" + PeakURI + " .\n"
                 + "?" + PeakURI +" glycan:has_glucose_unit ?" + CeGu + " .}\n"
                 + "{\nSELECT (AVG( ?"+ CeGu +") AS ?" +avgCe + ") WHERE{\n"
-                + "?" + SaccharideURI + " glycan:has_glyobase_id " + getId() + " .\n"
+                + "?" + SaccharideURI + " glycan:has_glycobase_id " + getId() + " .\n"
                 + "OPTIONAL{?"+ SaccharideURI + " glycan:has_ce_peak ?"+ PeakURI + ".\n"
                 + "?" + ProfileURI + " a glycan:evidence_ce;\n"
                 + " glycan:has_ce_peak ?" + PeakURI + ".\n"

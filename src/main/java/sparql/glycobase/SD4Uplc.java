@@ -24,6 +24,7 @@ public class SD4Uplc extends SelectSparqlBean implements GlycanGlycobase {
     public String getId() {
         return getSparqlEntity().getValue(GlycanGlycobase.GlycoBaseId);
     }
+    public String getLabelType() { return "\"" + getSparqlEntity().getValue(GlycanGlycobase.LabelType) + "\"";}
 
 
     @Override
@@ -31,12 +32,14 @@ public class SD4Uplc extends SelectSparqlBean implements GlycanGlycobase {
         String where = "?" + SaccharideURI + " glycan:has_glycobase_id " + getId() + " .\n"
                 + "OPTIONAL{?" + SaccharideURI + " glycan:has_lc_chromatogram_peak ?" + PeakURI + " .\n"
                 + "?" + ProfileURI + " a glycan:evidence_uplc;\n"
+                + " glycan:has_label " + getLabelType() + ";\n"
                 + " glycan:has_lc_chromatogram_peak ?" + PeakURI + " .\n"
                 + "?" + PeakURI +" glycan:has_glucose_unit ?" + Gu + " .}\n"
                 + "{\nSELECT (AVG( ?"+ Gu +") AS ?" +avgUp + ") WHERE{\n"
-                + "?" + SaccharideURI + " glycan:has_glyobase_id " + getId() + " .\n"
+                + "?" + SaccharideURI + " glycan:has_glycobase_id " + getId() + " .\n"
                 + "OPTIONAL{?"+ SaccharideURI + " glycan:has_lc_chromatogram_peak ?"+ PeakURI + ".\n"
                 + "?" + ProfileURI + " a glycan:evidence_uplc;\n"
+                + " glycan:has_label " + getLabelType() + ";\n"
                 + " glycan:has_lc_chromatogram_peak ?" + PeakURI + ".\n"
                 + "?" + PeakURI +" glycan:has_glucose_unit ?" + Gu + " .}\n}\n}";
         return where;

@@ -34,7 +34,7 @@ public class SD4Hplc extends SelectSparqlBean implements GlycanGlycobase {
                 + " glycan:has_lc_chromatogram_peak ?" + PeakURI + " .\n"
                 + "?" + PeakURI +" glycan:has_glucose_unit ?" + HplcGu + " .}\n"
                 + "{\nSELECT (AVG( ?"+ HplcGu +") AS ?" +avgHp + ") WHERE{\n"
-                + "?" + SaccharideURI + " glycan:has_glyobase_id " + getId() + " .\n"
+                + "?" + SaccharideURI + " glycan:has_glycobase_id " + getId() + " .\n"
                 + "OPTIONAL{?"+ SaccharideURI + " glycan:has_lc_chromatogram_peak ?"+ PeakURI + ".\n"
                 + "?" + ProfileURI + " a glycan:evidence_hplc;\n"
                 + " glycan:has_lc_chromatogram_peak ?" + PeakURI + ".\n"

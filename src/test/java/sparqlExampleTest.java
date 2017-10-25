@@ -303,6 +303,7 @@ public class sparqlExampleTest {
         AvgUplcGu upgu = new AvgUplcGu();
         SparqlEntity avgUpSpqEntity = new SparqlEntity();
         avgUpSpqEntity.setValue(GlycanGlycobase.GlycoBaseId, "683");
+        avgUpSpqEntity.setValue(GlycanGlycobase.LabelType,"2-AB");
         upgu.setSparqlEntity(avgUpSpqEntity);
         return upgu;
     }
@@ -363,6 +364,7 @@ public class sparqlExampleTest {
         SD4Uplc upsd = new SD4Uplc();
         SparqlEntity sdUpSpqEntity = new SparqlEntity();
         sdUpSpqEntity.setValue(GlycanGlycobase.GlycoBaseId, "630");
+        sdUpSpqEntity.setValue(GlycanGlycobase.LabelType,"2-AB");
         upsd.setSparqlEntity(sdUpSpqEntity);
         return upsd;
     }

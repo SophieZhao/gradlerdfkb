@@ -35,7 +35,7 @@ public class SD4Rp extends SelectSparqlBean implements GlycanGlycobase {
                 + " glycan:has_lc_chromatogram_peak ?" + PeakURI + " .\n"
                 + "?" + PeakURI +" glycan:has_arabinose_unit ?" + RpGu + " .}\n"
                 + "{\nSELECT (AVG( ?"+ RpGu +") AS ?" +avgRp + ") WHERE{\n"
-                + "?" + SaccharideURI + " glycan:has_glyobase_id " + getId() + " .\n"
+                + "?" + SaccharideURI + " glycan:has_glycobase_id " + getId() + " .\n"
                 + "OPTIONAL{?"+ SaccharideURI + " glycan:has_lc_chromatogram_peak ?"+ PeakURI + ".\n"
                 + "?" + ProfileURI + " a glycan:evidence_rpuplc;\n"
                 + " glycan:has_lc_chromatogram_peak ?" + PeakURI + ".\n"
