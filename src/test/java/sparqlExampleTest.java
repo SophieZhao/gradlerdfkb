@@ -335,6 +335,54 @@ public class sparqlExampleTest {
         System.out.println("sparql query average ce gu value is: \n" +getAvgCegu().getSparql());
     }
 
+    SD4Ce getSD4Ce(){
+        SD4Ce cesd = new SD4Ce();
+        SparqlEntity sdCeSpqEntity = new SparqlEntity();
+        sdCeSpqEntity.setValue(GlycanGlycobase.GlycoBaseId, "683");
+        cesd.setSparqlEntity(sdCeSpqEntity);
+        return cesd;
+    }
+    @Test
+    public void testSDCe() throws SparqlException{
+        System.out.println("sparql query sd for ce is: \n" +getSD4Ce().getSparql());
+    }
+
+    SD4Hplc getSD4Hplc(){
+        SD4Hplc hpsd = new SD4Hplc();
+        SparqlEntity sdHpSpqEntity = new SparqlEntity();
+        sdHpSpqEntity.setValue(GlycanGlycobase.GlycoBaseId, "630");
+        hpsd.setSparqlEntity(sdHpSpqEntity);
+        return hpsd;
+    }
+    @Test
+    public void testSDHplc() throws SparqlException{
+        System.out.println("sparql query sd for hplc is: \n" +getSD4Hplc().getSparql());
+    }
+
+    SD4Uplc getSD4Uplc(){
+        SD4Uplc upsd = new SD4Uplc();
+        SparqlEntity sdUpSpqEntity = new SparqlEntity();
+        sdUpSpqEntity.setValue(GlycanGlycobase.GlycoBaseId, "630");
+        upsd.setSparqlEntity(sdUpSpqEntity);
+        return upsd;
+    }
+    @Test
+    public void testSDUp() throws SparqlException{
+        System.out.println("sparql query sd for uplc is: \n" +getSD4Uplc().getSparql());
+    }
+
+    SD4Rp getSD4Rp(){
+        SD4Rp rpsd = new SD4Rp();
+        SparqlEntity sdRpSpqEntity = new SparqlEntity();
+        sdRpSpqEntity.setValue(GlycanGlycobase.GlycoBaseId, "630");
+        rpsd.setSparqlEntity(sdRpSpqEntity);
+        return rpsd;
+    }
+    @Test
+    public void testSDRp() throws SparqlException{
+        System.out.println("sparql query sd for rpuplc is: \n" +getSD4Rp().getSparql());
+    }
+
     LiteratureDetail getLiteratureDetail(){
         LiteratureDetail paper = new LiteratureDetail();
         SparqlEntity paperSpqEntity = new SparqlEntity();
